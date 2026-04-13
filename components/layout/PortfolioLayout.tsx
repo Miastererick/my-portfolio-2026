@@ -9,7 +9,7 @@ export function PortfolioLayout() {
       <TopNav />
 
       <section
-        className="relative z-10 flex h-screen w-full shrink-0 snap-start flex-col overflow-hidden bg-black"
+        className="relative z-10 h-screen w-full shrink-0 snap-start overflow-hidden bg-black"
         aria-label="封面"
       >
         <Image
@@ -18,10 +18,22 @@ export function PortfolioLayout() {
           fill
           priority
           sizes="100vw"
-          className="pointer-events-none object-cover object-center select-none"
+          className="absolute inset-0 z-0 h-full w-full object-cover object-center"
           aria-hidden
         />
-        <div className="relative z-[1] min-h-0 flex-1" aria-hidden />
+
+        <div className="relative z-10 flex h-full w-full items-center justify-center p-8">
+          <Image
+            src="/title-text.svg"
+            alt="Symbiosis and Evolution，共生与演化，从像素执行到 AI 决策。"
+            width={974}
+            height={548}
+            priority
+            draggable={false}
+            className="hero-title-breathe pointer-events-none h-[548px] w-[974px] select-none object-contain"
+          />
+        </div>
+
         <TrustBar placement="embedded" />
       </section>
 

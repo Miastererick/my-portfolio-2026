@@ -128,3 +128,24 @@ body {
     transform: translateX(-50%);
   }
 }
+
+@keyframes heroTitleBreathe {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.88;
+  }
+  50% {
+    transform: scale(0.985);
+    opacity: 0.98;
+  }
+  100% {
+    transform: scale(1.00);
+    opacity: 1;
+  }
+}
+
+.hero-title-breathe {
+  animation: heroTitleBreathe 10s ease-in-out infinite alternate;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
