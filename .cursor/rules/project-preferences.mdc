@@ -1,0 +1,8 @@
+---
+description: Do not proactively fix corrupted Chinese in card titles/footer
+alwaysApply: true
+---
+
+# 中文文案
+
+除非用户**明确要求**，否则不要在修改其他功能时顺带「修复」`ProjectDirectory.tsx`（或同类组件）里卡片标题、页脚等已出现乱码/问号的中文。用户会自行处理编码与文案。

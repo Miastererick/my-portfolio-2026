@@ -1,0 +1,130 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* public/fonts/ → 站点根路径 /fonts/…（勿放 app/fonts，否则无法通过 URL 访问） */
+@font-face {
+  font-family: "GenWanMinTW";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/GenWanMinTW-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Adobe Jenson Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  /* 当前仓库仅有 Regular.otf；若你新增 Adobe-Jenson-Pro.ttf，可再加一行 url 放在最前 */
+  src: url("/fonts/Adobe-Jenson-Pro-Regular.otf") format("opentype");
+}
+
+/* 五张卡片中文标题：仅此处用源流明体，与全局 UI（HONOR Sans CN）分离 */
+.font-card-cn {
+  font-family:
+    "GenWanMinTW",
+    "Adobe Jenson Pro",
+    "HONOR Sans CN",
+    "HONORSansCN",
+    "Source Han Serif SC",
+    "Noto Serif SC",
+    "Songti SC",
+    "STSong",
+    "SimSun",
+    ui-serif,
+    serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* 英文副标题：Adobe Jenson（--font-serif） */
+.font-card-en {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+/**
+ * HONOR Sans CN（HONORSansCN）：将字稿放入 public/fonts/
+ * 官方包多为 .ttf，可自行转 woff2 以减小体积；未放置文件时依 local() 与系统黑体回退。
+ */
+@font-face {
+  font-family: "HONOR Sans CN";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local("HONOR Sans CN"),
+    local("HONORSansCN"),
+    url("/fonts/HONORSansCN-Regular.woff2") format("woff2"),
+    url("/fonts/HONORSansCN-Regular.ttf") format("truetype"),
+    url("/fonts/HONORSansCN-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "HONOR Sans CN";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src:
+    local("HONOR Sans CN DemiBold"),
+    url("/fonts/HONORSansCN-SemiBold.ttf") format("truetype"),
+    url("/fonts/HONORSansCN-DemiBold.ttf") format("truetype"),
+    url("/fonts/HONORSansCN-Medium.ttf") format("truetype"),
+    url("/fonts/HONORSansCN-Bold.ttf") format("truetype");
+}
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #eaeaea;
+  --accent: #ff4500;
+  /** 全局 UI（导航、页脚、首屏等）：HONOR Sans CN；五张卡片不用此变量 */
+  --font-sans:
+    "HONOR Sans CN",
+    "HONORSansCN",
+    var(--font-inter),
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "微软雅黑",
+    "Source Han Sans SC",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  /** Adobe Jenson（英文衬线 / 卡片英文） */
+  --font-serif:
+    "Adobe Jenson Pro",
+    "Times New Roman",
+    Times,
+    ui-serif,
+    serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  /* --font-sans 由 tailwind.config.js theme.extend.fontFamily.sans 提供（含中文字体回退） */
+  --animate-marquee: marquee 42s linear infinite;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.font-library-serif {
+  font-family: var(--font-library-serif), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
