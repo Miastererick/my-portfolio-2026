@@ -1,10 +1,8 @@
 const NAV_ITEMS = [
-  "关于我",
-  "AI 项目探索",
   "商业落地项目",
   "视觉类项目",
   "设计工程化",
-  "其他",
+  "关于我",
 ] as const;
 
 export function TopNav() {

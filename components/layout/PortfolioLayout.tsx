@@ -4,6 +4,9 @@ import { TrustBar } from "@/components/layout/TrustBar";
 import { ProjectDirectory } from "@/components/sections/ProjectDirectory";
 
 export function PortfolioLayout() {
+  const blurDataURL =
+    "data:image/gif;base64,R0lGODlhAQABAAAAACwAAAAAAQABAAA=";
+
   return (
     <div className="relative min-h-dvh h-screen snap-y snap-mandatory overflow-y-auto overflow-x-hidden overscroll-y-contain bg-black text-foreground">
       <TopNav />
@@ -17,21 +20,29 @@ export function PortfolioLayout() {
           alt=""
           fill
           priority
+          quality={85}
+          placeholder="blur"
+          blurDataURL={blurDataURL}
           sizes="100vw"
           className="absolute inset-0 z-0 h-full w-full object-cover object-center"
           aria-hidden
         />
 
         <div className="relative z-10 flex h-full w-full items-center justify-center p-8">
-          <Image
-            src="/title-text.svg"
-            alt="Symbiosis and Evolution，共生与演化，从像素执行到 AI 决策。"
-            width={974}
-            height={548}
-            priority
-            draggable={false}
-            className="hero-title-breathe pointer-events-none h-[548px] w-[974px] select-none object-contain"
-          />
+          <div className="relative h-[548px] w-[974px]">
+            <Image
+              src="/title-text.png"
+              alt="Symbiosis and Evolution，共生与演化，从像素执行到 AI 决策。"
+              fill
+              priority
+              quality={85}
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+              sizes="974px"
+              draggable={false}
+              className="hero-title-breathe pointer-events-none select-none object-contain"
+            />
+          </div>
         </div>
 
         <TrustBar placement="embedded" />

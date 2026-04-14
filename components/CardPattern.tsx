@@ -22,6 +22,7 @@ const GREEN_GRID_COLS = 30;
 const GREEN_GRID_ROWS = 22;
 const BLACK_BARCODE_ROWS = 15;
 const BLACK_BARCODE_COLS = 34;
+const GPU_ANIM_STYLE = { willChange: "transform, opacity", transform: "translateZ(0)" } as const;
 
 function BeigeGridPattern() {
   const cells = useMemo(
@@ -53,6 +54,7 @@ function BeigeGridPattern() {
           key={cell.key}
           className="cp-slow-blink"
           style={{
+            ...GPU_ANIM_STYLE,
             backgroundColor: cell.color,
             animationDelay: `${cell.delay}s`,
             animationDuration: `${cell.duration}s`,
@@ -66,7 +68,7 @@ function BeigeGridPattern() {
 function OrangeWavesPattern() {
   const clipId = useId().replace(/:/g, "");
   const verticalLines = useMemo(() => Array.from({ length: 30 }, (_, i) => i), []);
-  const diagonalLines = useMemo(() => Array.from({ length: 80 }, (_, i) => i), []);
+  const diagonalLines = useMemo(() => Array.from({ length: ORANGE_LINE_COUNT }, (_, i) => i), []);
 
   return (
     <svg
@@ -110,6 +112,7 @@ function OrangeWavesPattern() {
       <g
         clipPath={`url(#letter-a-mask-${clipId})`}
         className="cp-horizontal-breathe"
+        style={GPU_ANIM_STYLE}
       >
         {diagonalLines.map((i) => (
           <line
@@ -119,8 +122,9 @@ function OrangeWavesPattern() {
             x2={30 + i * 3}
             y2={0}
             stroke="rgba(252,240,179,1)"
-            strokeWidth="0.7"
+            strokeWidth="1"
             style={{
+              ...GPU_ANIM_STYLE,
               animation: "waveVertical 4.8s ease-in-out infinite",
               animationDelay: `${i * 0.1}s`,
               transformOrigin: "center",
@@ -212,10 +216,11 @@ function BlueLinesPattern() {
           key={ribbon.key}
           className="cp-blue-ribbon-flow"
           style={{
+            ...GPU_ANIM_STYLE,
             animation: `ribbonFlow ${ribbon.duration}s linear infinite alternate`,
           }}
         >
-          <path d={ribbon.d} fill="#ABFCFE" fillOpacity={ribbon.opacity} />
+          <path d={ribbon.d} fill="#ABFCFE" fillOpacity={ribbon.opacity} style={GPU_ANIM_STYLE} />
         </g>
       ))}
     </svg>
@@ -244,7 +249,8 @@ function GreenWireframePattern() {
     <svg
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
-      className="h-full w-full"
+      className="pointer-events-none h-full w-full"
+      style={{ contain: "strict" }}
       aria-hidden
     >
       {gridLines.map((line) =>
@@ -257,6 +263,7 @@ function GreenWireframePattern() {
             y2={100}
             className="cp-grid-flow"
             style={{
+              ...GPU_ANIM_STYLE,
               stroke: "rgba(0, 77, 26,0.3)",
               strokeWidth: 0.22,
               strokeDasharray: "8 3",
@@ -272,6 +279,7 @@ function GreenWireframePattern() {
             y2={line.pos}
             className="cp-grid-flow"
             style={{
+              ...GPU_ANIM_STYLE,
               stroke: "rgba(0, 77, 26,0.3)",
               strokeWidth: 0.22,
               strokeDasharray: "8 3",
@@ -281,19 +289,19 @@ function GreenWireframePattern() {
         )
       )}
 
-      <g className="cp-draw-wireframe-solid" style={{ animationDelay: "0s" }}>
+      <g className="cp-draw-wireframe-solid" style={{ ...GPU_ANIM_STYLE, animationDelay: "0s" }}>
         <rect x={4} y={8} width={92} height={84} rx={5.5} fill="none" />
       </g>
-      <g className="cp-draw-wireframe-solid" style={{ animationDelay: "0.6s" }}>
+      <g className="cp-draw-wireframe-solid" style={{ ...GPU_ANIM_STYLE, animationDelay: "0.6s" }}>
         <rect x={8} y={12} width={22} height={76} rx={3.2} fill="none" />
       </g>
-      <g className="cp-draw-wireframe-solid" style={{ animationDelay: "0.9s" }}>
+      <g className="cp-draw-wireframe-solid" style={{ ...GPU_ANIM_STYLE, animationDelay: "0.9s" }}>
         <rect x={70} y={12} width={22} height={76} rx={3.2} fill="none" />
       </g>
-      <g className="cp-draw-wireframe-solid" style={{ animationDelay: "1.2s" }}>
+      <g className="cp-draw-wireframe-solid" style={{ ...GPU_ANIM_STYLE, animationDelay: "1.2s" }}>
         <ellipse cx={50} cy={44} rx={26} ry={20} fill="none" />
       </g>
-      <g className="cp-draw-wireframe-solid" style={{ animationDelay: "1.5s" }}>
+      <g className="cp-draw-wireframe-solid" style={{ ...GPU_ANIM_STYLE, animationDelay: "1.5s" }}>
         <ellipse cx={50} cy={56} rx={26} ry={20} fill="none" />
       </g>
     </svg>
@@ -308,19 +316,34 @@ function BlackWireframePattern() {
       className="h-full w-full"
       aria-hidden
     >
-      <g className="cp-draw-wireframe" style={{ strokeDasharray: 1500, animationDelay: "0s" }}>
+      <g
+        className="cp-draw-wireframe"
+        style={{ ...GPU_ANIM_STYLE, strokeDasharray: 1500, animationDelay: "0s" }}
+      >
         <rect x={3.5} y={6} width={93} height={88} rx={6.5} fill="none" />
       </g>
-      <g className="cp-draw-wireframe" style={{ strokeDasharray: 1500, animationDelay: "0.5s" }}>
+      <g
+        className="cp-draw-wireframe"
+        style={{ ...GPU_ANIM_STYLE, strokeDasharray: 1500, animationDelay: "0.5s" }}
+      >
         <rect x={8} y={10} width={84} height={12} rx={2} fill="none" />
       </g>
-      <g className="cp-draw-wireframe" style={{ strokeDasharray: 1500, animationDelay: "1s" }}>
+      <g
+        className="cp-draw-wireframe"
+        style={{ ...GPU_ANIM_STYLE, strokeDasharray: 1500, animationDelay: "1s" }}
+      >
         <rect x={8} y={26} width={21} height={64} rx={2.8} fill="none" />
       </g>
-      <g className="cp-draw-wireframe" style={{ strokeDasharray: 1500, animationDelay: "1.5s" }}>
+      <g
+        className="cp-draw-wireframe"
+        style={{ ...GPU_ANIM_STYLE, strokeDasharray: 1500, animationDelay: "1.5s" }}
+      >
         <rect x={33} y={26} width={59} height={28} rx={2.8} fill="none" />
       </g>
-      <g className="cp-draw-wireframe" style={{ strokeDasharray: 1500, animationDelay: "2s" }}>
+      <g
+        className="cp-draw-wireframe"
+        style={{ ...GPU_ANIM_STYLE, strokeDasharray: 1500, animationDelay: "2s" }}
+      >
         <rect x={33} y={58} width={59} height={32} rx={2.8} fill="none" />
       </g>
     </svg>
@@ -349,9 +372,19 @@ function BlackBarcodePattern() {
     []
   );
 
+  const rows = useMemo(() => {
+    const grouped = Array.from(
+      { length: BLACK_BARCODE_ROWS },
+      () => [] as (typeof cells)[number][]
+    );
+    for (const cell of cells) grouped[cell.row].push(cell);
+    return grouped;
+  }, [cells]);
+
   return (
     <div
       style={{
+        contain: "strict",
         display: "grid",
         gridTemplateRows: `repeat(${BLACK_BARCODE_ROWS}, minmax(0, 1fr))`,
         rowGap: "0px",
@@ -360,7 +393,7 @@ function BlackBarcodePattern() {
         padding: "0",
       }}
     >
-      {Array.from({ length: BLACK_BARCODE_ROWS }, (_, row) => (
+      {rows.map((rowCells, row) => (
         <div
           key={row}
           style={{
@@ -373,22 +406,21 @@ function BlackBarcodePattern() {
             height: "100%",
           }}
         >
-          {cells
-            .filter((cell) => cell.row === row)
-            .map((cell) => (
-              <div
-                key={cell.key}
-                className="cp-slow-blink"
-                style={{
-                  width: "2px",
-                  height: "8px",
-                  borderRadius: "1px",
-                  backgroundColor: cell.color,
-                  animationDelay: `${cell.delay}s`,
-                  animationDuration: `${cell.duration}s`,
-                }}
-              />
-            ))}
+          {rowCells.map((cell) => (
+            <div
+              key={cell.key}
+              className="cp-slow-blink"
+              style={{
+                ...GPU_ANIM_STYLE,
+                width: "2px",
+                height: "8px",
+                borderRadius: "1px",
+                backgroundColor: cell.color,
+                animationDelay: `${cell.delay}s`,
+                animationDuration: `${cell.duration}s`,
+              }}
+            />
+          ))}
         </div>
       ))}
     </div>
