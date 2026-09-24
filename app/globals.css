@@ -1,0 +1,270 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* 网页只加载按当前站点文案裁剪的 WOFF2；完整字稿保存在 source-assets。 */
+@font-face {
+  font-family: "GenWanMinTW";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/GenWanMinTW-SemiBold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Adobe Jenson Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Adobe-Jenson-Pro-Regular.woff2") format("woff2");
+}
+
+/* 五张卡片中文标题：仅此处用源流明体，与全局 UI（HONOR Sans CN）分离 */
+.font-card-cn {
+  font-family:
+    "GenWanMinTW",
+    "Adobe Jenson Pro",
+    "HONOR Sans CN",
+    "HONORSansCN",
+    "Source Han Serif SC",
+    "Noto Serif SC",
+    "Songti SC",
+    "STSong",
+    "SimSun",
+    ui-serif,
+    serif;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* 英文副标题：Adobe Jenson（--font-serif） */
+.font-card-en {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+/* HONOR Sans CN：400 与 600 字重均使用实际存在的文件。 */
+@font-face {
+  font-family: "HONOR Sans CN";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/HONORSansCN-Regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "HONOR Sans CN";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/HONORSansCN-DemiBold.woff2") format("woff2");
+}
+
+:root {
+  --font-library-serif: "Adobe Jenson Pro";
+  --font-inter: Arial, Helvetica, sans-serif;
+  --background: #0a0a0a;
+  --foreground: #eaeaea;
+  --accent: #ff4500;
+  --surface: #000101;
+  --surface-raised: #111;
+  --text-primary: #eee3d2;
+  --text-muted: rgb(255 255 255 / 50%);
+  --border-subtle: rgb(255 255 255 / 15%);
+  --header-surface: rgb(0 0 0 / 70%);
+  /** 全局 UI（导航、页脚、首屏等）：HONOR Sans CN；五张卡片不用此变量 */
+  --font-sans:
+    "HONOR Sans CN",
+    "HONORSansCN",
+    var(--font-inter),
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    "微软雅黑",
+    "Source Han Sans SC",
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  /** Adobe Jenson（英文衬线 / 卡片英文） */
+  --font-serif:
+    "Adobe Jenson Pro",
+    "Times New Roman",
+    Times,
+    ui-serif,
+    serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  /* --font-sans 由 tailwind.config.js theme.extend.fontFamily.sans 提供（含中文字体回退） */
+  --animate-marquee: marquee 42s linear infinite;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+.full-page-scroll {
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overscroll-behavior-y: contain;
+}
+
+.full-page-slide {
+  height: 100dvh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .full-page-scroll {
+    scroll-behavior: auto;
+  }
+}
+
+.font-library-serif {
+  font-family: var(--font-library-serif), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes heroTitleBreathe {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.88;
+  }
+  50% {
+    transform: scale(0.985);
+    opacity: 0.98;
+  }
+  100% {
+    transform: scale(1.00);
+    opacity: 1;
+  }
+}
+
+.hero-title-breathe {
+  animation: heroTitleBreathe 10s ease-in-out infinite alternate;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.project-directory[data-animations-paused="true"] *,
+.project-directory[data-animations-paused="true"] *::before,
+.project-directory[data-animations-paused="true"] *::after {
+  animation-play-state: paused !important;
+  will-change: auto !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-directory *,
+  .project-directory *::before,
+  .project-directory *::after,
+  .hero-title-breathe {
+    animation: none !important;
+    will-change: auto !important;
+  }
+}
+
+.site-header {
+  background-color: var(--header-surface);
+  border-color: var(--border-subtle);
+}
+
+.site-footer,
+.site-category {
+  background-color: var(--surface);
+  border-color: var(--border-subtle);
+}
+
+.site-primary-text { color: var(--text-primary); }
+.site-muted-text { color: var(--text-muted); }
+.site-border-subtle { border-color: var(--border-subtle); }
+
+html[data-theme="light"] {
+  --background: #f2f0e9;
+  --foreground: #20201e;
+  --surface: #f2f0e9;
+  --surface-raised: #f2f0e9;
+  --text-primary: #20201e;
+  --text-muted: rgb(32 32 30 / 72%);
+  --border-subtle: rgb(0 0 0 / 14%);
+  --header-surface: rgb(242 240 233 / 88%);
+}
+
+html[data-theme="light"] body {
+  background-color: #f2f0e9;
+  color: #20201e;
+}
+
+html[data-theme="light"] header {
+  background-color: rgb(242 240 233 / 88%) !important;
+  border-color: rgb(0 0 0 / 12%) !important;
+}
+
+html[data-theme="light"] header img {
+  filter: brightness(0.12);
+}
+
+html[data-theme="light"] .bg-black,
+html[data-theme="light"] [class~="bg-[#000101]"],
+html[data-theme="light"] [class~="bg-[#050606]"],
+html[data-theme="light"] [class~="bg-[#0a0a0a]"],
+html[data-theme="light"] [class~="bg-[#0b0d0d]"],
+html[data-theme="light"] [class~="bg-[#101111]"],
+html[data-theme="light"] [class~="bg-[#111]"],
+html[data-theme="light"] [class~="bg-[#111313]"],
+html[data-theme="light"] [class~="bg-[#141414]"],
+html[data-theme="light"] [class~="bg-[#151515]"],
+html[data-theme="light"] [class~="bg-[#191b1b]"],
+html[data-theme="light"] [class~="bg-[#262626]"],
+html[data-theme="light"] [class~="bg-[#202020]"] {
+  background-color: #f2f0e9 !important;
+}
+
+html[data-theme="light"] [class~="bg-white/5"],
+html[data-theme="light"] [class~="bg-white/10"] {
+  background-color: rgb(0 0 0 / 4%) !important;
+}
+
+html[data-theme="light"] .text-white,
+html[data-theme="light"] [class~="text-[#eee3d2]"] {
+  color: #20201e !important;
+}
+
+html[data-theme="light"] [class*="text-white/"] {
+  color: rgb(32 32 30 / 72%) !important;
+}
+
+html[data-theme="light"] [class*="border-white/"] {
+  border-color: rgb(0 0 0 / 14%) !important;
+}
+
+/* 封面图与详情首屏始终是深色画面，亮色模式下保留浅色文字。 */
+html[data-theme="light"] .project-hero {
+  color: #eee3d2 !important;
+}
+
+html[data-theme="light"] .project-hero [class*="text-white/"] {
+  color: rgb(255 255 255 / 75%) !important;
+}
+
+html[data-theme="light"] .hero-trust-bar [class*="text-white/"] {
+  color: rgb(255 255 255 / 65%) !important;
+}

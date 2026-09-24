@@ -1,0 +1,158 @@
+[
+  {
+    "device": "desktop",
+    "theme": "dark",
+    "name": "home",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "GenWanMinTW",
+      "Adobe Jenson Pro",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "desktop",
+    "theme": "dark",
+    "name": "category",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "desktop",
+    "theme": "dark",
+    "name": "project",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "desktop",
+    "theme": "light",
+    "name": "home",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "GenWanMinTW",
+      "Adobe Jenson Pro",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "desktop",
+    "theme": "light",
+    "name": "category",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "desktop",
+    "theme": "light",
+    "name": "project",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "mobile",
+    "theme": "dark",
+    "name": "home",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "mobile",
+    "theme": "dark",
+    "name": "category",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "mobile",
+    "theme": "dark",
+    "name": "project",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "mobile",
+    "theme": "light",
+    "name": "home",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "mobile",
+    "theme": "light",
+    "name": "category",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "device": "mobile",
+    "theme": "light",
+    "name": "project",
+    "broken": [],
+    "overflow": false,
+    "headerTop": 0,
+    "fonts": [
+      "HONOR Sans CN",
+      "HONOR Sans CN"
+    ]
+  },
+  {
+    "animation": "normal",
+    "before": "true",
+    "after": "false"
+  },
+  {
+    "animation": "reduced",
+    "paused": "true",
+    "css": "none"
+  }
+]

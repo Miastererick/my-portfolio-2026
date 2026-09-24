@@ -1,0 +1,284 @@
+[
+  {
+    "name": "home",
+    "path": "/",
+    "elapsed": 2300,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 36265
+      },
+      "Image": {
+        "count": 10,
+        "bytes": 25633
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 9725
+      },
+      "Font": {
+        "count": 4,
+        "bytes": 17070847
+      },
+      "Script": {
+        "count": 18,
+        "bytes": 905699
+      },
+      "Fetch": {
+        "count": 1,
+        "bytes": 1023
+      }
+    },
+    "details": {
+      "title": "作品集 2026｜从像素执行到 AI 决策",
+      "nav": [
+        {
+          "domContentLoaded": 79.5,
+          "load": 0
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 316
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 316
+        }
+      ],
+      "imageCount": 18,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/fonts/GenWanMinTW-SemiBold.ttf",
+        "type": "Font",
+        "bytes": 16839869
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_0553esy.js",
+        "type": "Script",
+        "bytes": 218457
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js",
+        "type": "Script",
+        "bytes": 184263
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_0n6bogc._.js",
+        "type": "Script",
+        "bytes": 162711
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js",
+        "type": "Script",
+        "bytes": 151304
+      },
+      {
+        "url": "/_next/static/media/Adobe_Jenson_Pro_Regular-s.p.0smc7935iowxe.otf",
+        "type": "Font",
+        "bytes": 101209
+      },
+      {
+        "url": "/fonts/Adobe-Jenson-Pro-Regular.otf",
+        "type": "Font",
+        "bytes": 101191
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_115brz8._.js",
+        "type": "Script",
+        "bytes": 45975
+      }
+    ]
+  },
+  {
+    "name": "category",
+    "path": "/business",
+    "elapsed": 2317,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 12076
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 9725
+      },
+      "Script": {
+        "count": 18,
+        "bytes": 782680
+      },
+      "Font": {
+        "count": 1,
+        "bytes": 101209
+      },
+      "Image": {
+        "count": 4,
+        "bytes": 6594
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 9654
+      }
+    },
+    "details": {
+      "title": "商业落地项目｜王明棋作品集",
+      "nav": [
+        {
+          "domContentLoaded": 80.70000000298023,
+          "load": 207.80000000074506
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 136
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 136
+        }
+      ],
+      "imageCount": 9,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_0553esy.js",
+        "type": "Script",
+        "bytes": 218457
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js",
+        "type": "Script",
+        "bytes": 184263
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js",
+        "type": "Script",
+        "bytes": 151304
+      },
+      {
+        "url": "/_next/static/media/Adobe_Jenson_Pro_Regular-s.p.0smc7935iowxe.otf",
+        "type": "Font",
+        "bytes": 101209
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_115brz8._.js",
+        "type": "Script",
+        "bytes": 45975
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_0fye-fd._.js",
+        "type": "Script",
+        "bytes": 38516
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_0tt2wve._.js",
+        "type": "Script",
+        "bytes": 37068
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_react-server-dom-turbopack_0p3wegg._.js",
+        "type": "Script",
+        "bytes": 32182
+      }
+    ]
+  },
+  {
+    "name": "project",
+    "path": "/projects/asian-games",
+    "elapsed": 2333,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 12847
+      },
+      "Script": {
+        "count": 18,
+        "bytes": 772134
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 9725
+      },
+      "Image": {
+        "count": 7,
+        "bytes": 403699
+      },
+      "Font": {
+        "count": 1,
+        "bytes": 101209
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 9654
+      }
+    },
+    "details": {
+      "title": "杭州亚运会保电指挥平台项目｜王明棋作品集",
+      "nav": [
+        {
+          "domContentLoaded": 124.29999999701977,
+          "load": 299.8999999985099
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 444
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 444
+        }
+      ],
+      "imageCount": 14,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30066-8c3b1.png&w=1920&q=75",
+        "type": "Image",
+        "bytes": 304755
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_0553esy.js",
+        "type": "Script",
+        "bytes": 218457
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js",
+        "type": "Script",
+        "bytes": 184263
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js",
+        "type": "Script",
+        "bytes": 151304
+      },
+      {
+        "url": "/_next/static/media/Adobe_Jenson_Pro_Regular-s.p.0smc7935iowxe.otf",
+        "type": "Font",
+        "bytes": 101209
+      },
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30142-0ed80.png&w=750&q=75",
+        "type": "Image",
+        "bytes": 53357
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_115brz8._.js",
+        "type": "Script",
+        "bytes": 45975
+      },
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30066-8c3b1.png&w=750&q=75",
+        "type": "Image",
+        "bytes": 38993
+      }
+    ]
+  }
+]

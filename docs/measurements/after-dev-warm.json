@@ -1,0 +1,288 @@
+[
+  {
+    "name": "home",
+    "path": "/",
+    "elapsed": 2285,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 35956
+      },
+      "Image": {
+        "count": 12,
+        "bytes": 465491
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 9369
+      },
+      "Script": {
+        "count": 18,
+        "bytes": 905052
+      },
+      "Font": {
+        "count": 4,
+        "bytes": 475188
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 9654
+      },
+      "Fetch": {
+        "count": 1,
+        "bytes": 1023
+      }
+    },
+    "details": {
+      "title": "作品集 2026｜从像素执行到 AI 决策",
+      "nav": [
+        {
+          "domContentLoaded": 62.099999997764826,
+          "load": 173.29999999701977
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 132
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 132
+        }
+      ],
+      "imageCount": 18,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/_next/image?url=%2Fhero-background.webp&w=1920&q=85",
+        "type": "Image",
+        "bytes": 383976
+      },
+      {
+        "url": "/fonts/GenWanMinTW-SemiBold.woff2",
+        "type": "Font",
+        "bytes": 286060
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_0553esy.js",
+        "type": "Script",
+        "bytes": 218457
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js",
+        "type": "Script",
+        "bytes": 184263
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_0n6bogc._.js",
+        "type": "Script",
+        "bytes": 161548
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js",
+        "type": "Script",
+        "bytes": 151304
+      },
+      {
+        "url": "/fonts/Adobe-Jenson-Pro-Regular.woff2",
+        "type": "Font",
+        "bytes": 81811
+      },
+      {
+        "url": "/fonts/HONORSansCN-Regular.woff2",
+        "type": "Font",
+        "bytes": 78739
+      }
+    ]
+  },
+  {
+    "name": "category",
+    "path": "/business",
+    "elapsed": 2270,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 9939
+      },
+      "Script": {
+        "count": 18,
+        "bytes": 772544
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 9369
+      },
+      "Image": {
+        "count": 4,
+        "bytes": 6594
+      },
+      "Font": {
+        "count": 2,
+        "bytes": 158262
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 9654
+      }
+    },
+    "details": {
+      "title": "商业落地项目｜王明棋作品集",
+      "nav": [
+        {
+          "domContentLoaded": 57.099999997764826,
+          "load": 117.19999999925494
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 72
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 72
+        }
+      ],
+      "imageCount": 9,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_0553esy.js",
+        "type": "Script",
+        "bytes": 218457
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js",
+        "type": "Script",
+        "bytes": 184263
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js",
+        "type": "Script",
+        "bytes": 151304
+      },
+      {
+        "url": "/fonts/HONORSansCN-DemiBold.woff2",
+        "type": "Font",
+        "bytes": 79523
+      },
+      {
+        "url": "/fonts/HONORSansCN-Regular.woff2",
+        "type": "Font",
+        "bytes": 78739
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_115brz8._.js",
+        "type": "Script",
+        "bytes": 45975
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_0fye-fd._.js",
+        "type": "Script",
+        "bytes": 37231
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_0tt2wve._.js",
+        "type": "Script",
+        "bytes": 37068
+      }
+    ]
+  },
+  {
+    "name": "project",
+    "path": "/projects/asian-games",
+    "elapsed": 2273,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 12524
+      },
+      "Image": {
+        "count": 7,
+        "bytes": 359495
+      },
+      "Script": {
+        "count": 18,
+        "bytes": 771379
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 9369
+      },
+      "Font": {
+        "count": 2,
+        "bytes": 158262
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 9654
+      }
+    },
+    "details": {
+      "title": "杭州亚运会保电指挥平台项目｜王明棋作品集",
+      "nav": [
+        {
+          "domContentLoaded": 62,
+          "load": 140.40000000223517
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 76
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 76
+        }
+      ],
+      "imageCount": 14,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30066-8c3b1.webp&w=1920&q=75",
+        "type": "Image",
+        "bytes": 259525
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_next-devtools_index_0553esy.js",
+        "type": "Script",
+        "bytes": 218457
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_compiled_react-dom_058-ah~._.js",
+        "type": "Script",
+        "bytes": 184263
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_client_0fhqo1d._.js",
+        "type": "Script",
+        "bytes": 151304
+      },
+      {
+        "url": "/fonts/HONORSansCN-DemiBold.woff2",
+        "type": "Font",
+        "bytes": 79523
+      },
+      {
+        "url": "/fonts/HONORSansCN-Regular.woff2",
+        "type": "Font",
+        "bytes": 78739
+      },
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30142-0ed80.webp&w=750&q=75",
+        "type": "Image",
+        "bytes": 50806
+      },
+      {
+        "url": "/_next/static/chunks/node_modules_next_dist_115brz8._.js",
+        "type": "Script",
+        "bytes": 45975
+      }
+    ]
+  }
+]

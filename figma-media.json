@@ -1,0 +1,905 @@
+[
+  {
+    "node": "4107:30066",
+    "name": "imgAiWebAppCrmSaasUxDesign3",
+    "path": "/figma/4107-30066-8c3b1.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgImage18",
+    "path": "/figma/4434-25831-0ca5e.webp",
+    "width": 2560,
+    "height": 1437
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgAiWebAppCrmSaasUxDesign1",
+    "path": "/figma/4434-25831-bcf3c.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgAiWebAppCrmSaasUxDesign22",
+    "path": "/figma/4434-25831-e06c0.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgAiWebAppCrmSaasUxDesign31",
+    "path": "/figma/4434-25831-20362.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgAiWebAppCrmSaasUxDesign61",
+    "path": "/figma/4434-25831-eba19.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25831",
+    "name": "img41",
+    "path": "/figma/4434-25831-1ca6f.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4434:25831",
+    "name": "img211",
+    "path": "/figma/4434-25831-90677.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4434:25831",
+    "name": "img42",
+    "path": "/figma/4434-25831-f48cd.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4434:25831",
+    "name": "img141",
+    "path": "/figma/4434-25831-eb968.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgAiWebAppCrmSaasUxDesign3",
+    "path": "/figma/4434-25831-a3966.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25831",
+    "name": "img51",
+    "path": "/figma/4434-25831-31c31.webp",
+    "width": 2560,
+    "height": 2962
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgAiWebAppCrmSaasUxDesign4",
+    "path": "/figma/4434-25831-c8a34.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25831",
+    "name": "imgAiWebAppCrmSaasUxDesign63",
+    "path": "/figma/4434-25831-41c45.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4434:25853",
+    "name": "imgMarketingAnalyticsSaaSWithRealTimePerformanceTracking1",
+    "path": "/figma/4434-25853-10fae.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4107:30251",
+    "name": "imgAiWebAppCrmSaasUxDesign1",
+    "path": "/figma/4107-30251-bcf3c.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4107:30251",
+    "name": "imgAiWebAppCrmSaasUxDesign22",
+    "path": "/figma/4107-30251-e06c0.webp",
+    "width": 2560,
+    "height": 1920
+  },
+  {
+    "node": "4107:30123",
+    "name": "imgRectangle",
+    "path": "/figma/4107-30123-915ee.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4107:30123",
+    "name": "imgRectangle1",
+    "path": "/figma/4107-30123-bed6d.webp",
+    "width": 988,
+    "height": 652
+  },
+  {
+    "node": "4107:30142",
+    "name": "imgRectangle",
+    "path": "/figma/4107-30142-2cfa7.webp",
+    "width": 929,
+    "height": 569
+  },
+  {
+    "node": "4107:30142",
+    "name": "imgRectangle2",
+    "path": "/figma/4107-30142-0ed80.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4107:30142",
+    "name": "imgRectangle3",
+    "path": "/figma/4107-30142-d82f2.webp",
+    "width": 1042,
+    "height": 634
+  },
+  {
+    "node": "4107:30142",
+    "name": "imgRectangle5",
+    "path": "/figma/4107-30142-8a537.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4107:30142",
+    "name": "imgRectangle7",
+    "path": "/figma/4107-30142-6f609.webp",
+    "width": 1132,
+    "height": 686
+  },
+  {
+    "node": "4107:30142",
+    "name": "imgRectangle9",
+    "path": "/figma/4107-30142-db5b3.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28111",
+    "name": "imgRect1",
+    "path": "/figma/4603-28111-8e707.webp",
+    "width": 43,
+    "height": 250
+  },
+  {
+    "node": "4603:28111",
+    "name": "imgRect3",
+    "path": "/figma/4603-28111-bff9f.webp",
+    "width": 43,
+    "height": 250
+  },
+  {
+    "node": "4603:28111",
+    "name": "imgRect4",
+    "path": "/figma/4603-28111-df603.webp",
+    "width": 212,
+    "height": 67
+  },
+  {
+    "node": "4603:28111",
+    "name": "imgRect5",
+    "path": "/figma/4603-28111-3580c.webp",
+    "width": 230,
+    "height": 71
+  },
+  {
+    "node": "4603:28111",
+    "name": "img53311",
+    "path": "/figma/4603-28111-4063f.webp",
+    "width": 2560,
+    "height": 342
+  },
+  {
+    "node": "4603:28111",
+    "name": "imgCn003530P2DeMain0000Png1",
+    "path": "/figma/4603-28111-65215.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28111",
+    "name": "img2",
+    "path": "/figma/4603-28111-565b2.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28111",
+    "name": "imgCvrcceYwxxbq21",
+    "path": "/figma/4603-28111-02dd6.webp",
+    "width": 2400,
+    "height": 1792
+  },
+  {
+    "node": "4603:28112",
+    "name": "img21",
+    "path": "/figma/4603-28112-a47d5.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28112",
+    "name": "img22",
+    "path": "/figma/4603-28112-d4dfc.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28112",
+    "name": "img23",
+    "path": "/figma/4603-28112-2cd86.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28112",
+    "name": "img24",
+    "path": "/figma/4603-28112-002ac.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28112",
+    "name": "img25",
+    "path": "/figma/4603-28112-d9256.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28112",
+    "name": "img26",
+    "path": "/figma/4603-28112-be0de.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "4603:28112",
+    "name": "img27",
+    "path": "/figma/4603-28112-5f50f.webp",
+    "width": 2560,
+    "height": 1441
+  },
+  {
+    "node": "4108:39168",
+    "name": "imgImage21",
+    "path": "/figma/4108-39168-85c27.webp",
+    "width": 779,
+    "height": 782
+  },
+  {
+    "node": "4108:39168",
+    "name": "img411",
+    "path": "/figma/4108-39168-82c37.webp",
+    "width": 510,
+    "height": 490
+  },
+  {
+    "node": "4108:39168",
+    "name": "img91",
+    "path": "/figma/4108-39168-95cc2.webp",
+    "width": 510,
+    "height": 490
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage25",
+    "path": "/figma/4336-26061-b10a3.webp",
+    "width": 2051,
+    "height": 847
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage23",
+    "path": "/figma/4336-26061-cd4fd.webp",
+    "width": 2056,
+    "height": 847
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage22",
+    "path": "/figma/4336-26061-27ef7.webp",
+    "width": 2057,
+    "height": 853
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage24",
+    "path": "/figma/4336-26061-c619d.webp",
+    "width": 2049,
+    "height": 836
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage26",
+    "path": "/figma/4336-26061-cdfe6.webp",
+    "width": 2052,
+    "height": 845
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage27",
+    "path": "/figma/4336-26061-b4083.webp",
+    "width": 2055,
+    "height": 846
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage28",
+    "path": "/figma/4336-26061-e73ec.webp",
+    "width": 2051,
+    "height": 846
+  },
+  {
+    "node": "4336:26061",
+    "name": "imgImage29",
+    "path": "/figma/4336-26061-5edf8.webp",
+    "width": 2560,
+    "height": 720
+  },
+  {
+    "node": "6108:36275",
+    "name": "imgImage47",
+    "path": "/figma/6108-36275-cafb8.webp",
+    "width": 793,
+    "height": 295
+  },
+  {
+    "node": "6108:36275",
+    "name": "imgImage49",
+    "path": "/figma/6108-36275-f3d20.webp",
+    "width": 948,
+    "height": 267
+  },
+  {
+    "node": "6109:36303",
+    "name": "img3",
+    "path": "/figma/6109-36303-d7058.webp",
+    "width": 1197,
+    "height": 800
+  },
+  {
+    "node": "6109:36303",
+    "name": "img2202",
+    "path": "/figma/6109-36303-cef8f.webp",
+    "width": 2560,
+    "height": 648
+  },
+  {
+    "node": "4703:30898",
+    "name": "imgImage28",
+    "path": "/figma/4703-30898-b320b.webp",
+    "width": 2275,
+    "height": 1271
+  },
+  {
+    "node": "4703:30898",
+    "name": "imgImage26",
+    "path": "/figma/4703-30898-2c1c1.webp",
+    "width": 1103,
+    "height": 1135
+  },
+  {
+    "node": "4703:30899",
+    "name": "imgImage29",
+    "path": "/figma/4703-30899-edfc7.webp",
+    "width": 1753,
+    "height": 974
+  },
+  {
+    "node": "4703:30900",
+    "name": "imgImage27",
+    "path": "/figma/4703-30900-1e763.webp",
+    "width": 957,
+    "height": 1086
+  },
+  {
+    "node": "5895:35037",
+    "name": "imgImage35",
+    "path": "/figma/5895-35037-abc56.webp",
+    "width": 667,
+    "height": 504
+  },
+  {
+    "node": "5098:34356",
+    "name": "imgImage37",
+    "path": "/figma/5098-34356-b6b9e.webp",
+    "width": 251,
+    "height": 870
+  },
+  {
+    "node": "6250:35109",
+    "name": "img11",
+    "path": "/figma/6250-35109-735f1.webp",
+    "width": 2560,
+    "height": 1751
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgDesignFurnitureArmchairChairFurnitureDesignVisualizationRender1",
+    "path": "/figma/6250-35109-6122d.webp",
+    "width": 1842,
+    "height": 2304
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgDesignFurnitureArmchairChairFurnitureDesignVisualizationRender2",
+    "path": "/figma/6250-35109-9a428.webp",
+    "width": 2560,
+    "height": 3200
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgZrrefuFbbffe1",
+    "path": "/figma/6250-35109-b8618.webp",
+    "width": 2048,
+    "height": 2048
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgZrrefuFbbffe4",
+    "path": "/figma/6250-35109-52274.webp",
+    "width": 2048,
+    "height": 2048
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgPgd5CaseOnBehance1",
+    "path": "/figma/6250-35109-47d30.webp",
+    "width": 1024,
+    "height": 553
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgWqutegTduuxb2",
+    "path": "/figma/6250-35109-08ccd.webp",
+    "width": 2048,
+    "height": 2048
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgZrrefuFbbffe3Edit2570042384521151",
+    "path": "/figma/6250-35109-3835a.webp",
+    "width": 2046,
+    "height": 2050
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgZrrefuFbbffe2Edit2569655344624941",
+    "path": "/figma/6250-35109-4a238.webp",
+    "width": 2046,
+    "height": 2050
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgZrrefuFbbffe4Edit2570411818201741",
+    "path": "/figma/6250-35109-0e5ee.webp",
+    "width": 2046,
+    "height": 2050
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgGroup347",
+    "path": "/figma/6250-35109-35498.webp",
+    "width": 181,
+    "height": 153
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgCharacterDesign3DAnimationStopMotionAnimationSpirits3DCharac1",
+    "path": "/figma/6250-35109-9ddef.webp",
+    "width": 2560,
+    "height": 1193
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgCharacterDesign3DAnimationStopMotionAnimationSpirits3DCharac2",
+    "path": "/figma/6250-35109-aa9a1.webp",
+    "width": 2560,
+    "height": 2022
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgCharacterDesign3DAnimationStopMotionAnimationSpirits3DCharac11",
+    "path": "/figma/6250-35109-9aa3d.webp",
+    "width": 2560,
+    "height": 2319
+  },
+  {
+    "node": "6250:35109",
+    "name": "imgImage23",
+    "path": "/figma/6250-35109-89e1c.webp",
+    "width": 499,
+    "height": 499
+  },
+  {
+    "node": "5637:34801",
+    "name": "imgImage9",
+    "path": "/figma/5637-34801-9001f.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "5637:34802",
+    "name": "img1132DeMain07921",
+    "path": "/figma/5637-34802-49c98.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "node": "5637:34802",
+    "name": "imgImage11",
+    "path": "/figma/5637-34802-a869e.webp",
+    "width": 2560,
+    "height": 1440
+  },
+  {
+    "node": "3571:341",
+    "name": "imgBdrsubFxvyed1",
+    "path": "/figma/3571-341-e1db1.webp",
+    "width": 2560,
+    "height": 1429
+  },
+  {
+    "node": "3571:341",
+    "name": "imgEywdfxTtqwcg1",
+    "path": "/figma/3571-341-0ddcc.webp",
+    "width": 2560,
+    "height": 1429
+  },
+  {
+    "node": "4339:26193",
+    "name": "imgImage16",
+    "path": "/figma/4339-26193-c78e0.webp",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "node": "4339:26193",
+    "name": "imgImage17",
+    "path": "/figma/4339-26193-2b125.webp",
+    "width": 1024,
+    "height": 576
+  },
+  {
+    "node": "4380:26229",
+    "name": "imgTest033DeMain00001",
+    "path": "/figma/4380-26229-2f7f9.webp",
+    "width": 2560,
+    "height": 960
+  },
+  {
+    "node": "4380:26229",
+    "name": "img1",
+    "path": "/figma/4380-26229-fc8d1.webp",
+    "width": 2560,
+    "height": 288
+  },
+  {
+    "node": "4380:26229",
+    "name": "img2",
+    "path": "/figma/4380-26229-cdf53.webp",
+    "width": 2560,
+    "height": 960
+  },
+  {
+    "node": "4380:26229",
+    "name": "imgRectangle",
+    "path": "/figma/4380-26229-fb139.webp",
+    "width": 1740,
+    "height": 948
+  },
+  {
+    "node": "4380:26229",
+    "name": "imgRectangle1",
+    "path": "/figma/4380-26229-2f0b7.webp",
+    "width": 2160,
+    "height": 1080
+  },
+  {
+    "node": "4380:26229",
+    "name": "imgRectangle2",
+    "path": "/figma/4380-26229-1a538.webp",
+    "width": 2449,
+    "height": 1369
+  },
+  {
+    "node": "4380:26229",
+    "name": "imgRectangle3",
+    "path": "/figma/4380-26229-4752a.webp",
+    "width": 827,
+    "height": 919
+  },
+  {
+    "node": "4380:26229",
+    "name": "imgRectangle4",
+    "path": "/figma/4380-26229-3fe49.webp",
+    "width": 703,
+    "height": 919
+  },
+  {
+    "node": "5637:34804",
+    "name": "imgRectangle",
+    "path": "/figma/5637-34804-d66b5.webp",
+    "width": 1632,
+    "height": 948
+  },
+  {
+    "node": "5637:34804",
+    "name": "imgImage1",
+    "path": "/figma/5637-34804-d0f12.webp",
+    "width": 1563,
+    "height": 876
+  },
+  {
+    "node": "3609:26268",
+    "name": "imgRectangle",
+    "path": "/figma/3609-26268-ad8cc.webp",
+    "width": 1921,
+    "height": 1081
+  },
+  {
+    "node": "3609:26268",
+    "name": "imgRectangle1",
+    "path": "/figma/3609-26268-c9c75.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "node": "3609:26268",
+    "name": "imgRectangle2",
+    "path": "/figma/3609-26268-a4159.webp",
+    "width": 1921,
+    "height": 1081
+  },
+  {
+    "node": "3609:26268",
+    "name": "imgRectangle3",
+    "path": "/figma/3609-26268-0fcf9.webp",
+    "width": 1921,
+    "height": 1081
+  },
+  {
+    "node": "3609:26268",
+    "name": "imgRectangle4",
+    "path": "/figma/3609-26268-8d735.webp",
+    "width": 1921,
+    "height": 1081
+  },
+  {
+    "node": "3609:26268",
+    "name": "imgRectangle5",
+    "path": "/figma/3609-26268-3ca89.webp",
+    "width": 1921,
+    "height": 1081
+  },
+  {
+    "node": "3609:27419",
+    "name": "imgRectangle",
+    "path": "/figma/3609-27419-2770e.webp",
+    "width": 2560,
+    "height": 1374
+  },
+  {
+    "node": "3609:27419",
+    "name": "imgRectangle1",
+    "path": "/figma/3609-27419-401b9.webp",
+    "width": 808,
+    "height": 494
+  },
+  {
+    "node": "5707:34828",
+    "name": "imgRectangle",
+    "path": "/figma/5707-34828-2ac33.webp",
+    "width": 936,
+    "height": 1076
+  },
+  {
+    "node": "5707:34828",
+    "name": "imgRectangle1",
+    "path": "/figma/5707-34828-8fbc1.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "node": "5707:34828",
+    "name": "imgRectangle2",
+    "path": "/figma/5707-34828-99a68.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "node": "5732:36051",
+    "name": "imgRectangle",
+    "path": "/figma/5732-36051-2ac33.webp",
+    "width": 936,
+    "height": 1076
+  },
+  {
+    "node": "5732:36051",
+    "name": "imgRectangle1",
+    "path": "/figma/5732-36051-8fbc1.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "node": "5732:36051",
+    "name": "imgRectangle2",
+    "path": "/figma/5732-36051-99a68.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "node": "5707:35069",
+    "name": "imgRectangle",
+    "path": "/figma/5707-35069-e0c9d.webp",
+    "width": 1920,
+    "height": 1080
+  },
+  {
+    "node": "5707:35163",
+    "name": "imgRectangle",
+    "path": "/figma/5707-35163-84c71.webp",
+    "width": 1259,
+    "height": 1047
+  },
+  {
+    "node": "5707:35163",
+    "name": "img1",
+    "path": "/figma/5707-35163-d7058.webp",
+    "width": 1197,
+    "height": 800
+  },
+  {
+    "node": "5707:35389",
+    "name": "imgRectangle",
+    "path": "/figma/5707-35389-999a5.webp",
+    "width": 816,
+    "height": 626
+  },
+  {
+    "node": "5707:35580",
+    "name": "imgRectangle",
+    "path": "/figma/5707-35580-dacd4.webp",
+    "width": 798,
+    "height": 612
+  },
+  {
+    "node": "5707:35580",
+    "name": "imgRectangle1",
+    "path": "/figma/5707-35580-6ed12.webp",
+    "width": 418,
+    "height": 425
+  },
+  {
+    "node": "5707:35782",
+    "name": "imgRectangle",
+    "path": "/figma/5707-35782-4a664.webp",
+    "width": 252,
+    "height": 190
+  },
+  {
+    "node": "5707:35782",
+    "name": "imgRectangle1",
+    "path": "/figma/5707-35782-8bcd7.webp",
+    "width": 1920,
+    "height": 642
+  },
+  {
+    "node": "3758:13585",
+    "name": "imgRectangle",
+    "path": "/figma/3758-13585-b4eaa.webp",
+    "width": 90,
+    "height": 91
+  },
+  {
+    "node": "3758:13585",
+    "name": "imgRectangle2",
+    "path": "/figma/3758-13585-9c9b2.webp",
+    "width": 653,
+    "height": 417
+  },
+  {
+    "node": "3758:13585",
+    "name": "imgRectangle4",
+    "path": "/figma/3758-13585-105d2.webp",
+    "width": 128,
+    "height": 256
+  },
+  {
+    "node": "3758:13585",
+    "name": "imgRectangle6",
+    "path": "/figma/3758-13585-f7ba6.webp",
+    "width": 68,
+    "height": 68
+  },
+  {
+    "node": "3758:13585",
+    "name": "imgRectangle8",
+    "path": "/figma/3758-13585-3ca35.webp",
+    "width": 50,
+    "height": 50
+  },
+  {
+    "node": "3758:13585",
+    "name": "imgRectangle10",
+    "path": "/figma/3758-13585-1a89a.webp",
+    "width": 68,
+    "height": 68
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle",
+    "path": "/figma/3425-1546-f6449.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle1",
+    "path": "/figma/3425-1546-a1a91.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle2",
+    "path": "/figma/3425-1546-b18ad.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle3",
+    "path": "/figma/3425-1546-b28a4.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle4",
+    "path": "/figma/3425-1546-f3702.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle5",
+    "path": "/figma/3425-1546-39667.webp",
+    "width": 1024,
+    "height": 1024
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle6",
+    "path": "/figma/3425-1546-96ac6.webp",
+    "width": 2560,
+    "height": 720
+  },
+  {
+    "node": "3425:1546",
+    "name": "imgRectangle7",
+    "path": "/figma/3425-1546-159d1.webp",
+    "width": 1523,
+    "height": 675
+  }
+]

@@ -1,0 +1,296 @@
+[
+  {
+    "name": "home",
+    "path": "/",
+    "elapsed": 2279,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 7222
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 8603
+      },
+      "Image": {
+        "count": 12,
+        "bytes": 465523
+      },
+      "Script": {
+        "count": 11,
+        "bytes": 222615
+      },
+      "Font": {
+        "count": 3,
+        "bytes": 446610
+      },
+      "Fetch": {
+        "count": 15,
+        "bytes": 17442
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 26262
+      }
+    },
+    "details": {
+      "title": "作品集 2026｜从像素执行到 AI 决策",
+      "nav": [
+        {
+          "domContentLoaded": 64.89999999850988,
+          "load": 143.69999999925494
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 112
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 112
+        }
+      ],
+      "imageCount": 18,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/_next/image?url=%2Fhero-background.webp&w=1920&q=85",
+        "type": "Image",
+        "bytes": 383980
+      },
+      {
+        "url": "/fonts/GenWanMinTW-SemiBold.woff2",
+        "type": "Font",
+        "bytes": 286060
+      },
+      {
+        "url": "/fonts/Adobe-Jenson-Pro-Regular.woff2",
+        "type": "Font",
+        "bytes": 81811
+      },
+      {
+        "url": "/fonts/HONORSansCN-Regular.woff2",
+        "type": "Font",
+        "bytes": 78739
+      },
+      {
+        "url": "/_next/static/chunks/0yoi6g0rt32bk.js",
+        "type": "Script",
+        "bytes": 71421
+      },
+      {
+        "url": "/_next/image?url=%2Ftitle-text.png&w=1080&q=85",
+        "type": "Image",
+        "bytes": 55886
+      },
+      {
+        "url": "/_next/static/chunks/0p2-ne0rzshzz.js",
+        "type": "Script",
+        "bytes": 44632
+      },
+      {
+        "url": "/_next/static/chunks/0257pdz1-imal.js",
+        "type": "Script",
+        "bytes": 40653
+      }
+    ]
+  },
+  {
+    "name": "category",
+    "path": "/business",
+    "elapsed": 2264,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 6424
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 8603
+      },
+      "Script": {
+        "count": 12,
+        "bytes": 231948
+      },
+      "Image": {
+        "count": 4,
+        "bytes": 6594
+      },
+      "Font": {
+        "count": 2,
+        "bytes": 158262
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 26262
+      },
+      "Fetch": {
+        "count": 33,
+        "bytes": 42576
+      }
+    },
+    "details": {
+      "title": "商业落地项目｜王明棋作品集",
+      "nav": [
+        {
+          "domContentLoaded": 54.5,
+          "load": 79.19999999925494
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 92
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 92
+        }
+      ],
+      "imageCount": 9,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/fonts/HONORSansCN-DemiBold.woff2",
+        "type": "Font",
+        "bytes": 79523
+      },
+      {
+        "url": "/fonts/HONORSansCN-Regular.woff2",
+        "type": "Font",
+        "bytes": 78739
+      },
+      {
+        "url": "/_next/static/chunks/0yoi6g0rt32bk.js",
+        "type": "Script",
+        "bytes": 71421
+      },
+      {
+        "url": "/_next/static/chunks/0p2-ne0rzshzz.js",
+        "type": "Script",
+        "bytes": 44632
+      },
+      {
+        "url": "/_next/static/chunks/0257pdz1-imal.js",
+        "type": "Script",
+        "bytes": 40653
+      },
+      {
+        "url": "/favicon.ico?favicon.0x3dzn~oxb6tn.ico",
+        "type": "Other",
+        "bytes": 26262
+      },
+      {
+        "url": "/_next/static/chunks/0d3shmwh5_nmn.js",
+        "type": "Script",
+        "bytes": 13272
+      },
+      {
+        "url": "/_next/static/chunks/0dgq26a5_oy.a.js",
+        "type": "Script",
+        "bytes": 10956
+      }
+    ]
+  },
+  {
+    "name": "project",
+    "path": "/projects/asian-games",
+    "elapsed": 2263,
+    "groups": {
+      "Document": {
+        "count": 1,
+        "bytes": 7500
+      },
+      "Image": {
+        "count": 7,
+        "bytes": 359507
+      },
+      "Stylesheet": {
+        "count": 1,
+        "bytes": 8603
+      },
+      "Script": {
+        "count": 12,
+        "bytes": 231948
+      },
+      "Font": {
+        "count": 2,
+        "bytes": 158262
+      },
+      "Other": {
+        "count": 1,
+        "bytes": 26262
+      },
+      "Fetch": {
+        "count": 20,
+        "bytes": 22902
+      }
+    },
+    "details": {
+      "title": "杭州亚运会保电指挥平台项目｜王明棋作品集",
+      "nav": [
+        {
+          "domContentLoaded": 52.30000000074506,
+          "load": 78.89999999850988
+        }
+      ],
+      "paints": [
+        {
+          "name": "first-paint",
+          "startTime": 68
+        },
+        {
+          "name": "first-contentful-paint",
+          "startTime": 68
+        }
+      ],
+      "imageCount": 14,
+      "brokenImages": []
+    },
+    "largest": [
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30066-8c3b1.webp&w=1920&q=75",
+        "type": "Image",
+        "bytes": 259529
+      },
+      {
+        "url": "/fonts/HONORSansCN-DemiBold.woff2",
+        "type": "Font",
+        "bytes": 79523
+      },
+      {
+        "url": "/fonts/HONORSansCN-Regular.woff2",
+        "type": "Font",
+        "bytes": 78739
+      },
+      {
+        "url": "/_next/static/chunks/0yoi6g0rt32bk.js",
+        "type": "Script",
+        "bytes": 71421
+      },
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30142-0ed80.webp&w=750&q=75",
+        "type": "Image",
+        "bytes": 50810
+      },
+      {
+        "url": "/_next/static/chunks/0p2-ne0rzshzz.js",
+        "type": "Script",
+        "bytes": 44632
+      },
+      {
+        "url": "/_next/image?url=%2Ffigma%2F4107-30066-8c3b1.webp&w=750&q=75",
+        "type": "Image",
+        "bytes": 42574
+      },
+      {
+        "url": "/_next/static/chunks/0257pdz1-imal.js",
+        "type": "Script",
+        "bytes": 40653
+      }
+    ]
+  }
+]
