@@ -25,7 +25,7 @@ export function ProjectRowList({ projects }: { projects: ProjectListItem[] }) {
           <Link
             key={project.slug}
             href={`/projects/${project.slug}`}
-            className="site-border-subtle group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 border-b py-5 transition-colors hover:border-white/35 sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:gap-5 sm:py-7"
+            className="site-border-subtle group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 border-b py-5 pr-3 transition-colors duration-300 hover:border-white/35 hover:bg-white/[0.035] sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:gap-5 sm:py-7 sm:pr-4"
             onMouseEnter={(event) => {
               setActiveProject(project);
               updatePreviewPosition(event.clientX, event.clientY);
@@ -45,7 +45,7 @@ export function ProjectRowList({ projects }: { projects: ProjectListItem[] }) {
               {String(index + 1).padStart(2, "0")}
             </span>
             <span className="min-w-0">
-              <span className="site-primary-text block text-lg font-medium transition-colors group-hover:text-white sm:text-2xl">
+              <span className="site-primary-text block text-lg font-medium transition-colors duration-300 group-hover:text-[#E54F10] group-focus-visible:text-[#E54F10] sm:text-2xl">
                 {project.title}
               </span>
               {project.english && (
@@ -53,7 +53,7 @@ export function ProjectRowList({ projects }: { projects: ProjectListItem[] }) {
                   {project.english}
                 </span>
               )}
-              <span className="mt-2 hidden max-w-3xl text-sm leading-6 text-white/50 md:block">
+              <span className="mt-2 hidden max-w-3xl text-sm leading-6 text-white/50 transition-colors duration-300 group-hover:text-white/70 md:block">
                 {project.summary}
               </span>
             </span>
@@ -61,7 +61,7 @@ export function ProjectRowList({ projects }: { projects: ProjectListItem[] }) {
               <span className="relative block h-14 w-20 overflow-hidden rounded-md bg-white/5 md:hidden">
                 <Image src={project.cover} alt="" fill sizes="80px" className="object-cover" />
               </span>
-              <span className="text-sm text-white/40 transition-transform group-hover:translate-x-1 group-hover:text-white">↗</span>
+              <span className="text-sm text-white/40 transition-[color,transform] duration-300 group-hover:-translate-x-1 group-hover:scale-125 group-hover:text-white group-focus-visible:-translate-x-1 group-focus-visible:scale-125 group-focus-visible:text-white">↗</span>
             </span>
           </Link>
         ))}
