@@ -2,11 +2,12 @@ import { siteContent } from "@/lib/site-content";
 
 type PortfolioFooterProps = {
   placement?: "overlay" | "flow" | "fixed";
+  flushBottom?: boolean;
 };
 
-export function PortfolioFooter({ placement = "flow" }: PortfolioFooterProps) {
+export function PortfolioFooter({ placement = "flow", flushBottom = false }: PortfolioFooterProps) {
   const placementClass = {
-    overlay: "pointer-events-none absolute bottom-8 left-0 right-0 z-[60]",
+    overlay: `pointer-events-none absolute ${flushBottom ? "bottom-0" : "bottom-8"} left-0 right-0 z-[60]`,
     flow: "site-footer relative border-t",
     fixed: "site-footer fixed bottom-0 left-0 right-0 z-[80] border-t",
   }[placement];

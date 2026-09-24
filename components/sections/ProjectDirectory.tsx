@@ -286,7 +286,7 @@ export function ProjectDirectory() {
         </div>
       </div>
 
-      <PortfolioFooter placement="overlay" />
+      <PortfolioFooter placement="overlay" flushBottom />
     </div>
   );
 }
