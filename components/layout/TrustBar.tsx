@@ -40,8 +40,8 @@ type TrustBarProps = {
 export function TrustBar({ placement = "fixed" }: TrustBarProps) {
   const outer =
     placement === "fixed"
-      ? "pointer-events-none fixed bottom-[36px] left-0 right-0 z-40 flex justify-center px-4"
-      : "pointer-events-none absolute bottom-[36px] left-0 right-0 z-40 flex w-full justify-center px-4";
+      ? "pointer-events-none fixed bottom-0 left-0 right-0 z-40 flex justify-center px-4"
+      : "pointer-events-none absolute bottom-0 left-0 right-0 z-40 flex w-full justify-center px-4";
 
   return (
     <div className={outer}>
