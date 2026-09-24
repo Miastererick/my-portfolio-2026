@@ -50,7 +50,13 @@ export function TopNav() {
           aria-label="返回首页"
           title="首页"
         >
-          <Image src="/icons/home.svg" alt="" width={44} height={44} className="h-[38px] w-[38px]" />
+          <Image
+            src={isDark ? "/icons/home-dark.svg" : "/icons/home-light.svg"}
+            alt=""
+            width={44}
+            height={44}
+            className="home-theme-icon h-[38px] w-[38px]"
+          />
         </Link>
         <nav className="min-w-0 overflow-visible" aria-label="主导航">
           <ul className="flex items-center gap-x-3 whitespace-nowrap sm:gap-x-8">
