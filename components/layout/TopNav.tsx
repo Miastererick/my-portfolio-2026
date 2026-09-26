@@ -16,8 +16,9 @@ function subscribeToTheme(callback: () => void) {
   };
 }
 
-function getTheme() {
-  return window.localStorage.getItem("portfolio-theme") === "light" ? "light" : "dark";
+function getTheme(defaultTheme: "dark" | "light" = "dark") {
+  const savedTheme = window.localStorage.getItem("portfolio-theme");
+  return savedTheme === "light" || savedTheme === "dark" ? savedTheme : defaultTheme;
 }
 
 const PROJECT_ITEMS = [
@@ -28,8 +29,8 @@ const PROJECT_ITEMS = [
   { label: "其他", href: "/other" },
 ] as const;
 
-export function TopNav() {
-  const isDark = useSyncExternalStore(subscribeToTheme, getTheme, () => "dark") === "dark";
+export function TopNav({ defaultTheme = "dark" }: { defaultTheme?: "dark" | "light" }) {
+  const isDark = useSyncExternalStore(subscribeToTheme, () => getTheme(defaultTheme), () => defaultTheme) === "dark";
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export function TopNav() {
 
   return (
     <header className="site-header fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-3 border-b px-3 py-2 backdrop-blur-xl sm:px-8 sm:py-3">
-      <div className="flex min-w-0 items-center gap-3">
+      <div className="flex min-w-0 items-center gap-7">
         <Link
           href="/#home"
           className="flex size-11 shrink-0 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
@@ -62,12 +63,6 @@ export function TopNav() {
         </Link>
         <nav className="min-w-0 overflow-visible" aria-label="主导航">
           <ul className="flex items-center gap-x-3 whitespace-nowrap sm:gap-x-8">
-          <li>
-            <Link href="/prompts" className="text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm">提示词库</Link>
-          </li>
-          <li>
-            <Link href="/skills" className="text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm">Skills</Link>
-          </li>
           <li className="relative">
             <div
               className="group"
@@ -89,7 +84,7 @@ export function TopNav() {
                 onClick={() => setIsProjectsOpen((open) => !open)}
                 className="flex cursor-pointer list-none items-center gap-1 text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm"
               >
-                项目<span className={`text-[10px] text-white/45 transition-transform ${isProjectsOpen ? "rotate-180" : ""}`}>▾</span>
+                作品集<span className={`text-[10px] text-white/45 transition-transform ${isProjectsOpen ? "rotate-180" : ""}`}>▾</span>
               </button>
               <AnimatePresence>
                 {isProjectsOpen && (
@@ -117,6 +112,9 @@ export function TopNav() {
                 )}
               </AnimatePresence>
             </div>
+          </li>
+          <li>
+            <Link href="/library" className="text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm">创作资源</Link>
           </li>
           </ul>
         </nav>

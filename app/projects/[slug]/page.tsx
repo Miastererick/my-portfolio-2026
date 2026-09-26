@@ -29,59 +29,141 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const category = categories.find((item) => item.id === project.category)!;
   const categoryProjects = projects.filter((item) => item.category === project.category && item.slug !== slug);
   const media = mediaAssetsFor(project);
+  const coverPath = coverFor(project);
+  const cover = coverPath ? media.find((asset) => asset.path === coverPath) : undefined;
+  const storyMedia = cover ? media.filter((asset) => asset.path !== cover.path) : media;
+  const useWhiteBackground = slug === "ikea-studio" || slug === "substation-intelligence";
 
   return (
-    <div className="flex min-h-dvh flex-col bg-[#050606] text-[#eee3d2]">
-      <TopNav />
-      <main className="flex-1">
-        <section className="project-hero relative flex min-h-[640px] items-end overflow-hidden bg-[#101111] pt-40">
-          <Image src={coverFor(project)} alt="" fill priority sizes="100vw" className="object-cover opacity-45" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050606] via-[#050606]/65 to-black/35" />
-          <div className="relative mx-auto w-full max-w-7xl px-5 pb-20 sm:px-10 lg:px-16 lg:pb-28">
-            <Link href={`/${category.id}`} className="text-sm text-white/60 hover:text-white">← 返回{category.title}</Link>
-            <div className="mt-14 h-1 w-20 rounded-full" style={{ background: category.color }} />
-            <p className="mt-7 text-sm tracking-[0.22em] text-white/60">{category.english}</p>
-            <h1 className="mt-4 max-w-5xl text-4xl font-semibold leading-tight sm:text-6xl lg:text-7xl">{project.title}</h1>
-            {project.english && <p className="mt-5 max-w-4xl text-base text-white/50 sm:text-xl">{project.english}</p>}
-          </div>
+    <div className={`project-detail-page flex min-h-dvh flex-col ${useWhiteBackground ? "project-detail-page--light-default bg-[#f2f0e9] text-[#121212]" : "bg-[#050606] text-[#eee3d2]"}`}>
+      <TopNav defaultTheme={useWhiteBackground ? "light" : "dark"} />
+      <main className="flex-1 pt-[68px]">
+        <section className="relative w-full">
+          {cover && (
+            <figure className="w-full overflow-hidden bg-[#111313]">
+              <Image src={cover.path} alt={`${project.title}主视觉`} width={cover.width} height={cover.height} priority sizes="100vw" className="h-auto w-full" />
+            </figure>
+          )}
+          {!cover && (
+            <figure className="w-full overflow-hidden bg-[#111313]" aria-label={`${project.title}封面待补充`}>
+              <div className="flex aspect-[16/9] w-full items-center justify-center border-y border-white/10 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.055),transparent_62%)]">
+                <div className="text-center">
+                  <p className="text-xs tracking-[0.28em] text-white/35">PROJECT COVER / 待补充</p>
+                  <p className="mt-3 text-lg text-white/50">{project.title}</p>
+                </div>
+              </div>
+            </figure>
+          )}
+          <Link href={`/${category.id}`} className="absolute left-5 top-6 z-20 text-sm text-white/50 transition-colors hover:text-white sm:left-10 lg:left-16 lg:top-8">← 返回{category.title}</Link>
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-10 lg:grid-cols-[1fr_2fr] lg:gap-24 lg:px-16 lg:py-28">
-          <div>
-            <p className="text-xs tracking-[0.3em] text-[#e54f10]">PROJECT / 项目介绍</p>
-            {project.role && <p className="mt-5 text-sm text-white/50">我的角色<br /><span className="mt-2 inline-block text-lg text-white">{project.role}</span></p>}
-            {project.facts && <div className="mt-8 flex flex-wrap gap-2">{project.facts.map((fact) => <span key={fact} className="rounded-full border border-white/15 px-4 py-2 text-sm text-white/70">{fact}</span>)}</div>}
-          </div>
-          <p className="max-w-3xl text-xl leading-relaxed text-white/80 sm:text-2xl">{project.summary}</p>
-        </section>
-
-        <section className="mx-auto max-w-7xl px-5 pb-20 sm:px-10 lg:px-16 lg:pb-28">
-          <div className="grid gap-5 lg:grid-cols-2">
-            {project.sections.map((section, index) => (
-              <article key={section.heading} className="rounded-3xl border border-white/10 bg-[#111313] p-6 sm:p-9">
-                <span className="text-xs text-[#e54f10]">0{index + 1} / PROJECT REVIEW</span>
-                <h2 className="mt-4 text-xl font-semibold sm:text-2xl">{section.heading}</h2>
-                <p className="mt-5 whitespace-pre-line text-sm leading-8 text-white/60 sm:text-base">{section.body}</p>
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="border-t border-white/10 bg-[#0b0d0d] px-5 py-20 sm:px-10 lg:px-16 lg:py-28">
-          <div className="mx-auto max-w-7xl">
-            <div className="mb-10 flex items-end justify-between gap-4">
-              <div><p className="text-xs tracking-[0.3em] text-white/40">VISUAL ARCHIVE</p><h2 className="mt-3 text-3xl font-semibold sm:text-4xl">作品展示</h2></div>
-              <span className="text-sm text-white/40">{String(media.length).padStart(2, "0")} IMAGES</span>
+        <section className="mx-auto max-w-[1600px] px-5 pb-10 pt-12 sm:px-10 lg:px-16 lg:pb-14 lg:pt-16">
+          <div className="flex flex-wrap items-end justify-between gap-8">
+            <div>
+              <p className="text-xs tracking-[0.24em] text-[#e54f10]">{category.english}</p>
+              <h1 className="mt-4 whitespace-nowrap text-[clamp(1.25rem,4.2vw,4.5rem)] font-semibold leading-[1.08] tracking-tight">{project.title}</h1>
+              {project.english && <p className="mt-4 max-w-4xl text-base text-white/45 sm:text-lg">{project.english}</p>}
             </div>
-            <div className="columns-1 gap-5 md:columns-2">
-              {media.map((asset, index) => (
-                <figure key={asset.path} className="mb-5 break-inside-avoid overflow-hidden rounded-2xl border border-white/10 bg-[#191b1b]">
-                  <Image src={asset.path} alt={`${project.title}作品图 ${index + 1}`} width={asset.width} height={asset.height} sizes="(max-width: 768px) 100vw, 50vw" className="h-auto w-full" />
+            <span className="mb-2 h-1 w-16 rounded-full" style={{ background: category.color }} />
+          </div>
+        </section>
+
+        <section className="relative isolate mx-auto max-w-[1600px] overflow-hidden border-b border-white/10 px-5 py-16 sm:px-10 lg:px-16 lg:py-24">
+          <Image
+            src="/textures/project-background.svg"
+            alt=""
+            aria-hidden="true"
+            width={847}
+            height={823}
+            sizes="(max-width: 768px) 42vw, 520px"
+            className={`pointer-events-none absolute right-0 top-1/2 z-0 h-auto w-[min(42vw,520px)] -translate-y-1/2 ${useWhiteBackground ? "opacity-35" : "opacity-80"}`}
+          />
+          <div className="relative z-10">
+            <p className="mb-6 text-xs tracking-[0.24em] text-[#e54f10]">MY ROLE / 我的职责</p>
+            <p className="max-w-[1100px] text-[18px] leading-relaxed text-[#FFFFFF]">{project.summary}</p>
+            <div className="mt-12">
+              {project.role && (
+                <div className="flex items-center gap-4">
+                  <div className="relative aspect-[1.84] w-[clamp(95px,10.2vw,133px)] shrink-0 overflow-hidden rounded-[19px] bg-white/10">
+                    <Image
+                      src="/profile/my-avatar.png"
+                      alt="个人头像"
+                      fill
+                      sizes="(max-width: 768px) 95px, 133px"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-base leading-snug text-[#eee3d2] sm:text-lg">{project.role}</p>
+                    <p className="mt-2 text-sm text-white/45">我的角色</p>
+                  </div>
+                </div>
+              )}
+              {project.facts && <div className="mt-7 flex flex-wrap gap-2">{project.facts.map((fact) => <span key={fact} className="rounded-full border border-white/15 px-3 py-1.5 text-xs text-white/65">{fact}</span>)}</div>}
+            </div>
+          </div>
+        </section>
+
+        {project.sections[0] && (
+          <section className="mx-auto grid max-w-[1600px] gap-5 border-b border-white/10 px-5 py-14 sm:px-10 sm:py-16 lg:grid-cols-[minmax(240px,0.34fr)_minmax(0,1fr)] lg:gap-16 lg:px-16 lg:py-24">
+            <div>
+              <span className="text-xs tracking-[0.22em] text-[#e54f10]">01 / PROJECT STORY</span>
+              <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl">{project.sections[0].heading}</h2>
+            </div>
+            <p className="max-w-[1100px] whitespace-pre-line text-base leading-[1.9] text-white/65 sm:text-lg">{project.sections[0].body}</p>
+          </section>
+        )}
+
+        {project.introSlices?.length ? (
+          <section className="mx-auto max-w-[1600px] space-y-0 px-5 sm:px-10 lg:px-16" aria-label={`${project.title}项目介绍`}>
+            {project.introSlices.map((slice, index) => (
+              <Image
+                key={slice.path}
+                src={slice.path}
+                alt={slice.alt}
+                width={slice.width}
+                height={slice.height}
+                priority={index === 0}
+                sizes="(max-width: 768px) 100vw, 88vw"
+                className="h-auto w-full"
+              />
+            ))}
+          </section>
+        ) : (
+          <>
+            <div className="mx-auto max-w-[1600px] px-5 sm:px-10 lg:px-16">
+              {storyMedia[0] && (
+                <figure className="my-10 overflow-hidden bg-[#111313] sm:my-14">
+                  <Image src={storyMedia[0].path} alt={`${project.title}项目图 2`} width={storyMedia[0].width} height={storyMedia[0].height} sizes="(max-width: 768px) 100vw, 88vw" className="h-auto w-full" />
+                </figure>
+              )}
+              {project.sections.slice(1).map((section, index) => {
+                const storyIndex = index + 1;
+                return (
+                <div key={section.heading}>
+                  <section className="grid gap-5 border-b border-white/10 py-14 sm:py-16 lg:grid-cols-[minmax(240px,0.34fr)_minmax(0,1fr)] lg:gap-16 lg:py-24">
+                    <div>
+                      <span className="text-xs tracking-[0.22em] text-[#e54f10]">{String(storyIndex + 1).padStart(2, "0")} / PROJECT STORY</span>
+                      <h2 className="mt-4 text-2xl font-semibold leading-tight sm:text-3xl">{section.heading}</h2>
+                    </div>
+                    <p className="max-w-[1100px] whitespace-pre-line text-base leading-[1.9] text-white/65 sm:text-lg">{section.body}</p>
+                  </section>
+                  {storyMedia[storyIndex] && (
+                    <figure className={`my-10 overflow-hidden bg-[#111313] sm:my-14 ${storyIndex % 2 === 1 ? "" : "lg:ml-auto lg:max-w-[88%]"}`}>
+                      <Image src={storyMedia[storyIndex].path} alt={`${project.title}项目图 ${storyIndex + 2}`} width={storyMedia[storyIndex].width} height={storyMedia[storyIndex].height} sizes="(max-width: 768px) 100vw, 88vw" className="h-auto w-full" />
+                    </figure>
+                  )}
+                </div>
+                );
+              })}
+              {storyMedia.slice(project.sections.length).map((asset, index) => (
+                <figure key={asset.path} className={`my-10 overflow-hidden bg-[#111313] sm:my-14 ${index % 2 === 0 ? "lg:ml-auto lg:max-w-[88%]" : ""}`}>
+                  <Image src={asset.path} alt={`${project.title}项目图 ${index + project.sections.length + 2}`} width={asset.width} height={asset.height} sizes="(max-width: 768px) 100vw, 88vw" className="h-auto w-full" />
                 </figure>
               ))}
             </div>
-          </div>
-        </section>
+          </>
+        )}
 
         <section className="mx-auto max-w-7xl px-5 py-20 sm:px-10 lg:px-16">
           <Link href={`/${category.id}`} className="text-sm text-white/55 hover:text-white">← 返回{category.title}</Link>

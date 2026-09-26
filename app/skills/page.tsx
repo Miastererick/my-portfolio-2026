@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ComingSoonPage } from "@/components/sections/ComingSoonPage";
+import { CreativeLibraryPage } from "@/components/sections/CreativeLibraryPage";
+import { skillLibrary } from "@/lib/creative-library";
 import { siteContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function SkillsPage() {
-  return <ComingSoonPage title="Skills" english="SKILLS" />;
+  return <CreativeLibraryPage section="skills" items={skillLibrary} />;
 }

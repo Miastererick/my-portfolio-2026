@@ -28,7 +28,6 @@ export function PortfolioLayout() {
           className="absolute inset-0 z-0 h-full w-full object-cover object-center"
           aria-hidden
         />
-
         <div className="relative z-10 flex h-full w-full items-center justify-center p-8">
           <div className="relative aspect-[974/548] w-full max-w-[974px]">
             <Image

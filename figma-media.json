@@ -901,5 +901,12 @@
     "path": "/figma/3425-1546-159d1.webp",
     "width": 1523,
     "height": 675
+  },
+  {
+    "node": "4434:25831",
+    "name": "uploadedSubstationHero",
+    "path": "/figma/substation-intelligence-hero.jpg",
+    "width": 1920,
+    "height": 1269
   }
 ]

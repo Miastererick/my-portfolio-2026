@@ -66,14 +66,15 @@
   --font-library-serif: "Adobe Jenson Pro";
   --font-inter: Arial, Helvetica, sans-serif;
   --background: #0a0a0a;
-  --foreground: #eaeaea;
+  --foreground: #FFFFFF;
   --accent: #ff4500;
   --surface: #000101;
   --surface-raised: #111;
-  --text-primary: #eee3d2;
+  --text-primary: #FFFFFF;
   --text-muted: rgb(255 255 255 / 50%);
-  --border-subtle: rgb(255 255 255 / 15%);
-  --header-surface: rgb(0 0 0 / 70%);
+  --content-ink: #FFFFFF;
+  --border-subtle: rgb(255 255 255 / 10%);
+  --header-surface: rgb(0 0 0 / 50%);
   /** 全局 UI（导航、页脚、首屏等）：HONOR Sans CN；五张卡片不用此变量 */
   --font-sans:
     "HONOR Sans CN",
@@ -197,6 +198,89 @@ body {
 .site-muted-text { color: var(--text-muted); }
 .site-border-subtle { border-color: var(--border-subtle); }
 
+.creative-library-cover {
+  border: 1px solid rgb(255 255 255 / 8%);
+  transition: box-shadow 300ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .creative-library-save {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .creative-library-card:hover .creative-library-save,
+  .creative-library-card:focus-within .creative-library-save,
+  .creative-library-save-celebrating {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.creative-library-card-image:hover .creative-library-cover,
+.creative-library-card-image:focus-within .creative-library-cover {
+  box-shadow: 0 18px 48px rgb(0 0 0 / 60%);
+}
+
+.creative-library-name-empty {
+  background-color: #242424;
+  transition: box-shadow 300ms ease;
+}
+
+.creative-library-card-empty:hover .creative-library-name-empty,
+.creative-library-card-empty:focus-within .creative-library-name-empty {
+  box-shadow: 0 18px 48px rgb(0 0 0 / 60%);
+}
+
+html[data-theme="light"] .creative-library-cover {
+  border-color: rgb(18 18 18 / 10%);
+}
+
+html[data-theme="light"] .creative-library-card-image:hover .creative-library-cover,
+html[data-theme="light"] .creative-library-card-image:focus-within .creative-library-cover {
+  box-shadow: 0 18px 48px rgb(18 18 18 / 22%);
+}
+
+html[data-theme="light"] .creative-library-name-empty {
+  background-color: #e3e0d8;
+}
+
+html[data-theme="light"] .creative-library-card-empty:hover .creative-library-name-empty,
+html[data-theme="light"] .creative-library-card-empty:focus-within .creative-library-name-empty {
+  box-shadow: 0 18px 48px rgb(18 18 18 / 22%);
+}
+
+.creative-library-preview,
+.creative-library-close {
+  background-color: #161616;
+}
+
+@keyframes creativeLibraryEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.creative-library-enter {
+  animation: creativeLibraryEnter 320ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creative-library-enter {
+    animation: none;
+  }
+}
+
+html[data-theme="light"] .creative-library-preview,
+html[data-theme="light"] .creative-library-close {
+  background-color: #e8e6df;
+}
+
 :root {
   --project-other-card-bg: #262626;
 }
@@ -262,11 +346,12 @@ body {
 
 html[data-theme="light"] {
   --background: #f2f0e9;
-  --foreground: #20201e;
+  --foreground: #121212;
   --surface: #f2f0e9;
   --surface-raised: #f2f0e9;
-  --text-primary: #20201e;
+  --text-primary: #121212;
   --text-muted: rgb(32 32 30 / 72%);
+  --content-ink: #121212;
   --border-subtle: rgb(0 0 0 / 14%);
   --header-surface: rgb(242 240 233 / 88%);
   --project-other-card-bg: #262626;
@@ -274,7 +359,7 @@ html[data-theme="light"] {
 
 html[data-theme="light"] body {
   background-color: #f2f0e9;
-  color: #20201e;
+  color: var(--foreground);
 }
 
 html[data-theme="light"] header {
@@ -312,15 +397,26 @@ html[data-theme="light"] [class~="bg-white/10"] {
 
 html[data-theme="light"] .text-white,
 html[data-theme="light"] [class~="text-[#eee3d2]"] {
-  color: #20201e !important;
+  color: #121212 !important;
 }
 
 html[data-theme="light"] [class*="text-white/"] {
-  color: rgb(32 32 30 / 72%) !important;
+  color: #121212 !important;
 }
 
 html[data-theme="light"] [class*="border-white/"] {
   border-color: rgb(0 0 0 / 14%) !important;
+}
+
+html[data-theme="light"] .project-row-link:hover,
+html[data-theme="light"] .project-row-link:focus-visible {
+  background-color: rgb(18 18 18 / 4%) !important;
+  border-color: rgb(18 18 18 / 30%) !important;
+}
+
+.project-row-link:hover .project-row-title,
+.project-row-link:focus-visible .project-row-title {
+  color: #e54f10 !important;
 }
 
 /* 封面图与详情首屏始终是深色画面，亮色模式下保留浅色文字。 */
@@ -334,4 +430,76 @@ html[data-theme="light"] .project-hero [class*="text-white/"] {
 
 html[data-theme="light"] .hero-trust-bar [class*="text-white/"] {
   color: rgb(255 255 255 / 65%) !important;
+}
+
+.project-detail-page--light-default {
+  background-color: var(--background, #f2f0e9) !important;
+  color: #121212;
+}
+
+.project-detail-page--light-default main {
+  background-color: var(--background, #f2f0e9);
+  color: #121212;
+}
+
+html[data-theme="dark"] .project-detail-page--light-default {
+  background-color: #050606 !important;
+  color: #eee3d2;
+}
+
+html[data-theme="dark"] .project-detail-page--light-default main {
+  background-color: #050606;
+  color: #eee3d2;
+}
+
+html[data-theme="light"] .project-detail-page--light-default main .text-white,
+html[data-theme="light"] .project-detail-page--light-default main [class~="text-[#eee3d2]"],
+html[data-theme="light"] .project-detail-page--light-default main [class~="text-[#FFFFFF]"] {
+  color: #121212 !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default main [class*="text-white/"] {
+  color: rgb(18 18 18 / 64%) !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default main [class*="border-white/"] {
+  border-color: rgb(18 18 18 / 15%) !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default main [class~="bg-[#111313]"] {
+  background-color: #f2f0e9 !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default .site-header {
+  background-color: rgb(242 240 233 / 88%) !important;
+  border-color: rgb(18 18 18 / 12%) !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default .site-header img {
+  filter: brightness(0.12) !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default .site-header img.home-theme-icon {
+  filter: none !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default .site-header nav > ul > li > a,
+html[data-theme="light"] .project-detail-page--light-default .site-header nav > ul > li > div > button {
+  color: rgb(18 18 18 / 76%) !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default .site-footer {
+  background-color: #f2f0e9 !important;
+  border-color: rgb(18 18 18 / 15%) !important;
+  color: rgb(18 18 18 / 60%) !important;
+}
+
+html[data-theme="light"] .project-detail-page--light-default .site-footer [class*="text-white/"],
+html[data-theme="light"] .project-detail-page--light-default .site-footer a:hover {
+  color: #121212 !important;
+}
+
+/* Main editorial typography follows the requested theme colors. Accent subtitles and illustrated cards keep their own palette. */
+html main :is(h1, h2, h3, p, li, strong):not([class*="text-[#e54f10]"]):not([class*="text-[#E54F10]"]):not(.project-directory-card *) {
+  color: var(--content-ink) !important;
 }

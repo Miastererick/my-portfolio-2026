@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { ComingSoonPage } from "@/components/sections/ComingSoonPage";
+import { CreativeLibraryPage } from "@/components/sections/CreativeLibraryPage";
+import { promptLibrary } from "@/lib/creative-library";
 import { siteContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -8,5 +9,5 @@ export const metadata: Metadata = {
 };
 
 export default function PromptsPage() {
-  return <ComingSoonPage title="提示词库" english="PROMPT LIBRARY" />;
+  return <CreativeLibraryPage section="prompts" items={promptLibrary} />;
 }

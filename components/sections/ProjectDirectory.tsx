@@ -101,6 +101,8 @@ export function ProjectDirectory() {
   const directoryRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
   const [hasBeenVisible, setHasBeenVisible] = useState(false);
+  const [hasEntered, setHasEntered] = useState(false);
+  const [entranceFinished, setEntranceFinished] = useState(false);
   const [selectedCardIndex, setSelectedCardIndex] = useState<number | null>(null);
   const { scale, height: viewportHeight } = useAnchorScale();
   const reduceMotion = useReducedMotion();
@@ -114,8 +116,9 @@ export function ProjectDirectory() {
     const observer = new IntersectionObserver(([entry]) => {
       const isMostlyVisible = entry.isIntersecting && entry.intersectionRatio >= 0.75;
       setIsVisible(isMostlyVisible && document.visibilityState === "visible");
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.35) setHasEntered(true);
       if (isMostlyVisible) setHasBeenVisible(true);
-    }, { threshold: [0, 0.75] });
+    }, { threshold: [0, 0.35, 0.75] });
     observer.observe(element);
 
     const updateVisibility = () => {
@@ -191,7 +194,14 @@ export function ProjectDirectory() {
       <div className="relative z-10 mx-auto flex h-full w-full max-w-xl flex-col justify-center gap-3 px-5 pb-20 pt-24 md:hidden">
         <p className="mb-2 text-xs tracking-[0.3em] text-white/50">CATALOG / 项目目录</p>
         {CARDS.map((card, index) => (
-          <div key={card.title} data-project-card className={`project-directory-card overflow-hidden rounded-2xl ${card.bg} ${card.tone === "dark" ? "text-neutral-900" : "text-white"}`}>
+          <motion.div
+            key={card.title}
+            data-project-card
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: hasEntered || reduceMotion ? 1 : 0, y: hasEntered || reduceMotion ? 0 : 24 }}
+            transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : index * 0.09 }}
+            className={`project-directory-card overflow-hidden rounded-2xl ${card.bg} ${card.tone === "dark" ? "text-neutral-900" : "text-white"}`}
+          >
             <button
               type="button"
               onClick={() => toggleCard(index)}
@@ -217,7 +227,7 @@ export function ProjectDirectory() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -262,14 +272,22 @@ export function ProjectDirectory() {
                     data-project-card
                     className={`project-directory-card pointer-events-auto relative h-[480px] w-[380px] overflow-hidden rounded-[24px] border border-white/15 ${card.bg}`}
                     style={{ transformOrigin: "center center" }}
-                    initial={{ x: L.x, y: L.y, rotate: L.rotate, scale: 1 }}
+                    initial={{ x: L.x, y: L.y + 80, rotate: L.rotate, scale: 0.9, opacity: 0 }}
                     animate={{
                       x: isFocused ? 0 : hasFocus ? (stackIndex - 1.5) * stackStep : L.x,
-                      y: yTarget,
+                      y: hasEntered || reduceMotion ? yTarget : L.y + 80,
                       rotate: isFocused ? 0 : hasFocus ? (stackIndex - 1.5) * 5 : L.rotate,
-                      scale: isFocused ? focusedScale : hasFocus ? stackScale : isHovered ? 1.08 : 1,
+                      scale: hasEntered || reduceMotion ? isFocused ? focusedScale : hasFocus ? stackScale : isHovered ? 1.08 : 1 : 0.9,
+                      opacity: hasEntered || reduceMotion ? 1 : 0,
                     }}
-                    transition={shouldAnimate ? { x: SPRING, y: SPRING, rotate: SPRING, scale: SPRING } : instant}
+                    transition={shouldAnimate || (hasEntered && !entranceFinished && !reduceMotion) ? {
+                      x: SPRING,
+                      y: { ...SPRING, delay: entranceFinished ? 0 : i * 0.1 },
+                      rotate: SPRING,
+                      scale: { ...SPRING, delay: entranceFinished ? 0 : i * 0.1 },
+                      opacity: { duration: 0.45, delay: entranceFinished ? 0 : i * 0.1 },
+                    } : instant}
+                    onAnimationComplete={() => { if (i === CARDS.length - 1 && hasEntered) setEntranceFinished(true); }}
                     onHoverStart={() => { if (!hasFocus) setHoveredCardIndex(i); }}
                     onHoverEnd={() =>
                       setHoveredCardIndex((current) => (current === i ? null : current))
