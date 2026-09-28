@@ -35,7 +35,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   const useWhiteBackground = slug === "ikea-studio" || slug === "substation-intelligence";
 
   return (
-    <div className={`project-detail-page flex min-h-dvh flex-col ${useWhiteBackground ? "project-detail-page--light-default bg-[#f2f0e9] text-[#121212]" : "bg-[#050606] text-[#eee3d2]"}`}>
+    <div className={`project-detail-page flex min-h-dvh flex-col ${useWhiteBackground ? "project-detail-page--light-default bg-[var(--light-background)] text-[#121212]" : "bg-[#050606] text-[#eee3d2]"}`}>
       <TopNav defaultTheme={useWhiteBackground ? "light" : "dark"} />
       <main className="flex-1 pt-[68px]">
         <section className="relative w-full">

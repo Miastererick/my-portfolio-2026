@@ -45,7 +45,7 @@ export function TopNav({ defaultTheme = "dark" }: { defaultTheme?: "dark" | "lig
   }
 
   return (
-    <header className="site-header fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-3 border-b px-3 py-2 backdrop-blur-xl sm:px-8 sm:py-3">
+    <header className="site-header fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-3 px-3 py-2 sm:px-8 sm:py-3">
       <div className="flex min-w-0 items-center gap-7">
         <Link
           href="/#home"
@@ -77,15 +77,25 @@ export function TopNav({ defaultTheme = "dark" }: { defaultTheme?: "dark" | "lig
                 }
               }}
             >
-              <button
-                type="button"
-                aria-expanded={isProjectsOpen}
-                aria-controls="project-navigation-menu"
-                onClick={() => setIsProjectsOpen((open) => !open)}
-                className="flex cursor-pointer list-none items-center gap-1 text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm"
-              >
-                作品集<span className={`text-[10px] text-white/45 transition-transform ${isProjectsOpen ? "rotate-180" : ""}`}>▾</span>
-              </button>
+              <div className="flex items-center gap-1 text-xs sm:text-sm">
+                <Link
+                  href="/portfolio"
+                  onClick={() => setIsProjectsOpen(false)}
+                  className="text-white/70 transition-colors hover:text-white focus-visible:text-white"
+                >
+                  作品集
+                </Link>
+                <button
+                  type="button"
+                  aria-label="展开作品分类"
+                  aria-expanded={isProjectsOpen}
+                  aria-controls="project-navigation-menu"
+                  onClick={() => setIsProjectsOpen((open) => !open)}
+                  className={`cursor-pointer p-1 text-[10px] text-white/45 transition-transform hover:text-white ${isProjectsOpen ? "rotate-180" : ""}`}
+                >
+                  ▾
+                </button>
+              </div>
               <AnimatePresence>
                 {isProjectsOpen && (
                   <motion.ul
