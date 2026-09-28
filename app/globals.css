@@ -530,10 +530,11 @@ html[data-theme="light"] .project-row-link:focus-visible {
   z-index: 30;
   inset: 76px 0 0;
   height: calc(100dvh - 76px);
-  perspective: 1200px;
-  perspective-origin: 47.5% 50%;
+  perspective: none;
   /* Project each card separately so tilted planes cannot intersect adjacent cards. */
   transform-style: flat;
+  will-change: transform;
+  backface-visibility: hidden;
   pointer-events: none;
 }
 .portfolio-stage-scroll-track { width: 1px; pointer-events: none; }
@@ -569,6 +570,19 @@ html[data-theme="light"] .project-row-link:focus-visible {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+@media (min-width: 651px) {
+  .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork {
+    transition: translate .28s cubic-bezier(.2,.8,.2,1);
+  }
+  .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork:hover,
+  .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork:focus-visible {
+    translate: 0 -22px;
+  }
+  .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork-arrow {
+    display: none;
+  }
 }
 
 .portfolio-stage-image {
@@ -742,6 +756,8 @@ html[data-theme="light"] .project-row-link:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork:hover,
+  .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork:focus-visible { translate: none; }
   .portfolio-stage-facts,
   .portfolio-stage-counter-number,
   .portfolio-stage-image img,
