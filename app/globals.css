@@ -65,6 +65,7 @@
 :root {
   --font-library-serif: "Adobe Jenson Pro";
   --font-inter: Arial, Helvetica, sans-serif;
+  --light-background: #ededed;
   --background: #0a0a0a;
   --foreground: #FFFFFF;
   --accent: #ff4500;
@@ -184,8 +185,10 @@ body {
 }
 
 .site-header {
-  background-color: var(--header-surface);
-  border-color: var(--border-subtle);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .site-footer,
@@ -345,25 +348,25 @@ html[data-theme="light"] .creative-library-close {
 .cp-grid-flow { animation: gridFlow 5.2s linear infinite; }
 
 html[data-theme="light"] {
-  --background: #f2f0e9;
+  --background: var(--light-background);
   --foreground: #121212;
-  --surface: #f2f0e9;
-  --surface-raised: #f2f0e9;
+  --surface: var(--light-background);
+  --surface-raised: var(--light-background);
   --text-primary: #121212;
   --text-muted: rgb(32 32 30 / 72%);
   --content-ink: #121212;
   --border-subtle: rgb(0 0 0 / 14%);
-  --header-surface: rgb(242 240 233 / 88%);
+  --header-surface: rgb(237 237 237 / 88%);
   --project-other-card-bg: #262626;
 }
 
 html[data-theme="light"] body {
-  background-color: #f2f0e9;
+  background-color: var(--light-background);
   color: var(--foreground);
 }
 
-html[data-theme="light"] header {
-  background-color: rgb(242 240 233 / 88%) !important;
+html[data-theme="light"] header:not(.site-header) {
+  background-color: rgb(237 237 237 / 88%) !important;
   border-color: rgb(0 0 0 / 12%) !important;
 }
 
@@ -387,7 +390,7 @@ html[data-theme="light"] [class~="bg-[#141414]"],
 html[data-theme="light"] [class~="bg-[#151515]"],
 html[data-theme="light"] [class~="bg-[#191b1b]"],
 html[data-theme="light"] [class~="bg-[#202020]"] {
-  background-color: #f2f0e9 !important;
+  background-color: var(--light-background) !important;
 }
 
 html[data-theme="light"] [class~="bg-white/5"],
@@ -414,6 +417,339 @@ html[data-theme="light"] .project-row-link:focus-visible {
   border-color: rgb(18 18 18 / 30%) !important;
 }
 
+/* 作品集：用留白、纵向画板和侧边索引组织所有项目。 */
+.portfolio-showcase {
+  background: var(--light-background);
+  color: #171717;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.portfolio-showcase .site-header a,
+.portfolio-showcase .site-header button {
+  color: #181818 !important;
+}
+
+.portfolio-showcase .site-header img:not(.home-theme-icon) {
+  filter: brightness(0);
+}
+
+.portfolio-showcase .site-header img.home-theme-icon {
+  filter: brightness(0);
+}
+
+.portfolio-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(210px, 23%) minmax(0, 49%) minmax(240px, 28%);
+  padding-top: 76px;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.portfolio-stage-rail {
+  position: fixed;
+  z-index: 10;
+  left: 38px;
+  top: 115px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  writing-mode: vertical-rl;
+  font-size: 10px;
+  letter-spacing: .04em;
+  color: #777;
+}
+
+.portfolio-stage-monogram {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -.09em;
+  color: #141414;
+}
+
+.portfolio-stage-info,
+.portfolio-stage-index {
+  min-width: 0;
+}
+
+.portfolio-stage-info-inner,
+.portfolio-stage-index-inner {
+  position: relative;
+  height: calc(100dvh - 76px);
+}
+
+.portfolio-stage-info-inner {
+  display: flex;
+  flex-direction: column;
+  /* 对齐顶部「作品集」：32px 边距 + 44px 图标 + 28px 间距。 */
+  padding: 18px 18px 22px 104px;
+}
+
+.portfolio-stage-kicker,
+.portfolio-stage-index-heading {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  font-weight: 600;
+}
+
+.portfolio-stage-kicker span,
+.portfolio-stage-index-heading span { color: #8b8b8b; }
+
+.portfolio-stage-facts {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 11px 12px;
+  margin: auto 0;
+  font-size: 11px;
+  line-height: 1.55;
+  animation: portfolioFactsIn .38s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes portfolioFactsIn {
+  from { opacity: .2; filter: blur(8px); transform: translateY(5px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+.portfolio-stage-facts span { color: #909090; }
+.portfolio-stage-facts strong { font-weight: 500; }
+.portfolio-stage-scroll { margin-top: auto; color: #8a8a8a; font-size: 11px; }
+
+.portfolio-stage-artworks {
+  min-width: 0;
+  min-height: 0;
+  height: calc(100dvh - 76px);
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+}
+.portfolio-stage-artworks::-webkit-scrollbar { display: none; }
+.portfolio-stage-deck {
+  position: absolute;
+  z-index: 30;
+  inset: 76px 0 0;
+  height: calc(100dvh - 76px);
+  perspective: 1200px;
+  perspective-origin: 47.5% 50%;
+  /* Project each card separately so tilted planes cannot intersect adjacent cards. */
+  transform-style: flat;
+  pointer-events: none;
+}
+.portfolio-stage-scroll-track { width: 1px; pointer-events: none; }
+.portfolio-stage-slide {
+  position: absolute;
+  top: 50%;
+  left: 47.5%;
+  width: 31.36%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+  transform-style: flat;
+  backface-visibility: hidden;
+}
+.portfolio-stage-slide:first-child { visibility: visible; }
+
+.portfolio-stage-skew {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  isolation: isolate;
+  will-change: transform;
+}
+
+.portfolio-stage-artwork {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.portfolio-stage-image {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.portfolio-stage-image img {
+  transition: transform .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.portfolio-stage-artwork:hover .portfolio-stage-image img,
+.portfolio-stage-artwork:focus-visible .portfolio-stage-image img {
+  transform: scale(1.035);
+}
+
+.portfolio-stage-artwork-arrow {
+  position: absolute;
+  right: 6%;
+  bottom: 5%;
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border-radius: 50%;
+  background: #e54f10;
+  color: #fff;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.portfolio-stage-artwork:hover .portfolio-stage-artwork-arrow,
+.portfolio-stage-artwork:focus-visible .portfolio-stage-artwork-arrow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.portfolio-stage-placeholder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  background: #d9d9d9;
+  color: #222;
+}
+.portfolio-stage-placeholder small { font-size: 12px; }
+.portfolio-stage-placeholder span { font-size: clamp(24px, 3vw, 48px); font-weight: 600; line-height: 1.15; }
+.portfolio-stage-placeholder em { font-size: 12px; font-style: normal; color: #777; }
+.portfolio-stage-slide-label { margin-top: 22px; color: #8b8b8b; font-size: 11px; text-align: center; opacity: 0; transition: opacity .2s ease; }
+.portfolio-stage-slide.is-centered .portfolio-stage-slide-label { opacity: 1; }
+
+.portfolio-stage-counter {
+  position: fixed;
+  z-index: 42;
+  left: clamp(90px, 9vw, 180px);
+  bottom: 0;
+  display: flex;
+  width: min(390px, 30vw);
+  height: 250px;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.portfolio-stage-counter-label,
+.portfolio-stage-counter-total {
+  position: absolute;
+  top: 38px;
+  white-space: nowrap;
+}
+
+.portfolio-stage-counter-label {
+  left: 0;
+  color: #8b8b8b;
+  font-size: 11px;
+}
+
+.portfolio-stage-counter-number {
+  position: fixed;
+  z-index: 43;
+  left: calc(clamp(90px, 9vw, 180px) + 86px);
+  bottom: 55px;
+  color: #fff;
+  font-size: clamp(150px, 13vw, 250px);
+  font-weight: 300;
+  letter-spacing: -.12em;
+  line-height: .78;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  font-variant-numeric: tabular-nums;
+  animation: portfolioCounterIn .34s cubic-bezier(.2,.8,.2,1);
+}
+
+.portfolio-stage-counter-total {
+  left: clamp(210px, 17vw, 300px);
+  color: #171717;
+  font-size: 15px;
+}
+
+@keyframes portfolioCounterIn {
+  from { opacity: .25; filter: blur(10px); transform: translateY(16px); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+.portfolio-stage-index-inner { display: flex; flex-direction: column; padding: 18px clamp(22px, 4vw, 80px) 18px 20px; }
+.portfolio-stage-index-list { position: relative; min-height: 0; overflow: hidden; flex: 1; margin-top: 18px; }
+.portfolio-stage-index-list::-webkit-scrollbar { display: none; }
+.portfolio-stage-index-track { position: absolute; inset-inline: 0; top: 50%; will-change: transform; }
+.portfolio-stage-index-item {
+  display: block;
+  width: 100%;
+  height: 124px;
+  overflow: hidden;
+  padding: 14px 0;
+  text-align: center;
+  color: #b7b7b7;
+  cursor: pointer;
+  transition: color .25s ease, opacity .25s ease;
+}
+.portfolio-stage-index-item:hover,
+.portfolio-stage-index-item:focus-visible,
+.portfolio-stage-index-item.is-active { color: #171717; }
+.portfolio-stage-index-item:not(.is-active) strong,
+.portfolio-stage-index-item:not(.is-active) small,
+.portfolio-stage-index-item:not(.is-active) em { color: #b7b7b7; }
+.portfolio-stage-index-count { display: none; }
+.portfolio-stage-index-item small { display: block; margin-bottom: 5px; font-size: 10px; }
+.portfolio-stage-index-item strong { display: block; font-size: clamp(13px, 1.1vw, 18px); font-weight: 600; line-height: 1.35; }
+.portfolio-stage-index-item em { display: -webkit-box; max-width: 250px; margin: 8px auto 0; overflow: hidden; font-size: 10px; font-style: normal; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.portfolio-stage-index-item.is-active strong::after { content: ""; display: block; width: 16px; height: 1px; margin: 11px auto 0; background: currentColor; }
+.portfolio-stage-current-link { display: flex; justify-content: space-between; padding-top: 14px; border-top: 1px solid #171717; font-size: 11px; font-weight: 600; }
+
+@media (max-width: 900px) {
+  .portfolio-stage { grid-template-columns: minmax(0, 1fr) 220px; }
+  .portfolio-stage-info,
+  .portfolio-stage-rail,
+  .portfolio-stage-counter,
+  .portfolio-stage-counter-number { display: none; }
+  .portfolio-stage-slide { left: calc((100% - 220px) / 2); width: calc(78% - 172px); }
+}
+
+@media (max-width: 650px) {
+  .portfolio-showcase { height: auto; overflow: visible; }
+  .portfolio-stage { display: flex; flex-direction: column; padding-top: 75px; }
+  .portfolio-stage { height: auto; overflow: visible; }
+  .portfolio-stage-index { position: sticky; z-index: 20; top: 68px; order: -1; background: rgb(237 237 237 / 94%); backdrop-filter: blur(12px); }
+  .portfolio-stage-index-inner { position: static; height: auto; padding: 13px 18px; }
+  .portfolio-stage-index-heading { margin: 0; }
+  .portfolio-stage-index-list { overflow-x: auto; margin-top: 10px; }
+  .portfolio-stage-index-track { position: static; width: max-content; transform: none !important; }
+  .portfolio-stage-index-cycle:not(.portfolio-stage-index-cycle-current) { display: none; }
+  .portfolio-stage-index-cycle-current { display: flex; gap: 8px; }
+  .portfolio-stage-index-item { display: block; min-width: max-content; width: auto; height: auto; padding: 7px 10px; border: 1px solid #bbb; border-radius: 20px; }
+  .portfolio-stage-index-item.is-active { color: #fff; background: #171717; border-color: #171717; }
+  .portfolio-stage-index-count,
+  .portfolio-stage-index-item small,
+  .portfolio-stage-index-item em,
+  .portfolio-stage-current-link { display: none; }
+  .portfolio-stage-index-item strong { font-size: 11px; }
+  .portfolio-stage-artworks { display: none; }
+  .portfolio-stage-deck { position: static; height: auto; pointer-events: auto; }
+  .portfolio-stage-scroll-track { display: none; }
+  .portfolio-stage-slide,
+  .portfolio-stage-slide:nth-child(n) { position: relative; top: auto; left: auto; width: 100%; min-height: 66dvh; padding: 6vh 5vw; visibility: visible; transform: none; scroll-margin-top: 155px; pointer-events: auto; }
+  .portfolio-stage-slide:nth-child(n) { align-items: center; }
+  .portfolio-stage-skew { width: 100%; }
+  .portfolio-stage-artwork-arrow { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-stage-facts,
+  .portfolio-stage-counter-number,
+  .portfolio-stage-image img,
+  .portfolio-stage-slide-label,
+  .portfolio-stage-artwork-arrow,
+  .portfolio-stage-index-item { animation: none; transition: none; }
+}
+
 .project-row-link:hover .project-row-title,
 .project-row-link:focus-visible .project-row-title {
   color: #e54f10 !important;
@@ -433,12 +769,12 @@ html[data-theme="light"] .hero-trust-bar [class*="text-white/"] {
 }
 
 .project-detail-page--light-default {
-  background-color: var(--background, #f2f0e9) !important;
+  background-color: var(--background, #ededed) !important;
   color: #121212;
 }
 
 .project-detail-page--light-default main {
-  background-color: var(--background, #f2f0e9);
+  background-color: var(--background, #ededed);
   color: #121212;
 }
 
@@ -467,12 +803,7 @@ html[data-theme="light"] .project-detail-page--light-default main [class*="borde
 }
 
 html[data-theme="light"] .project-detail-page--light-default main [class~="bg-[#111313]"] {
-  background-color: #f2f0e9 !important;
-}
-
-html[data-theme="light"] .project-detail-page--light-default .site-header {
-  background-color: rgb(242 240 233 / 88%) !important;
-  border-color: rgb(18 18 18 / 12%) !important;
+  background-color: var(--light-background) !important;
 }
 
 html[data-theme="light"] .project-detail-page--light-default .site-header img {
@@ -489,7 +820,7 @@ html[data-theme="light"] .project-detail-page--light-default .site-header nav > 
 }
 
 html[data-theme="light"] .project-detail-page--light-default .site-footer {
-  background-color: #f2f0e9 !important;
+  background-color: var(--light-background) !important;
   border-color: rgb(18 18 18 / 15%) !important;
   color: rgb(18 18 18 / 60%) !important;
 }
@@ -502,4 +833,26 @@ html[data-theme="light"] .project-detail-page--light-default .site-footer a:hove
 /* Main editorial typography follows the requested theme colors. Accent subtitles and illustrated cards keep their own palette. */
 html main :is(h1, h2, h3, p, li, strong):not([class*="text-[#e54f10]"]):not([class*="text-[#E54F10]"]):not(.project-directory-card *) {
   color: var(--content-ink) !important;
+}
+
+/* 总览页是独立的浅色画布，文字颜色不随全站正文规则切换。 */
+html body .portfolio-showcase main.portfolio-stage .portfolio-stage-kicker,
+html body .portfolio-showcase main.portfolio-stage .portfolio-stage-index-heading,
+html body .portfolio-showcase main.portfolio-stage .portfolio-stage-facts strong,
+html body .portfolio-showcase main.portfolio-stage .portfolio-stage-index-item.is-active :is(small, strong, em) {
+  color: #171717 !important;
+}
+
+html body .portfolio-showcase main.portfolio-stage .portfolio-stage-index-item:not(.is-active) :is(small, strong, em) {
+  color: #b7b7b7 !important;
+}
+
+html body .portfolio-showcase main.portfolio-stage .portfolio-stage-scroll {
+  color: #8a8a8a !important;
+}
+
+@media (max-width: 650px) {
+  html body .portfolio-showcase main.portfolio-stage .portfolio-stage-index-item.is-active strong {
+    color: #fff !important;
+  }
 }
