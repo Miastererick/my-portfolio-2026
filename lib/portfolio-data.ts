@@ -1,7 +1,7 @@
 import figmaMedia from "@/figma-media.json";
 
 export const categories = [
-  { id: "ai", title: "AI 探索项目", english: "Hero Project: The Future Concept", color: "#ff6b22" },
+  { id: "ai", title: "AI 探索项目", english: "Hero Project: The Future Concept", color: "#E74E44" },
   { id: "business", title: "商业落地项目", english: "Industry Experience: AI-Augmented", color: "#f2efe6" },
   { id: "visual", title: "跨维度视觉探索", english: "Spatial & Motion Graphics", color: "#2e9afe" },
   { id: "engineering", title: "设计工程化", english: "Workflow & Efficiency", color: "#4ade80" },
@@ -57,7 +57,7 @@ export const projects: PortfolioProject[] = [
       { heading: "项目成果", body: "现有项目资料记录：通过提示词标准库与参数化节点，非标视觉资产产出效率提升 80%。该数据需结合原始统计口径再次确认。" },
     ],
     reviewNotes: ["核对效率提升 80% 的统计口径、适用项目和时间范围。"],
-    introSlices: createIntroSlices("comfyui-workflow", "ComfyUI 本地化工作部署", 5, 1917, 1474),
+    introSlices: createIntroSlices("comfyui-workflow", "ComfyUI 本地化工作部署", 8, 1920, 1113, "v3"),
     mediaNodes: ["4703:30898", "4703:30899", "4703:30900", "5895:35037", "5098:34356"],
     coverNode: "4703:30899",
     coverName: "imgImage29",
@@ -76,7 +76,7 @@ export const projects: PortfolioProject[] = [
       { heading: "视觉方案整合", body: "将单品效果与空间场景放在同一视觉体系中呈现，统一画面质感和色彩氛围，形成适用于概念展示的家具视觉系列。" },
     ],
     reviewNotes: ["概念项目的具体生成工具、设计范围与后期制作占比需核对。"],
-    introSlices: createIntroSlices("ikea-studio", "IKEA Studio 2026", 7, 1917, 1428),
+    introSlices: createIntroSlices("ikea-studio", "IKEA Studio 2026", 8, 1920, 1426, "v3"),
     mediaNodes: ["6250:35109"],
     coverNode: "6250:35109",
     coverName: "imgDesignFurnitureArmchairChairFurnitureDesignVisualizationRender1",
@@ -95,7 +95,7 @@ export const projects: PortfolioProject[] = [
       { heading: "持续迭代与规范", body: "参与系统从 1.0 到 4.0 的视觉迭代，整理可复用的界面规范，并根据业务调整优化图表阅读层级、状态表达和交互反馈。" },
     ],
     reviewNotes: ["核对个人负责的版本范围、3D 协作边界及 1.0 至 4.0 的参与方式。"],
-    introSlices: createIntroSlices("asian-games", "杭州亚运会保电指挥平台项目", 3, 1917, 1595),
+    introSlices: createIntroSlices("asian-games", "杭州亚运会保电指挥平台项目", 7, 1920, 1133, "v3"),
     mediaNodes: ["4107:30066", "4107:30123", "4107:30142"],
     coverNode: "4107:30066",
     coverName: "imgAiWebAppCrmSaasUxDesign3",
@@ -115,7 +115,7 @@ export const projects: PortfolioProject[] = [
       { heading: "从监控到辅助决策", body: "将设备状态、关键指标与风险提示组织在同一运维流程中，探索结合大语言模型生成结构化诊断信息，帮助用户从数据查看进一步进入问题判断。" },
     ],
     reviewNotes: ["自然语言交互、模型诊断和具体交付范围根据现有摘要与页面素材整理，需核对当前已实现与概念方案的边界。"],
-    introSlices: createIntroSlices("substation-intelligence", "本体智能·变电站智能运维管理平台", 7, 1917, 1661, "v2"),
+    introSlices: createIntroSlices("substation-intelligence", "本体智能·变电站智能运维管理平台", 11, 1920, 1211, "v3"),
     mediaNodes: ["4434:25831", "4434:25853"],
     coverNode: "4434:25831",
     coverName: "uploadedSubstationHero",
@@ -136,7 +136,7 @@ export const projects: PortfolioProject[] = [
       { heading: "动态展示", body: "通过连续的镜头过渡连接楼宇整体与局部视图，减少视角切换带来的方向丢失，让空间浏览和信息查看保持连贯。" },
     ],
     reviewNotes: ["楼宇实际展示的计量业务范围、动态交互和个人负责的 3D 制作边界需核对。"],
-    introSlices: createIntroSlices("hainan-grid", "海南电网计量大楼三维可视化", 4, 1917, 1280),
+    introSlices: createIntroSlices("hainan-grid", "海南电网计量大楼三维可视化", 8, 1920, 1013, "v3"),
     mediaNodes: ["4603:28111", "4603:28112"],
     coverNode: "4603:28111",
     coverName: "imgCn003530P2DeMain0000Png1",
@@ -157,6 +157,7 @@ export const projects: PortfolioProject[] = [
       { heading: "规范与协作", body: "沉淀可复用的页面样式和组件规则，减少相似页面反复设计的成本，并为后续业务扩展提供一致的界面基础。" },
     ],
     reviewNotes: ["项目正式名称、本人负责模块、深浅主题范围需核对。原有 42% 和 20% 指标未在新文案中沿用，待有依据后再补。"],
+    introSlices: createIntroSlices("energy-platform", "企业中台管理", 7, 1920, 1080, "v3"),
     mediaNodes: ["5707:34828", "5707:35069", "5707:35163", "5707:35389", "5707:35580", "5707:35782"],
     coverNode: "5707:34828",
     coverName: "imgRectangle2",
@@ -193,7 +194,7 @@ export const projects: PortfolioProject[] = [
       { heading: "复用与协作", body: "将组件、规范和使用说明沉淀为团队可共享的设计资产，帮助设计与研发更快理解组件边界，并为后续项目迭代保留扩展空间。" },
     ],
     reviewNotes: ["核对 8 大风格、126+ 项目、设计提效 50% 和 16 种状态的统计范围与数据来源。"],
-    introSlices: createIntroSlices("design-system", "设计工程化 · 可复用组件库", 9, 1917, 1306),
+    introSlices: createIntroSlices("design-system", "设计工程化 · 可复用组件库", 8, 1920, 1690, "v3"),
     mediaNodes: ["4108:39168", "4336:26061", "6108:36275", "6109:36303"],
     coverNode: "4108:39168",
     coverName: "imgImage21",
@@ -212,7 +213,7 @@ export const projects: PortfolioProject[] = [
       { heading: "场景与信息组织", body: "将校园建筑和业务场景分组呈现，建立从整体概览到具体内容的浏览层次，使用户能够在场景信息与业务信息之间切换。" },
     ],
     reviewNotes: ["项目实际覆盖的校园业务、数据类型和可交互范围需核对。"],
-    introSlices: createIntroSlices("smart-campus", "智慧校园新范式", 6, 1917, 1241),
+    introSlices: createIntroSlices("smart-campus", "智慧校园新范式", 8, 1920, 1014, "v3"),
     mediaNodes: ["5637:34801", "3571:341", "5637:34802", "4339:26193"],
     coverNode: "5637:34801",
     coverName: "imgImage9",
@@ -231,6 +232,7 @@ export const projects: PortfolioProject[] = [
       { heading: "作品方向", body: "通过不同尺度的场景、抽象物体和镜头运动练习空间表达，积累可用于项目视觉提案与动态界面的视觉方法。" },
     ],
     reviewNotes: ["该项目是多件视觉练习的集合，需确认作品范围、工具和动效完成度。"],
+    introSlices: createIntroSlices("visual-experiments", "3D 可视化与动态设计", 3, 1920, 1355, "v3"),
     mediaNodes: ["3425:1546"],
     coverNode: "3425:1546",
     coverName: "imgRectangle",
@@ -249,6 +251,7 @@ export const projects: PortfolioProject[] = [
       { heading: "案例范围", body: "当前作品集素材涉及圣圆水务集团信息化平台及系统集成、电信集团项目和苏州综合零碳电厂。各案例的具体负责模块与交付范围待补充确认。" },
     ],
     reviewNotes: ["当前素材只列出项目名称，具体业务目标、个人职责和交付内容需补充核对。"],
+    introSlices: createIntroSlices("more-visual-work", "其他视觉项目", 5, 1920, 1097, "v3"),
     mediaNodes: ["4380:26229"],
     coverNode: "4380:26229",
     coverName: "imgTest033DeMain00001",
@@ -267,6 +270,7 @@ export const projects: PortfolioProject[] = [
       { heading: "知识沉淀", body: "会前准备并录制操作视频，分享后保留案例资料，方便同事回看和继续实践，让一次交流成为团队可重复使用的学习材料。" },
     ],
     reviewNotes: ["分享会主题、举办频率和团队覆盖范围需核对。"],
+    introSlices: createIntroSlices("knowledge-sharing", "设计中心 · 技术分享会", 4, 1920, 1078, "v3"),
     mediaNodes: ["5637:34804", "3609:26268", "3609:27419"],
     coverNode: "5637:34804",
     coverName: "imgImage1",
@@ -284,8 +288,20 @@ export function mediaFor(project: PortfolioProject) {
   return mediaAssetsFor(project).map((asset) => asset.path);
 }
 
+const uploadedCovers: Record<string, string> = {
+  "comfyui-workflow": "/project-covers/comfyui-workflow.jpg",
+  "ikea-studio": "/project-covers/ikea-studio.jpg",
+  "asian-games": "/project-covers/asian-games.jpg",
+  "substation-intelligence": "/project-covers/substation-intelligence.jpg",
+  "hainan-grid": "/project-covers/hainan-grid.jpg",
+  "design-system": "/project-covers/design-system.jpg",
+  "smart-campus": "/project-covers/smart-campus.jpg",
+  "knowledge-sharing": "/project-covers/knowledge-sharing.jpg",
+};
+
 export function coverFor(project: PortfolioProject) {
-  return figmaMedia.find((asset) => asset.node === project.coverNode && asset.name === project.coverName)?.path;
+  return uploadedCovers[project.slug]
+    ?? figmaMedia.find((asset) => asset.node === project.coverNode && asset.name === project.coverName)?.path;
 }
 
 export function listItemFor(project: PortfolioProject): ProjectListItem {

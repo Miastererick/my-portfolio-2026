@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { openProjectWithCurtain } from "@/components/PortfolioRouteCurtain";
 import type { ProjectListItem } from "@/lib/portfolio-data";
 
 type PreviewPosition = { left: number; top: number };
@@ -26,6 +27,11 @@ export function ProjectRowList({ projects }: { projects: ProjectListItem[] }) {
             key={project.slug}
             href={`/projects/${project.slug}`}
             className="project-row-link site-border-subtle group grid grid-cols-[2.5rem_minmax(0,1fr)_auto] items-center gap-3 border-b py-5 pr-3 transition-colors duration-300 hover:border-white/35 hover:bg-white/[0.035] sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:gap-5 sm:py-7 sm:pr-4"
+            onClick={(event) => {
+              if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+              event.preventDefault();
+              openProjectWithCurtain(`/projects/${project.slug}`, project.title, project.english);
+            }}
             onMouseEnter={(event) => {
               setActiveProject(project);
               updatePreviewPosition(event.clientX, event.clientY);
@@ -45,7 +51,7 @@ export function ProjectRowList({ projects }: { projects: ProjectListItem[] }) {
               {String(index + 1).padStart(2, "0")}
             </span>
             <span className="min-w-0">
-              <span className="project-row-title site-primary-text block text-lg font-medium transition-colors duration-300 group-hover:text-[#E54F10] group-focus-visible:text-[#E54F10] sm:text-2xl">
+              <span className="project-row-title site-primary-text block text-lg font-medium transition-colors duration-300 group-hover:text-[#E74E44] group-focus-visible:text-[#E74E44] sm:text-2xl">
                 {project.title}
               </span>
               {project.english && (

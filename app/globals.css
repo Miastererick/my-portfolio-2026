@@ -66,16 +66,17 @@
   --font-library-serif: "Adobe Jenson Pro";
   --font-inter: Arial, Helvetica, sans-serif;
   --light-background: #ededed;
-  --background: #0a0a0a;
-  --foreground: #FFFFFF;
-  --accent: #ff4500;
-  --surface: #000101;
-  --surface-raised: #111;
-  --text-primary: #FFFFFF;
-  --text-muted: rgb(255 255 255 / 50%);
-  --content-ink: #FFFFFF;
-  --border-subtle: rgb(255 255 255 / 10%);
-  --header-surface: rgb(0 0 0 / 50%);
+  --background: var(--light-background);
+  --foreground: #121212;
+  --accent: #E74E44;
+  --surface: var(--light-background);
+  --surface-raised: var(--light-background);
+  --text-primary: #121212;
+  --text-muted: rgb(32 32 30 / 72%);
+  --content-ink: #121212;
+  --border-subtle: rgb(0 0 0 / 14%);
+  --header-surface: rgb(237 237 237 / 88%);
+  --project-other-card-bg: #262626;
   /** 全局 UI（导航、页脚、首屏等）：HONOR Sans CN；五张卡片不用此变量 */
   --font-sans:
     "HONOR Sans CN",
@@ -111,6 +112,8 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans);
 }
+
+html { color-scheme: light; }
 
 .full-page-scroll {
   height: 100dvh;
@@ -226,7 +229,7 @@ body {
 }
 
 .creative-library-name-empty {
-  background-color: #242424;
+  background-color: #DFDFDF;
   transition: box-shadow 300ms ease;
 }
 
@@ -235,21 +238,21 @@ body {
   box-shadow: 0 18px 48px rgb(0 0 0 / 60%);
 }
 
-html[data-theme="light"] .creative-library-cover {
+html .creative-library-cover {
   border-color: rgb(18 18 18 / 10%);
 }
 
-html[data-theme="light"] .creative-library-card-image:hover .creative-library-cover,
-html[data-theme="light"] .creative-library-card-image:focus-within .creative-library-cover {
+html .creative-library-card-image:hover .creative-library-cover,
+html .creative-library-card-image:focus-within .creative-library-cover {
   box-shadow: 0 18px 48px rgb(18 18 18 / 22%);
 }
 
-html[data-theme="light"] .creative-library-name-empty {
-  background-color: #e3e0d8;
+html .creative-library-name-empty {
+  background-color: #DFDFDF;
 }
 
-html[data-theme="light"] .creative-library-card-empty:hover .creative-library-name-empty,
-html[data-theme="light"] .creative-library-card-empty:focus-within .creative-library-name-empty {
+html .creative-library-card-empty:hover .creative-library-name-empty,
+html .creative-library-card-empty:focus-within .creative-library-name-empty {
   box-shadow: 0 18px 48px rgb(18 18 18 / 22%);
 }
 
@@ -279,13 +282,9 @@ html[data-theme="light"] .creative-library-card-empty:focus-within .creative-lib
   }
 }
 
-html[data-theme="light"] .creative-library-preview,
-html[data-theme="light"] .creative-library-close {
+html .creative-library-preview,
+html .creative-library-close {
   background-color: #e8e6df;
-}
-
-:root {
-  --project-other-card-bg: #262626;
 }
 
 .project-directory .project-other-card {
@@ -347,72 +346,63 @@ html[data-theme="light"] .creative-library-close {
 }
 .cp-grid-flow { animation: gridFlow 5.2s linear infinite; }
 
-html[data-theme="light"] {
-  --background: var(--light-background);
-  --foreground: #121212;
-  --surface: var(--light-background);
-  --surface-raised: var(--light-background);
-  --text-primary: #121212;
-  --text-muted: rgb(32 32 30 / 72%);
-  --content-ink: #121212;
-  --border-subtle: rgb(0 0 0 / 14%);
-  --header-surface: rgb(237 237 237 / 88%);
-  --project-other-card-bg: #262626;
-}
-
-html[data-theme="light"] body {
+html body {
   background-color: var(--light-background);
   color: var(--foreground);
 }
 
-html[data-theme="light"] header:not(.site-header) {
+html header:not(.site-header) {
   background-color: rgb(237 237 237 / 88%) !important;
   border-color: rgb(0 0 0 / 12%) !important;
 }
 
-html[data-theme="light"] header img {
+html header img {
   filter: brightness(0.12);
 }
 
-html[data-theme="light"] header img.home-theme-icon {
+html header img.home-theme-icon {
   filter: none !important;
 }
 
-html[data-theme="light"] .bg-black,
-html[data-theme="light"] [class~="bg-[#000101]"],
-html[data-theme="light"] [class~="bg-[#050606]"],
-html[data-theme="light"] [class~="bg-[#0a0a0a]"],
-html[data-theme="light"] [class~="bg-[#0b0d0d]"],
-html[data-theme="light"] [class~="bg-[#101111]"],
-html[data-theme="light"] [class~="bg-[#111]"],
-html[data-theme="light"] [class~="bg-[#111313]"],
-html[data-theme="light"] [class~="bg-[#141414]"],
-html[data-theme="light"] [class~="bg-[#151515]"],
-html[data-theme="light"] [class~="bg-[#191b1b]"],
-html[data-theme="light"] [class~="bg-[#202020]"] {
+html .bg-black,
+html [class~="bg-[#000101]"],
+html [class~="bg-[#050606]"],
+html [class~="bg-[#0a0a0a]"],
+html [class~="bg-[#0b0d0d]"],
+html [class~="bg-[#101111]"],
+html [class~="bg-[#111]"],
+html [class~="bg-[#111313]"],
+html [class~="bg-[#141414]"],
+html [class~="bg-[#151515]"],
+html [class~="bg-[#191b1b]"],
+html [class~="bg-[#202020]"] {
   background-color: var(--light-background) !important;
 }
 
-html[data-theme="light"] [class~="bg-white/5"],
-html[data-theme="light"] [class~="bg-white/10"] {
+html [class~="bg-white/5"],
+html [class~="bg-white/10"] {
   background-color: rgb(0 0 0 / 4%) !important;
 }
 
-html[data-theme="light"] .text-white,
-html[data-theme="light"] [class~="text-[#eee3d2]"] {
+html .text-white,
+html [class~="text-[#eee3d2]"] {
   color: #121212 !important;
 }
 
-html[data-theme="light"] [class*="text-white/"] {
+html [class*="text-white/"] {
   color: #121212 !important;
 }
 
-html[data-theme="light"] [class*="border-white/"] {
+html .creative-library-page [class~="bg-[#E74E44]"] {
+  color: #fff !important;
+}
+
+html [class*="border-white/"] {
   border-color: rgb(0 0 0 / 14%) !important;
 }
 
-html[data-theme="light"] .project-row-link:hover,
-html[data-theme="light"] .project-row-link:focus-visible {
+html .project-row-link:hover,
+html .project-row-link:focus-visible {
   background-color: rgb(18 18 18 / 4%) !important;
   border-color: rgb(18 18 18 / 30%) !important;
 }
@@ -609,7 +599,7 @@ html[data-theme="light"] .project-row-link:focus-visible {
   height: 42px;
   place-items: center;
   border-radius: 50%;
-  background: #e54f10;
+  background: #E74E44;
   color: #fff;
   opacity: 0;
   transform: translateY(8px);
@@ -768,19 +758,19 @@ html[data-theme="light"] .project-row-link:focus-visible {
 
 .project-row-link:hover .project-row-title,
 .project-row-link:focus-visible .project-row-title {
-  color: #e54f10 !important;
+  color: #E74E44 !important;
 }
 
 /* 封面图与详情首屏始终是深色画面，亮色模式下保留浅色文字。 */
-html[data-theme="light"] .project-hero {
+html .project-hero {
   color: #eee3d2 !important;
 }
 
-html[data-theme="light"] .project-hero [class*="text-white/"] {
+html .project-hero [class*="text-white/"] {
   color: rgb(255 255 255 / 75%) !important;
 }
 
-html[data-theme="light"] .hero-trust-bar [class*="text-white/"] {
+html .hero-trust-bar [class*="text-white/"] {
   color: rgb(255 255 255 / 65%) !important;
 }
 
@@ -794,60 +784,50 @@ html[data-theme="light"] .hero-trust-bar [class*="text-white/"] {
   color: #121212;
 }
 
-html[data-theme="dark"] .project-detail-page--light-default {
-  background-color: #050606 !important;
-  color: #eee3d2;
-}
-
-html[data-theme="dark"] .project-detail-page--light-default main {
-  background-color: #050606;
-  color: #eee3d2;
-}
-
-html[data-theme="light"] .project-detail-page--light-default main .text-white,
-html[data-theme="light"] .project-detail-page--light-default main [class~="text-[#eee3d2]"],
-html[data-theme="light"] .project-detail-page--light-default main [class~="text-[#FFFFFF]"] {
+html .project-detail-page--light-default main .text-white,
+html .project-detail-page--light-default main [class~="text-[#eee3d2]"],
+html .project-detail-page--light-default main [class~="text-[#FFFFFF]"] {
   color: #121212 !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default main [class*="text-white/"] {
+html .project-detail-page--light-default main [class*="text-white/"] {
   color: rgb(18 18 18 / 64%) !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default main [class*="border-white/"] {
+html .project-detail-page--light-default main [class*="border-white/"] {
   border-color: rgb(18 18 18 / 15%) !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default main [class~="bg-[#111313]"] {
+html .project-detail-page--light-default main [class~="bg-[#111313]"] {
   background-color: var(--light-background) !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default .site-header img {
+html .project-detail-page--light-default .site-header img {
   filter: brightness(0.12) !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default .site-header img.home-theme-icon {
+html .project-detail-page--light-default .site-header img.home-theme-icon {
   filter: none !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default .site-header nav > ul > li > a,
-html[data-theme="light"] .project-detail-page--light-default .site-header nav > ul > li > div > button {
+html .project-detail-page--light-default .site-header nav > ul > li > a,
+html .project-detail-page--light-default .site-header nav > ul > li > div > button {
   color: rgb(18 18 18 / 76%) !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default .site-footer {
+html .project-detail-page--light-default .site-footer {
   background-color: var(--light-background) !important;
   border-color: rgb(18 18 18 / 15%) !important;
   color: rgb(18 18 18 / 60%) !important;
 }
 
-html[data-theme="light"] .project-detail-page--light-default .site-footer [class*="text-white/"],
-html[data-theme="light"] .project-detail-page--light-default .site-footer a:hover {
+html .project-detail-page--light-default .site-footer [class*="text-white/"],
+html .project-detail-page--light-default .site-footer a:hover {
   color: #121212 !important;
 }
 
 /* Main editorial typography follows the requested theme colors. Accent subtitles and illustrated cards keep their own palette. */
-html main :is(h1, h2, h3, p, li, strong):not([class*="text-[#e54f10]"]):not([class*="text-[#E54F10]"]):not(.project-directory-card *) {
+html main :is(h1, h2, h3, p, li, strong):not([class*="text-[#E74E44]"]):not(.project-directory-card *) {
   color: var(--content-ink) !important;
 }
 

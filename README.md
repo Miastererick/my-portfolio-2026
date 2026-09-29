@@ -1,6 +1,6 @@
 # 王明棋 · 设计作品集
 
-以项目为核心的个人设计作品集，记录从视觉探索、商业落地到 AI 工作流与设计工程化的实践。网站通过全屏首页目录、项目分类列表和独立详情页呈现代表项目、设计思路与作品图集。
+以项目为核心的个人设计作品集，记录从视觉探索、商业落地到 AI 工作流与设计工程化的实践。首页直接展示作品集卡片，项目分类列表和独立详情页呈现设计思路与作品图集。原 `/portfolio` 地址会跳转到首页。
 
 网站使用 Next.js 构建，支持桌面与手机浏览、亮色与暗色主题，并将项目资料和页面展示分开维护，便于持续补充内容。
 
@@ -20,7 +20,7 @@ npm run dev
 - 姓名、邮箱、电话、页脚文案：`lib/site-content.ts`
 - 分类名称和项目标题、摘要、详情：`lib/portfolio-data.ts`。新增项目时填写唯一 `slug`、所属 `category`、封面对应的 `coverNode` 和 `coverName`，以及内容图片的 `mediaNodes`。没有正确封面时省略封面映射，页面会显示待补占位，不会自动借用其他图片。
 - 顶部导航：`components/layout/TopNav.tsx`
-- 首页封面与项目目录：`components/layout/PortfolioLayout.tsx`、`components/sections/ProjectDirectory.tsx`
+- 首页作品集：`app/page.tsx`、`components/sections/PortfolioShowcase.tsx`
 - 关于我与分类页：`components/sections/PortfolioContent.tsx`
 - 颜色与字体：`app/globals.css`。主题公共颜色已使用 CSS 变量；尚有部分旧页面的亮色覆盖规则，后续可逐页迁移。
 

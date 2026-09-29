@@ -475,7 +475,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
                   if (window.innerWidth > 650 && Math.abs(progress - index) >= 0.08) {
                     goTo(index);
                   } else {
-                    openProjectWithCurtain(`/projects/${item.slug}`);
+                    openProjectWithCurtain(`/projects/${item.slug}`, item.title, item.english);
                   }
                 }}
               >
@@ -543,7 +543,15 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
               ))}
             </div>
           </div>
-          <Link className="portfolio-stage-current-link" href={`/projects/${activeItem.slug}`}>进入当前项目 <span>↗</span></Link>
+          <Link
+            className="portfolio-stage-current-link"
+            href={`/projects/${activeItem.slug}`}
+            onClick={(event) => {
+              if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+              event.preventDefault();
+              openProjectWithCurtain(`/projects/${activeItem.slug}`, activeItem.title, activeItem.english);
+            }}
+          >进入当前项目 <span>↗</span></Link>
         </div>
       </aside>
     </main>

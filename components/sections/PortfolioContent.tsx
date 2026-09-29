@@ -11,7 +11,7 @@ export function PortfolioContent({ categoryId }: { categoryId: CategoryId }) {
             <div className="mx-auto flex min-h-0 w-full max-w-7xl flex-1 flex-col">
               <div className="mb-6 flex shrink-0 flex-wrap items-end justify-between gap-5 sm:mb-8">
                 <div>
-                  <p className="text-[#E54F10] text-xs tracking-[0.3em]">{category.english}</p>
+                  <p className="text-[#E74E44] text-xs tracking-[0.3em]">{category.english}</p>
                   <h2 className="site-primary-text mt-4 text-3xl font-semibold sm:text-5xl">{category.title}</h2>
                 </div>
                 <span className="h-1 w-20 rounded-full" style={{ background: category.color }} />

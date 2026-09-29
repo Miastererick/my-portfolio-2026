@@ -115,7 +115,7 @@ export function CreativeLibraryGrid({ items, section }: { items: CreativeLibrary
         <button
           type="button"
           onClick={(event) => openItem(item, event.currentTarget)}
-          className="block w-full cursor-pointer rounded-2xl text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E54F10]"
+          className="block w-full cursor-pointer rounded-2xl text-left focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E74E44]"
           aria-label={`查看${item.name}详情`}
           aria-expanded={selected?.githubUrl === item.githubUrl}
           aria-controls="creative-library-details"
@@ -124,19 +124,19 @@ export function CreativeLibraryGrid({ items, section }: { items: CreativeLibrary
             <span className="creative-library-cover relative block overflow-hidden rounded-2xl">
               <Image src={item.cover} alt="" width={item.width} height={item.height} sizes="(min-width: 1280px) 280px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw" unoptimized={process.env.NODE_ENV === "development"} className="h-auto w-full" />
               <span className="creative-library-open pointer-events-none absolute inset-0 flex items-end justify-end p-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-                <span className="flex size-10 items-center justify-center rounded-full bg-[#E54F10] text-lg text-white shadow-lg" aria-hidden="true">↗</span>
+                <span className="flex size-10 items-center justify-center rounded-full bg-[#E74E44] text-lg text-white shadow-lg" aria-hidden="true">↗</span>
               </span>
             </span>
           ) : null}
           <span className={`${item.cover ? "mt-3 px-1" : "creative-library-name-empty min-h-[76px] rounded-xl px-4 py-3"} creative-library-name block`}>
-            <span className={`block text-[13px] font-medium leading-5 transition-colors duration-200 group-hover:text-[#E54F10] sm:text-sm ${item.cover ? "" : "truncate"}`}>{item.name}</span>
+            <span className={`block text-[13px] font-medium leading-5 transition-colors duration-200 group-hover:text-[#E74E44] sm:text-sm ${item.cover ? "" : "truncate"}`}>{item.name}</span>
             <span className={`site-muted-text mt-1 block text-xs leading-5 sm:text-[13px] ${item.cover ? "" : "truncate"}`}>{item.styleDescription}</span>
           </span>
         </button>
         <button
           type="button"
           onClick={() => toggleFavorite(item)}
-          className={`creative-library-save absolute right-2 top-2 z-20 flex min-h-9 items-center justify-center rounded-[20px] px-4 py-2 text-[14px] font-semibold leading-none text-white shadow-lg transition-[background-color,opacity,transform] hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E54F10] ${isCelebrating ? "creative-library-save-celebrating" : ""} ${isFavorite ? "bg-[#111] hover:bg-[#2a2a2a]" : "bg-[#E54F10] hover:bg-[#c8430c]"}`}
+          className={`creative-library-save absolute right-2 top-2 z-20 flex min-h-9 items-center justify-center rounded-[20px] px-4 py-2 text-[14px] font-semibold leading-none text-white shadow-lg transition-[background-color,filter,opacity,transform] hover:scale-[1.04] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#E74E44] ${isCelebrating ? "creative-library-save-celebrating" : ""} ${isFavorite ? "bg-[#111] hover:bg-[#2a2a2a]" : "bg-[#E74E44] hover:brightness-90"}`}
           aria-label={`${isFavorite ? "取消收藏" : "收藏"}${item.name}`}
           aria-pressed={isFavorite}
           title={isFavorite ? "取消收藏" : "收藏"}
@@ -156,7 +156,7 @@ export function CreativeLibraryGrid({ items, section }: { items: CreativeLibrary
                 <span className="text-2xl text-white drop-shadow-md">♥</span>
                 {Array.from({ length: 6 }, (_, index) => {
                   const angle = (index * Math.PI) / 3;
-                  return <motion.span key={index} className="absolute size-1.5 rounded-full bg-[#ffb47f]" initial={{ x: 0, y: 0, opacity: 1, scale: 0.5 }} animate={{ x: Math.cos(angle) * 42, y: Math.sin(angle) * 42, opacity: 0, scale: 1 }} transition={{ duration: 0.55, ease: "easeOut" }} />;
+                  return <motion.span key={index} className="absolute size-1.5 rounded-full bg-[#E74E44]" initial={{ x: 0, y: 0, opacity: 1, scale: 0.5 }} animate={{ x: Math.cos(angle) * 42, y: Math.sin(angle) * 42, opacity: 0, scale: 1 }} transition={{ duration: 0.55, ease: "easeOut" }} />;
                 })}
               </motion.span>
             ) : null}
@@ -170,18 +170,18 @@ export function CreativeLibraryGrid({ items, section }: { items: CreativeLibrary
     <>
       <header className="mb-8 flex flex-wrap items-end justify-between gap-6 sm:mb-10">
         <div>
-          <p className="text-xs tracking-[0.28em] text-[#E54F10]">CREATIVE LIBRARY</p>
+          <p className="text-xs tracking-[0.28em] text-[#E74E44]">CREATIVE LIBRARY</p>
           <h1 className="mt-3 text-3xl font-semibold sm:text-5xl">创作资源</h1>
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <nav className="flex items-center gap-2" aria-label="创作资源分类">
             {LIBRARY_TABS.map((tab) => (
-              <Link key={tab.key} href={tab.href} aria-current={section === tab.key ? "page" : undefined} className={`rounded-full border px-4 py-2 text-sm transition-colors ${section === tab.key ? "border-[#E54F10] bg-[#E54F10] text-white" : "site-border-subtle site-muted-text hover:border-[#E54F10] hover:text-[#E54F10]"}`}>
+              <Link key={tab.key} href={tab.href} aria-current={section === tab.key ? "page" : undefined} className={`rounded-full border px-4 py-2 text-sm transition-colors ${section === tab.key ? "border-[#E74E44] bg-[#E74E44] text-white" : "site-border-subtle site-muted-text hover:border-[#E74E44] hover:text-[#E74E44]"}`}>
                 {tab.label}
               </Link>
             ))}
           </nav>
-          <button type="button" onClick={() => setFavoritesOnly((value) => !value)} aria-pressed={favoritesOnly} className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors ${favoritesOnly ? "border-[#E54F10] bg-[#E54F10] text-white" : "site-border-subtle site-muted-text hover:border-[#E54F10] hover:text-[#E54F10]"}`}>
+          <button type="button" onClick={() => setFavoritesOnly((value) => !value)} aria-pressed={favoritesOnly} className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm transition-colors ${favoritesOnly ? "border-[#E74E44] bg-[#E74E44] text-white" : "site-border-subtle site-muted-text hover:border-[#E74E44] hover:text-[#E74E44]"}`}>
             <svg viewBox="0 0 48 48" width="16" height="16" fill="none" className="size-4 shrink-0" aria-hidden="true">
               <path fillRule="evenodd" clipRule="evenodd" d="M16.8712 33.0437L15.9976 44.7037C15.9362 45.5231 16.6646 46.0874 17.3161 45.7222C21.9289 43.1384 36.3783 33.6481 43.7017 12.7901C44.0376 11.8333 43.1352 10.9699 42.3646 11.5096C38.0387 14.5391 28.5846 20.8008 22.7421 21.9935C22.7421 21.9935 26.4836 19.3948 28.7231 15.4055C28.9426 15.0144 28.9244 14.5138 28.6796 14.1608L20.5127 2.38942C20.0287 1.69163 19.0354 1.98074 18.8606 2.87019L16.3181 15.8074L4.38437 26.2228C3.78602 26.7448 3.90808 27.7998 4.5989 28.0792L16.8712 33.0437Z" fill="currentColor" />
               <path fillRule="evenodd" clipRule="evenodd" d="M37.9745 28.4481C37.2188 29.5026 35.5908 31.6718 34.0876 32.9975C33.7871 33.2625 33.8276 33.707 34.1724 33.9235L42.1145 38.9092C42.5926 39.2092 43.2384 38.853 43.1576 38.3325C42.7882 35.9498 41.7237 30.982 39.0328 28.3743C38.7322 28.0832 38.2142 28.1138 37.9745 28.4481Z" fill="currentColor" />
@@ -229,12 +229,12 @@ export function CreativeLibraryGrid({ items, section }: { items: CreativeLibrary
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: reduceMotion ? 0 : -4 }}
                 transition={{ duration: reduceMotion ? 0 : 0.15 }}
-                className={panelScrolled ? "truncate text-sm font-semibold" : "text-xs tracking-[0.25em] text-[#E54F10]"}
+                className={panelScrolled ? "truncate text-sm font-semibold" : "text-xs tracking-[0.25em] text-[#E74E44]"}
               >
                 {panelScrolled ? selected.name : "CREATIVE LIBRARY"}
               </motion.span>
             </AnimatePresence>
-            <button ref={closeButtonRef} type="button" onClick={() => setSelected(null)} className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] text-xl transition-colors hover:border-[#E54F10] hover:text-[#E54F10] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E54F10]" aria-label="关闭作品详情">×</button>
+            <button ref={closeButtonRef} type="button" onClick={() => setSelected(null)} className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] text-xl transition-colors hover:border-[#E74E44] hover:text-[#E74E44] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E74E44]" aria-label="关闭作品详情">×</button>
           </div>
 
           <div className="px-6 pb-10 pt-8 sm:px-8 lg:px-10">
@@ -249,7 +249,7 @@ export function CreativeLibraryGrid({ items, section }: { items: CreativeLibrary
               <h3 className="text-sm font-semibold">适用范围</h3>
               <p className="site-muted-text mt-3 text-sm leading-7 sm:text-base">{selected.useCases}</p>
             </section>
-            <a href={selected.githubUrl} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#E54F10] px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E54F10]">前往 GitHub <span aria-hidden="true">↗</span></a>
+            <a href={selected.githubUrl} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#E74E44] px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E74E44]">前往 GitHub <span aria-hidden="true">↗</span></a>
 
             {activeImage ? (
               <section className="mt-10" aria-label="作品效果图">
@@ -263,15 +263,15 @@ export function CreativeLibraryGrid({ items, section }: { items: CreativeLibrary
                 </div>
                 {images.length > 1 ? (
                   <div className="mt-5 flex max-w-full items-center justify-center gap-2">
-                    <button type="button" onClick={() => setImageIndex((index) => (index - 1 + images.length) % images.length)} className="flex size-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] text-sm hover:border-[#E54F10]" aria-label="上一张效果图">←</button>
+                    <button type="button" onClick={() => setImageIndex((index) => (index - 1 + images.length) % images.length)} className="flex size-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] text-sm hover:border-[#E74E44]" aria-label="上一张效果图">←</button>
                     <div className="flex max-w-[min(60vw,320px)] gap-2 overflow-x-auto py-1">
                       {images.map((image, index) => (
-                        <button key={image.src} type="button" onClick={() => setImageIndex(index)} className={`flex h-[72px] w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border-2 ${index === imageIndex ? "border-[#E54F10]" : "border-transparent"}`} aria-label={`查看第 ${index + 1} 张效果图`} aria-current={index === imageIndex ? "true" : undefined}>
+                        <button key={image.src} type="button" onClick={() => setImageIndex(index)} className={`flex h-[72px] w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border-2 ${index === imageIndex ? "border-[#E74E44]" : "border-transparent"}`} aria-label={`查看第 ${index + 1} 张效果图`} aria-current={index === imageIndex ? "true" : undefined}>
                           <Image src={image.src} alt="" width={image.width} height={image.height} sizes="56px" unoptimized={process.env.NODE_ENV === "development"} className="h-full w-full object-contain" />
                         </button>
                       ))}
                     </div>
-                    <button type="button" onClick={() => setImageIndex((index) => (index + 1) % images.length)} className="flex size-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] text-sm hover:border-[#E54F10]" aria-label="下一张效果图">→</button>
+                    <button type="button" onClick={() => setImageIndex((index) => (index + 1) % images.length)} className="flex size-9 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] text-sm hover:border-[#E74E44]" aria-label="下一张效果图">→</button>
                   </div>
                 ) : null}
               </section>

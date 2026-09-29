@@ -18,7 +18,7 @@ export default function RootLayout({
       lang="zh-CN"
       className="h-full overflow-x-hidden antialiased"
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden bg-black text-foreground font-sans">
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-background text-foreground font-sans">
         {children}
         <PortfolioRouteCurtain />
       </body>

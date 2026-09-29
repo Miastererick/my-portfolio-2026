@@ -3,23 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState, useSyncExternalStore } from "react";
-
-const THEME_EVENT = "portfolio-theme-change";
-
-function subscribeToTheme(callback: () => void) {
-  window.addEventListener("storage", callback);
-  window.addEventListener(THEME_EVENT, callback);
-  return () => {
-    window.removeEventListener("storage", callback);
-    window.removeEventListener(THEME_EVENT, callback);
-  };
-}
-
-function getTheme(defaultTheme: "dark" | "light" = "dark") {
-  const savedTheme = window.localStorage.getItem("portfolio-theme");
-  return savedTheme === "light" || savedTheme === "dark" ? savedTheme : defaultTheme;
-}
+import { useState } from "react";
 
 const PROJECT_ITEMS = [
   { label: "商业项目", href: "/business" },
@@ -29,32 +13,20 @@ const PROJECT_ITEMS = [
   { label: "其他", href: "/other" },
 ] as const;
 
-export function TopNav({ defaultTheme = "dark" }: { defaultTheme?: "dark" | "light" }) {
-  const isDark = useSyncExternalStore(subscribeToTheme, () => getTheme(defaultTheme), () => defaultTheme) === "dark";
+export function TopNav() {
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = isDark ? "dark" : "light";
-  }, [isDark]);
-
-  function toggleTheme() {
-    const theme = isDark ? "light" : "dark";
-    document.documentElement.dataset.theme = theme;
-    window.localStorage.setItem("portfolio-theme", theme);
-    window.dispatchEvent(new Event(THEME_EVENT));
-  }
 
   return (
     <header className="site-header fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-3 px-3 py-2 sm:px-8 sm:py-3">
       <div className="flex min-w-0 items-center gap-7">
         <Link
-          href="/#home"
+          href="/"
           className="flex size-11 shrink-0 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-          aria-label="返回首页"
+          aria-label="返回作品集首页"
           title="首页"
         >
           <Image
-            src={isDark ? "/icons/home-dark.svg" : "/icons/home-light.svg"}
+            src="/icons/home-light.svg"
             alt=""
             width={44}
             height={44}
@@ -79,7 +51,7 @@ export function TopNav({ defaultTheme = "dark" }: { defaultTheme?: "dark" | "lig
             >
               <div className="flex items-center gap-1 text-xs sm:text-sm">
                 <Link
-                  href="/portfolio"
+                  href="/"
                   onClick={() => setIsProjectsOpen(false)}
                   className="text-white/70 transition-colors hover:text-white focus-visible:text-white"
                 >
@@ -131,15 +103,6 @@ export function TopNav({ defaultTheme = "dark" }: { defaultTheme?: "dark" | "lig
       </div>
 
       <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-        <button
-          type="button"
-          onClick={toggleTheme}
-          className="flex size-11 items-center justify-center rounded-full transition-colors hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
-          aria-label={isDark ? "切换到亮色模式" : "切换到暗色模式"}
-          title={isDark ? "切换到亮色模式" : "切换到暗色模式"}
-        >
-          <Image src={isDark ? "/icons/theme-light.svg" : "/icons/theme-dark.svg"} alt="" width={44} height={44} className="h-[38px] w-[38px]" />
-        </button>
         <a
           href="https://github.com/Miastererick/my-portfolio-2026"
           target="_blank"

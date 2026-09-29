@@ -18,7 +18,7 @@ const SPRING = {
 
 const CARDS = [
   {
-    bg: "bg-[#FF6B22]",
+    bg: "bg-[#E74E44]",
     title: "AI 探索项目",
     href: "/ai",
     subtitle: "Hero Project: The Future Concept",
@@ -245,7 +245,7 @@ export function ProjectDirectory() {
           >
             {CARDS.map((card, i) => {
               const L = card.layout;
-              const isOrange = card.bg === "bg-[#FF6B22]";
+              const isOrange = card.bg === "bg-[#E74E44]";
               const isBlue = card.bg === "bg-[#2E9AFE]";
               const isGreen = card.bg === "bg-[#4ADE80]";
               const isBlack = card.bg === "project-other-card";

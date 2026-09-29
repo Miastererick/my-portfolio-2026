@@ -62,8 +62,8 @@ export function AboutContent() {
           <dl className="mt-8 space-y-[14px] text-sm leading-[1.5] sm:text-base">
             <div className="flex items-center gap-2"><ContactIcon name="age" /><dt>年龄：</dt><dd className="font-semibold">28</dd></div>
             <div className="flex items-center gap-2"><ContactIcon name="major" /><dt>专业：</dt><dd className="font-semibold">数字媒体艺术</dd></div>
-            <div className="flex flex-wrap items-center gap-x-2"><ContactIcon name="phone" /><dt>电话：</dt><dd className="font-semibold"><a href={`tel:${siteContent.phone}`} className="hover:text-[#e54f10]">{siteContent.phoneDisplay}</a></dd><span className="text-white/45">（同步微信）</span></div>
-            <div className="flex flex-wrap items-center gap-x-2"><ContactIcon name="email" /><dt>邮箱：</dt><dd className="font-semibold"><a href={`mailto:${siteContent.email}`} className="hover:text-[#e54f10]">{siteContent.email}</a></dd></div>
+            <div className="flex flex-wrap items-center gap-x-2"><ContactIcon name="phone" /><dt>电话：</dt><dd className="font-semibold"><a href={`tel:${siteContent.phone}`} className="hover:text-[#E74E44]">{siteContent.phoneDisplay}</a></dd><span className="text-white/45">（同步微信）</span></div>
+            <div className="flex flex-wrap items-center gap-x-2"><ContactIcon name="email" /><dt>邮箱：</dt><dd className="font-semibold"><a href={`mailto:${siteContent.email}`} className="hover:text-[#E74E44]">{siteContent.email}</a></dd></div>
           </dl>
         </div>
       </div>
@@ -73,10 +73,10 @@ export function AboutContent() {
           <div className="pointer-events-none absolute bottom-0 left-[-3px] top-0 w-5 [background:repeating-linear-gradient(to_bottom,rgba(238,227,210,0.22)_0_1px,transparent_1px_14px)]" aria-hidden="true" />
           {experiences.map((experience) => (
             <article key={experience.company} className="relative">
-              <span className="absolute -left-[36px] top-1 flex h-[18px] w-[18px] items-center justify-center rounded-full border-2 border-[#e54f10] bg-[#000101] lg:-left-[48px]" aria-hidden="true"><span className="h-1 w-1 rounded-full bg-[#e54f10]" /></span>
+              <span className="absolute -left-[36px] top-1 flex h-[18px] w-[18px] items-center justify-center rounded-full border-2 border-[#E74E44] bg-[#000101] lg:-left-[48px]" aria-hidden="true"><span className="h-1 w-1 rounded-full bg-[#E74E44]" /></span>
               <div className="flex flex-wrap items-baseline justify-between gap-x-5 gap-y-2">
                 <h2 className="text-lg font-semibold leading-snug sm:text-xl xl:text-2xl">{experience.company}<span className="mx-2 text-white/55"> | </span>{experience.role}</h2>
-                <time className="shrink-0 text-base font-semibold text-[#e54f10] xl:text-lg">{experience.period}</time>
+                <time className="shrink-0 text-base font-semibold text-[#E74E44] xl:text-lg">{experience.period}</time>
               </div>
               <div className="mt-5 flex flex-wrap gap-2">
                 {experience.tags.map((tag) => <span key={tag} className="rounded-full bg-white/10 px-4 py-2 text-sm sm:text-base">{tag}</span>)}
