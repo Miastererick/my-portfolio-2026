@@ -1,0 +1,55 @@
+.home-intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #fff;
+  pointer-events: auto;
+  animation: home-intro-exit 0.9s cubic-bezier(0.76, 0, 0.24, 1) 4.1s both;
+}
+
+.home-intro-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #E74E44;
+  font-family: "Adobe Jenson Pro", Georgia, serif;
+  font-size: clamp(64px, 7.7vw, 148px);
+  line-height: 0.8;
+  letter-spacing: -0.065em;
+  white-space: nowrap;
+}
+
+.home-intro-name span:last-child { margin-top: 0.08em; }
+
+.home-intro-curtain {
+  position: absolute;
+  inset: 0;
+  background: #080808;
+  will-change: transform;
+  animation: home-intro-push 3s cubic-bezier(0.65, 0, 0.25, 1) 0.2s both;
+}
+
+/* Short rests keep the paced reveal without the illustrated character. */
+@keyframes home-intro-push {
+  0% { transform: translateX(0); }
+  25%, 39% { transform: translateX(33%); }
+  64%, 77% { transform: translateX(61%); }
+  100% { transform: translateX(101%); }
+}
+
+@keyframes home-intro-exit {
+  from { transform: translateY(0); }
+  to { transform: translateY(101%); }
+}
+
+@media (max-width: 700px) {
+  .home-intro-name { font-size: clamp(56px, 15vw, 100px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-intro { display: none; animation: none; }
+  .home-intro * { animation: none; }
+}

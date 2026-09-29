@@ -437,6 +437,36 @@ html .project-row-link:focus-visible {
   overflow: hidden;
 }
 
+.portfolio-stage-info,
+.portfolio-stage-index,
+.portfolio-stage-rail,
+.portfolio-stage-counter,
+.portfolio-stage-counter-number,
+.portfolio-stage-palette {
+  transition: opacity .7s ease, translate .75s cubic-bezier(.2,.8,.2,1);
+}
+
+.portfolio-stage.is-intro-pending :is(
+  .portfolio-stage-info,
+  .portfolio-stage-index,
+  .portfolio-stage-rail,
+  .portfolio-stage-counter,
+  .portfolio-stage-counter-number,
+  .portfolio-stage-palette
+) {
+  opacity: 0;
+  translate: 0 14px;
+  pointer-events: none;
+}
+
+.portfolio-stage.is-intro-pending .portfolio-stage-slide {
+  pointer-events: none !important;
+}
+
+.portfolio-stage.is-intro-pending:not(.is-card-entering) .portfolio-stage-deck {
+  opacity: 0;
+}
+
 .portfolio-stage-rail {
   position: fixed;
   z-index: 10;
@@ -494,7 +524,7 @@ html .project-row-link:focus-visible {
   margin: auto 0;
   font-size: 11px;
   line-height: 1.55;
-  animation: portfolioFactsIn .38s cubic-bezier(.2,.8,.2,1);
+  animation: portfolioFactsIn 1.2s cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes portfolioFactsIn {
@@ -532,7 +562,7 @@ html .project-row-link:focus-visible {
   position: absolute;
   top: 50%;
   left: 47.5%;
-  width: 31.36%;
+  width: 33%;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -681,6 +711,22 @@ html .project-row-link:focus-visible {
 }
 
 .portfolio-stage-index-inner { display: flex; flex-direction: column; padding: 18px clamp(22px, 4vw, 80px) 18px 20px; }
+.portfolio-stage-palette {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  right: clamp(22px, 2.5vw, 64px);
+  display: flex;
+  gap: 3px;
+  transform: translateY(-50%);
+}
+.portfolio-stage-palette-swatch {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex: none;
+  transition: background-color .35s ease;
+}
 .portfolio-stage-index-list { position: relative; min-height: 0; overflow: hidden; flex: 1; margin-top: 18px; }
 .portfolio-stage-index-list::-webkit-scrollbar { display: none; }
 .portfolio-stage-index-track { position: absolute; inset-inline: 0; top: 50%; will-change: transform; }
@@ -710,11 +756,13 @@ html .project-row-link:focus-visible {
 
 @media (max-width: 900px) {
   .portfolio-stage { grid-template-columns: minmax(0, 1fr) 220px; }
+  .portfolio-stage-palette { top: 18px; right: 22px; gap: 2px; transform: none; }
+  .portfolio-stage-palette-swatch { width: 6px; height: 6px; }
   .portfolio-stage-info,
   .portfolio-stage-rail,
   .portfolio-stage-counter,
   .portfolio-stage-counter-number { display: none; }
-  .portfolio-stage-slide { left: calc((100% - 220px) / 2); width: calc(78% - 172px); }
+  .portfolio-stage-slide { left: calc((100% - 220px) / 2); width: calc(70.2% - 154.8px); }
 }
 
 @media (max-width: 650px) {
@@ -723,6 +771,7 @@ html .project-row-link:focus-visible {
   .portfolio-stage { height: auto; overflow: visible; }
   .portfolio-stage-index { position: sticky; z-index: 20; top: 68px; order: -1; background: rgb(237 237 237 / 94%); backdrop-filter: blur(12px); }
   .portfolio-stage-index-inner { position: static; height: auto; padding: 13px 18px; }
+  .portfolio-stage-palette { top: 13px; right: 18px; }
   .portfolio-stage-index-heading { margin: 0; }
   .portfolio-stage-index-list { overflow-x: auto; margin-top: 10px; }
   .portfolio-stage-index-track { position: static; width: max-content; transform: none !important; }
@@ -741,11 +790,23 @@ html .project-row-link:focus-visible {
   .portfolio-stage-slide,
   .portfolio-stage-slide:nth-child(n) { position: relative; top: auto; left: auto; width: 100%; min-height: 66dvh; padding: 6vh 5vw; visibility: visible; transform: none; scroll-margin-top: 155px; pointer-events: auto; }
   .portfolio-stage-slide:nth-child(n) { align-items: center; }
-  .portfolio-stage-skew { width: 100%; }
+  .portfolio-stage-skew { width: 90%; }
   .portfolio-stage-artwork-arrow { opacity: 1; transform: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .portfolio-stage.is-intro-pending :is(
+    .portfolio-stage-info,
+    .portfolio-stage-index,
+    .portfolio-stage-rail,
+    .portfolio-stage-counter,
+    .portfolio-stage-counter-number,
+    .portfolio-stage-palette
+  ) {
+    opacity: 1;
+    translate: none;
+    pointer-events: auto;
+  }
   .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork:hover,
   .portfolio-stage-slide:not(.is-centered) .portfolio-stage-artwork:focus-visible { translate: none; }
   .portfolio-stage-facts,

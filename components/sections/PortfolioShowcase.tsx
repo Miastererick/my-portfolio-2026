@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { openProjectWithCurtain } from "@/components/PortfolioRouteCurtain";
+import { HOME_INTRO_DONE_EVENT, hasHomeIntroPlayed } from "@/components/HomeIntro";
 import { createCardCurl } from "./portfolioCardCurl";
 
 type ShowcaseItem = {
@@ -13,6 +14,7 @@ type ShowcaseItem = {
   summary: string;
   role: string;
   category: string;
+  palette: [string, string, string];
   cover: string | null;
 };
 
@@ -26,7 +28,25 @@ const FAST_WHEEL_IMPULSE = 260;
 const FAST_WHEEL_MIN_EVENT = 45;
 const FAST_SNAP_PULL = 0.1;
 const FAST_SETTLE_DURATION = 0.6;
+const LOOP_COPIES = 3;
+const wrap = (value: number, count: number) => ((value % count) + count) % count;
+const loopStep = (gallery: HTMLDivElement, count: number) =>
+  (gallery.scrollHeight - gallery.clientHeight) / (LOOP_COPIES * count);
+const loopPosition = (gallery: HTMLDivElement, count: number) =>
+  gallery.scrollTop / loopStep(gallery, count) - count;
+
+function recenterLoop(gallery: HTMLDivElement, count: number) {
+  const position = loopPosition(gallery, count);
+  if (position >= 0 && position < count) return position;
+  const centered = wrap(position, count);
+  gallery.dataset.loopRecentering = "true";
+  gallery.scrollTop = (count + centered) * loopStep(gallery, count);
+  requestAnimationFrame(() => { delete gallery.dataset.loopRecentering; });
+  return centered;
+}
+
 export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
+  const [introPending] = useState(() => !hasHomeIntroPlayed());
   const [active, setActive] = useState(0);
   const [progress, setProgress] = useState(0);
   const sections = useRef<(HTMLElement | null)[]>([]);
@@ -43,10 +63,9 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
         if (!gallery) return;
         const mobile = window.innerWidth <= 650;
         if (!mobile) {
-          const maxScroll = gallery.scrollHeight - gallery.clientHeight;
-          const position = maxScroll > 0 ? (gallery.scrollTop / maxScroll) * (items.length - 1) : 0;
+          const position = items.length > 0 ? wrap(loopPosition(gallery, items.length), items.length) : 0;
           setProgress(position);
-          setActive(Math.round(position));
+          setActive(Math.round(position) % items.length);
           return;
         }
         const center = mobile
@@ -72,16 +91,28 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
         setActive(Math.round(position));
       });
     };
-    update();
     const gallery = artworks.current;
+    const initializeLoop = () => {
+      if (!gallery || window.innerWidth <= 650 || items.length === 0 || gallery.dataset.loopReady) return;
+      gallery.scrollTop = items.length * loopStep(gallery, items.length);
+      gallery.dataset.loopReady = "true";
+    };
+    initializeLoop();
+    update();
+    const handleScrollEnd = () => {
+      if (gallery && window.innerWidth > 650 && items.length > 0) recenterLoop(gallery, items.length);
+    };
+    const handleResize = () => { initializeLoop(); update(); };
     gallery?.addEventListener("scroll", update, { passive: true });
+    gallery?.addEventListener("scrollend", handleScrollEnd);
     window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    window.addEventListener("resize", handleResize);
     return () => {
       cancelAnimationFrame(frame);
       gallery?.removeEventListener("scroll", update);
+      gallery?.removeEventListener("scrollend", handleScrollEnd);
       window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      window.removeEventListener("resize", handleResize);
     };
   }, [items]);
 
@@ -98,28 +129,39 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
 
     void import("gsap").then(({ gsap }) => {
       if (disposed) return;
+      const positionProxy = { value: 0 };
 
       const moveToTarget = (duration = WHEEL_DECAY_DURATION) => {
         const gallery = artworks.current;
         if (!gallery || targetPosition === null) return;
 
-        const maxScroll = gallery.scrollHeight - gallery.clientHeight;
-        const step = maxScroll / Math.max(1, items.length - 1);
+        const step = loopStep(gallery, items.length);
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        gsap.to(gallery, {
-          scrollTop: targetPosition * step,
+        gsap.to(positionProxy, {
+          value: targetPosition,
           duration: reducedMotion ? 0 : duration,
           ease: "power3.out",
           overwrite: true,
+          onUpdate: () => {
+            gallery.scrollTop = (items.length + wrap(positionProxy.value, items.length)) * step;
+          },
+          onComplete: () => {
+            positionProxy.value = wrap(positionProxy.value, items.length);
+            targetPosition = positionProxy.value;
+          },
         });
       };
 
       const switchOnWheel = (event: WheelEvent) => {
         const gallery = artworks.current;
         if (!gallery || window.innerWidth <= 650 || event.ctrlKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+        if (!hasHomeIntroPlayed() || deck.current?.parentElement?.classList.contains("is-intro-pending")) {
+          event.preventDefault();
+          return;
+        }
         event.preventDefault();
 
-        // Pixel-mode trackpads use about 100 px per card. Line/page wheels keep
+        // Pixel-mode trackpads use about 150 px per card. Line/page wheels keep
         // their magnitude, so faster gestures can advance several cards at once.
         const delta = event.deltaMode === 0
           ? event.deltaY
@@ -138,16 +180,18 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
         else fastGesture ||= fastInput;
 
         const direction = Math.sign(delta);
-        const maxScroll = gallery.scrollHeight - gallery.clientHeight;
-        const step = maxScroll / Math.max(1, items.length - 1);
-        const currentPosition = step > 0 ? gallery.scrollTop / step : 0;
+        gsap.killTweensOf(gallery, "scrollTop");
+        const currentPosition = gsap.isTweening(positionProxy)
+          ? positionProxy.value
+          : wrap(loopPosition(gallery, items.length), items.length);
+        if (!gsap.isTweening(positionProxy)) positionProxy.value = currentPosition;
         const changedDirection = direction !== lastWheelDirection;
         if (changedDirection) {
           accumulated = 0;
           targetPosition = fastGesture ? currentPosition : Math.round(currentPosition);
-          gsap.killTweensOf(gallery, "scrollTop");
+          gsap.killTweensOf(positionProxy);
           lastWheelDirection = direction;
-        } else if (newGesture || !gsap.isTweening(gallery) || targetPosition === null) {
+        } else if (newGesture || !gsap.isTweening(positionProxy) || targetPosition === null) {
           targetPosition = fastGesture ? currentPosition : Math.round(currentPosition);
         }
         clearTimeout(resetTimer);
@@ -166,7 +210,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
 
         if (fastGesture) {
           accumulated = 0;
-          const freePosition = Math.max(0, Math.min(items.length - 1, (targetPosition ?? currentPosition) + delta / FAST_WHEEL_DISTANCE));
+          const freePosition = (targetPosition ?? currentPosition) + delta / FAST_WHEEL_DISTANCE;
           const nearestCard = Math.round(freePosition);
           targetPosition = freePosition + (nearestCard - freePosition) * FAST_SNAP_PULL;
           moveToTarget();
@@ -176,13 +220,16 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
         accumulated += delta;
         const steps = Math.trunc(accumulated / WHEEL_SWITCH_THRESHOLD);
         if (steps === 0) return;
-        targetPosition = Math.max(0, Math.min(items.length - 1, Math.round(targetPosition ?? currentPosition) + steps));
+        targetPosition = Math.round(targetPosition ?? currentPosition) + steps;
         accumulated -= steps * WHEEL_SWITCH_THRESHOLD;
         moveToTarget();
       };
       document.addEventListener("wheel", switchOnWheel, { passive: false });
       removeWheel = () => document.removeEventListener("wheel", switchOnWheel);
-      cancelAnimation = () => { if (artworks.current) gsap.killTweensOf(artworks.current, "scrollTop"); };
+      cancelAnimation = () => {
+        gsap.killTweensOf(positionProxy);
+        if (artworks.current) gsap.killTweensOf(artworks.current, "scrollTop");
+      };
     });
     return () => {
       disposed = true;
@@ -257,9 +304,13 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
         const velocityProxy = { skew: 0 };
         const curls = reducedMotion ? [] : cards.map(createCardCurl);
         let deckPosition = 0;
+        let lastMotionAt = performance.now();
         function renderCurl() {
           const amount = velocityProxy.skew / 12;
-          curls.forEach((curl, index) => curl?.render(amount, Math.abs(index - deckPosition) < 3.5));
+          curls.forEach((curl, index) => {
+            const distance = wrap(index - deckPosition + cards.length / 2, cards.length) - cards.length / 2;
+            curl?.render(amount, Math.abs(distance) < 3.5);
+          });
         }
         const setVelocitySkew = gsap.quickSetter(surfaces, "skewX", "deg");
         const clampVelocitySkew = gsap.utils.clamp(-12, 12);
@@ -276,7 +327,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
           const width = gallery.clientWidth;
           const height = gallery.clientHeight;
           cards.forEach((card, index) => {
-            const distance = index - position;
+            const distance = wrap(index - position + cards.length / 2, cards.length) - cards.length / 2;
             const depth = Math.abs(distance);
             if (depth >= 3.5) {
               card.style.visibility = "hidden";
@@ -309,6 +360,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
             // position, angle and stacking order to drift apart during each switch.
             gsap.set(card, values);
           });
+          renderCurl();
         }
 
         function updateVelocitySkew(velocity: number) {
@@ -320,6 +372,8 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
 
           velocityProxy.skew = skew;
           velocityTween?.kill();
+          setVelocitySkew(skew);
+          renderCurl();
           velocityTween = gsap.to(velocityProxy, {
             skew: 0,
             duration: 0.8,
@@ -338,42 +392,85 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
           trigger: gallery,
           start: 0,
           end: () => Math.max(1, gallery.scrollHeight - gallery.clientHeight),
-          onUpdate: (self) => {
-            placeCards(self.progress * (cards.length - 1));
-            updateVelocitySkew(self.getVelocity());
+          onUpdate: () => {
+            const position = loopPosition(gallery, cards.length);
+            const now = performance.now();
+            // Measure travel around the loop, not the scroll container's reset.
+            // 11.99 -> 0.01 is +0.02 cards, never a fast reverse scroll.
+            const distance = wrap(position - deckPosition + cards.length / 2, cards.length) - cards.length / 2;
+            const velocity = distance * loopStep(gallery, cards.length) * 1000 / Math.max(16, now - lastMotionAt);
+            lastMotionAt = now;
+            placeCards(position);
+            updateVelocitySkew(velocity);
           },
-          onRefresh: (self) => {
+          onRefresh: () => {
             velocityProxy.skew = 0;
+            lastMotionAt = performance.now();
             setVelocitySkew(0);
             renderCurl();
-            placeCards(self.progress * (cards.length - 1));
+            placeCards(loopPosition(gallery, cards.length));
           },
         });
-        placeCards(trigger.progress * (cards.length - 1));
+        placeCards(loopPosition(gallery, cards.length));
 
-        const openingIndex = Math.round(trigger.progress * (cards.length - 1));
+        const openingIndex = Math.round(wrap(loopPosition(gallery, cards.length), cards.length)) % cards.length;
         const openingCards = cards
           .map((card, index) => ({ card, index }))
           .filter(({ index }) => Math.abs(index - openingIndex) < 3.5)
           .sort((a, b) => Math.abs(a.index - openingIndex) - Math.abs(b.index - openingIndex))
           .map(({ card }) => card.querySelector<HTMLElement>(".portfolio-stage-artwork"))
           .filter((artwork): artwork is HTMLElement => artwork !== null);
-        const entrance = reducedMotion ? null : gsap.fromTo(openingCards,
-          { autoAlpha: 0, y: 38, scale: 0.94 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.9,
-            stagger: 0.09,
-            delay: 0.08,
-            ease: "power3.out",
-            onComplete: () => gsap.set(openingCards, { clearProps: "opacity,visibility,transform" }),
-          },
-        );
+        let entrance: gsap.core.Tween | gsap.core.Timeline | null = null;
+        const pendingIntro = !reducedMotion && stage?.classList.contains("is-intro-pending") === true && openingIndex === 0;
+        const startEntrance = () => {
+          if (reducedMotion) {
+            stage?.classList.remove("is-intro-pending");
+            return;
+          }
+          if (entrance) return;
+          if (pendingIntro) {
+            const finalIndex = Math.min(4, cards.length - 1);
+            const scrollStep = loopStep(gallery, cards.length);
+            gsap.set(cardDeck, { autoAlpha: 0 });
+            stage?.classList.add("is-card-entering");
+            const timeline = gsap.timeline({
+              onComplete: () => {
+                placeCards(finalIndex);
+                setProgress(finalIndex);
+                setActive(finalIndex);
+                gsap.set(openingCards, { clearProps: "opacity,visibility,transform" });
+                gsap.set(cardDeck, { clearProps: "opacity,visibility" });
+                stage?.classList.remove("is-intro-pending");
+                stage?.classList.remove("is-card-entering");
+              },
+            });
+            timeline.to(cardDeck, { autoAlpha: 1, duration: 0.25, ease: "power1.out" }, 0);
+            timeline.to(gallery, {
+              scrollTop: (cards.length + finalIndex) * scrollStep,
+              duration: 0.55,
+              ease: "power3.out",
+            }, 0);
+            entrance = timeline;
+          } else {
+            stage?.classList.remove("is-intro-pending");
+            stage?.classList.remove("is-card-entering");
+            entrance = gsap.fromTo(openingCards,
+              { autoAlpha: 0, y: 38, scale: 0.94 },
+              {
+                autoAlpha: 1, y: 0, scale: 1, duration: 0.9, stagger: 0.09,
+                ease: "power3.out",
+                onComplete: () => gsap.set(openingCards, { clearProps: "opacity,visibility,transform" }),
+              });
+          }
+        };
+        if (pendingIntro && !hasHomeIntroPlayed()) window.addEventListener(HOME_INTRO_DONE_EVENT, startEntrance, { once: true });
+        else startEntrance();
 
         return () => {
+          window.removeEventListener(HOME_INTRO_DONE_EVENT, startEntrance);
           entrance?.kill();
+          stage?.classList.remove("is-card-entering");
+          gsap.set(cardDeck, { clearProps: "opacity,visibility" });
           gsap.set(openingCards, { clearProps: "opacity,visibility,transform" });
           stage?.removeEventListener("pointermove", updatePointerTilt);
           stage?.removeEventListener("pointerleave", resetPointerTilt);
@@ -393,22 +490,57 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
         };
       });
       motion.add("(max-width: 650px)", () => {
-        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          stage?.classList.remove("is-intro-pending");
+          stage?.classList.remove("is-card-entering");
+          return;
+        }
         const firstCard = cards[0]?.querySelector<HTMLElement>(".portfolio-stage-artwork");
         if (!firstCard) return;
-        const entrance = gsap.fromTo(firstCard,
-          { autoAlpha: 0, y: 24, scale: 0.96 },
-          {
-            autoAlpha: 1,
-            y: 0,
-            scale: 1,
-            duration: 0.75,
-            ease: "power3.out",
-            onComplete: () => gsap.set(firstCard, { clearProps: "opacity,visibility,transform" }),
-          },
-        );
+        const pendingIntro = stage?.classList.contains("is-intro-pending") === true;
+        let entrance: gsap.core.Tween | gsap.core.Timeline | null = null;
+        const startEntrance = () => {
+          if (entrance) return;
+          stage?.classList.add("is-card-entering");
+          const finishEntrance = () => {
+            if (pendingIntro) {
+              const finalIndex = Math.min(4, cards.length - 1);
+              setProgress(finalIndex);
+              setActive(finalIndex);
+            }
+            gsap.set(firstCard, { clearProps: "opacity,visibility,transform" });
+            gsap.set(cardDeck, { clearProps: "opacity,visibility" });
+            stage?.classList.remove("is-intro-pending");
+            stage?.classList.remove("is-card-entering");
+          };
+          if (pendingIntro) {
+            gsap.set(cardDeck, { autoAlpha: 0 });
+            const timeline = gsap.timeline({ onComplete: finishEntrance });
+            timeline.to(cardDeck, { autoAlpha: 1, duration: 0.25, ease: "power1.out" }, 0);
+            const scrollProxy = { y: window.scrollY };
+            const finalCard = cards[Math.min(4, cards.length - 1)];
+            const bounds = finalCard.getBoundingClientRect();
+            const destination = bounds.top + window.scrollY + bounds.height / 2 - window.innerHeight / 2;
+            timeline.to(scrollProxy, {
+              y: Math.max(0, destination),
+              duration: 0.95,
+              ease: "power3.out",
+              onUpdate: () => window.scrollTo({ top: scrollProxy.y, behavior: "instant" }),
+            }, 0);
+            entrance = timeline;
+          } else {
+            entrance = gsap.fromTo(firstCard,
+              { autoAlpha: 0, y: 24, scale: 0.96 },
+              { autoAlpha: 1, y: 0, scale: 1, duration: 0.75, ease: "power3.out", onComplete: finishEntrance });
+          }
+        };
+        if (!hasHomeIntroPlayed()) window.addEventListener(HOME_INTRO_DONE_EVENT, startEntrance, { once: true });
+        else startEntrance();
         return () => {
-          entrance.kill();
+          window.removeEventListener(HOME_INTRO_DONE_EVENT, startEntrance);
+          entrance?.kill();
+          stage?.classList.remove("is-card-entering");
+          gsap.set(cardDeck, { clearProps: "opacity,visibility" });
           gsap.set(firstCard, { clearProps: "opacity,visibility,transform" });
         };
       });
@@ -425,7 +557,18 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
   function goTo(index: number) {
     const gallery = artworks.current;
     if (gallery && window.innerWidth > 650) {
-      gallery.scrollTo({ top: ((gallery.scrollHeight - gallery.clientHeight) * index) / Math.max(1, items.length - 1), behavior: "smooth" });
+      const current = loopPosition(gallery, items.length);
+      const forward = wrap(index - current, items.length);
+      const distance = forward <= items.length / 2 ? forward : forward - items.length;
+      void import("gsap").then(({ gsap }) => {
+        gsap.to(gallery, {
+          scrollTop: (items.length + current + distance) * loopStep(gallery, items.length),
+          duration: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 0.85,
+          ease: "power3.inOut",
+          overwrite: true,
+          onComplete: () => recenterLoop(gallery, items.length),
+        });
+      });
     } else {
       sections.current[index]?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
@@ -433,7 +576,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
   }
 
   return (
-    <main className="portfolio-stage">
+    <main className={`portfolio-stage ${introPending ? "is-intro-pending" : ""}`}>
       <div className="portfolio-stage-rail" aria-hidden="true">
         <span className="portfolio-stage-monogram">WORK</span>
         <span>Selected work · 2026</span>
@@ -452,7 +595,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
       </aside>
 
       <div ref={artworks} className="portfolio-stage-artworks" tabIndex={0} aria-label="滚动浏览项目封面">
-        <div className="portfolio-stage-scroll-track" style={{ height: `calc(${Math.max(0, items.length - 1) * 68}dvh + 100dvh - 76px)` }} aria-hidden="true" />
+        <div className="portfolio-stage-scroll-track" style={{ height: `calc(${LOOP_COPIES * items.length * 68}dvh + 100dvh - 76px)` }} aria-hidden="true" />
       </div>
 
       <div ref={deck} className="portfolio-stage-deck">
@@ -461,7 +604,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
             key={item.slug}
             ref={(node) => { sections.current[index] = node; }}
             data-index={index}
-            className={`portfolio-stage-slide ${active === index ? "is-active" : ""} ${Math.abs(progress - index) < 0.08 ? "is-centered" : ""}`}
+            className={`portfolio-stage-slide ${active === index ? "is-active" : ""} ${Math.abs(wrap(index - progress + items.length / 2, items.length) - items.length / 2) < 0.08 ? "is-centered" : ""}`}
             aria-label={`${index + 1}. ${item.title}`}
           >
             <div className="portfolio-stage-skew">
@@ -472,7 +615,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
                 onClick={(event) => {
                   if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
                   event.preventDefault();
-                  if (window.innerWidth > 650 && Math.abs(progress - index) >= 0.08) {
+                  if (window.innerWidth > 650 && Math.abs(wrap(index - progress + items.length / 2, items.length) - items.length / 2) >= 0.08) {
                     goTo(index);
                   } else {
                     openProjectWithCurtain(`/projects/${item.slug}`, item.title, item.english);
@@ -487,7 +630,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
                       fill
                       sizes="(max-width: 700px) 90vw, (max-width: 1200px) 52vw, 46vw"
                       className="object-cover"
-                      priority={index === 0}
+                      priority={index === 0 || index === 4}
                     />
                   </span>
                 ) : (
@@ -532,7 +675,7 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
                       type="button"
                       tabIndex={copy === 1 ? 0 : -1}
                       onClick={() => goTo(index)}
-                      className={`portfolio-stage-index-item ${copy === 1 && active === index ? "is-active" : ""}`}
+                      className={`portfolio-stage-index-item ${active === index ? "is-active" : ""}`}
                       aria-current={copy === 1 && active === index ? "true" : undefined}
                     >
                       <span className="portfolio-stage-index-count">{String(index + 1).padStart(2, "0")}</span>
@@ -542,6 +685,21 @@ export function PortfolioShowcase({ items }: { items: ShowcaseItem[] }) {
                 </div>
               ))}
             </div>
+          </div>
+          <div
+            className="portfolio-stage-palette"
+            role="img"
+            aria-label={`${activeItem.title}配色：${activeItem.palette.join("、")}`}
+          >
+            {activeItem.palette.map((color, index) => (
+              <span
+                key={index}
+                className="portfolio-stage-palette-swatch"
+                style={{ backgroundColor: color }}
+                title={color}
+                aria-hidden="true"
+              />
+            ))}
           </div>
           <Link
             className="portfolio-stage-current-link"

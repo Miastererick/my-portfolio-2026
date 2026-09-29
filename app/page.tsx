@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/layout/TopNav";
+import { HomeIntro } from "@/components/HomeIntro";
 import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
 import { categories, coverFor, projects } from "@/lib/portfolio-data";
 import { siteContent } from "@/lib/site-content";
@@ -17,11 +18,13 @@ export default function HomePage() {
     summary: project.summary,
     role: project.role ?? "设计",
     category: categories.find((category) => category.id === project.category)?.title ?? "项目",
+    palette: project.palette,
     cover: coverFor(project) ?? null,
   }));
 
   return (
     <div className="portfolio-showcase min-h-dvh">
+      <HomeIntro />
       <TopNav />
       <PortfolioShowcase items={items} />
     </div>

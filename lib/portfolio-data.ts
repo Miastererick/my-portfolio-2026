@@ -13,6 +13,7 @@ export type CategoryId = (typeof categories)[number]["id"];
 export type PortfolioProject = {
   slug: string;
   category: CategoryId;
+  palette: [string, string, string];
   title: string;
   english?: string;
   summary: string;
@@ -45,6 +46,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "comfyui-workflow",
     category: "ai",
+    palette: ["#D5B62A", "#3B7395", "#191A22"],
     title: "ComfyUI 本地化工作部署",
     english: "AI Design Workflow",
     summary: "将 ComfyUI 与 Midjourney 引入设计生产流程，搭建可复用的 AI 视觉资产工作流，支持非标素材的快速探索、稳定迭代与团队协作。",
@@ -65,6 +67,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "ikea-studio",
     category: "ai",
+    palette: ["#BA9C7B", "#D8C9B7", "#342F2B"],
     title: "IKEA Studio 2026",
     english: "AIGC Furniture Concept",
     summary: "以 IKEA Studio 2026 概念项目为载体，探索生成式 AI 在家具造型、材质表现、室内场景与电商视觉中的应用。",
@@ -84,6 +87,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "asian-games",
     category: "business",
+    palette: ["#5A8D91", "#65B5A0", "#202B32"],
     title: "杭州亚运会保电指挥平台项目",
     english: "Hangzhou Asian Games Power Protection Command Platform",
     summary: "负责整体大屏的视觉风格定义、FUI（科幻用户界面）控件库搭建、2D数据图表设计、3D场景视觉协同以及整体动效规划。",
@@ -103,6 +107,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "substation-intelligence",
     category: "business",
+    palette: ["#E74E44", "#B8BEC4", "#202329"],
     title: "本体智能·变电站智能运维管理平台",
     english: "Ontology Intelligence · Substation Intelligent Operation",
     summary: "围绕精细化分区监控与生成式交互，构建能够按需展示数据的变电站智能运维平台。",
@@ -124,6 +129,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "hainan-grid",
     category: "business",
+    palette: ["#14B99C", "#7BDDD0", "#1A272B"],
     title: "海南电网计量大楼三维可视化",
     english: "Hainan Power Grid Metering Building 3D Visualization",
     summary: "围绕海南电网计量大楼构建三维可视化体验，以建筑场景、设备信息和数据界面呈现楼宇空间与业务状态。",
@@ -145,6 +151,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "energy-platform",
     category: "business",
+    palette: ["#2E84C5", "#7188A9", "#1B2030"],
     title: "企业中台管理",
     english: "Energy Project Management Platform",
     summary: "面向能源业务团队的内部管理平台，整合资源、场景与数据管理，并通过统一界面支持日常业务维护。",
@@ -166,6 +173,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "qinghai-control-room",
     category: "business",
+    palette: ["#9EAAB1", "#D7DBDD", "#303840"],
     title: "青海电力机房可视化项目",
     english: "Qinghai Power Control Room",
     summary: "负责可视化机房项目的全部界面设计，并在原有交互原型基础上优化使用体验。",
@@ -182,6 +190,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "design-system",
     category: "engineering",
+    palette: ["#C650C0", "#51CBE4", "#11131E"],
     title: "设计工程化 · 可复用组件库",
     english: "Design Engineering & Component Building",
     summary: "从 0 到 1 构建可复用的设计资产中台，制定统一视觉规范与资产调用逻辑，支撑高频项目交付。",
@@ -202,6 +211,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "smart-campus",
     category: "visual",
+    palette: ["#2CA6A1", "#566E87", "#202831"],
     title: "智慧校园新范式",
     english: "Digital Campus",
     summary: "以数字孪生逻辑连接真实世界、业务机构与数字空间，探索校园场景的可视化呈现。",
@@ -221,6 +231,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "visual-experiments",
     category: "visual",
+    palette: ["#11BBEC", "#4079AD", "#455165"],
     title: "3D 可视化与动态设计",
     english: "3D Visualization Design",
     summary: "跨越静态界面与空间视觉的探索，汇集三维场景、动态叙事与视觉实验。",
@@ -240,6 +251,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "more-visual-work",
     category: "visual",
+    palette: ["#2765C1", "#829DD9", "#10244C"],
     title: "其他视觉项目",
     english: "More Visual Work",
     summary: "汇集圣圆水务集团、电信集团和苏州综合零碳电厂等项目的视觉实践，呈现不同业务场景下的信息与空间表达。",
@@ -259,6 +271,7 @@ export const projects: PortfolioProject[] = [
   {
     slug: "knowledge-sharing",
     category: "other",
+    palette: ["#0B3CC7", "#B4C8F4", "#0A0E19"],
     title: "设计中心 · 技术分享会",
     english: "Knowledge Sharing",
     summary: "将新技术学习与设计实践整理为案例，与团队共同成长。",
