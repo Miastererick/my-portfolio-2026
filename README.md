@@ -36,14 +36,6 @@ npm run dev
 
 项目详情介绍也支持上传后切片展示。将切片按顺序保存到 `public/project-pages/<项目slug>/01.webp`、`02.webp` 等路径，再在项目的 `introSlices` 中登记路径、宽高和替代文本。配置了切片后，详情页用这些图片替代摘要、角色标签和故事正文；未配置时保留文字版。`reviewNotes` 仅供维护时核对推断文案，不会显示在网站上。
 
-## 小小东免费资源导入
-
-作者已授权批量复制免费素材与提示词。运行 `npm run sync:xxd` 可保存免费栏目推荐排序前 1,000 张样图及对应提示词；仅访问匿名公开接口，保留原始来源链接。导入使用固定推荐种子以避免翻页时顺序变化。
-
-索引在 `lib/xxd-resources.json`，压缩预览在 `public/library/xxd/thumbs/`，提示词正文在 `public/library/xxd/prompts/`。预览最长宽 720 px、高 960 px，WebP 格式。提示词仅在详情打开时读取，支持复制。导入按推荐顺序插入现有提示词条目后方，并沿用现有分类、收藏、搜索与排序。
-
-临时下载缓存及失败记录位于 `/tmp/portfolio-xxd-import/`，失败可重跑续传。全部成功后才替换索引，避免发布不完整列表。刷新远程快照前可清理临时缓存；已保存的本地预览会复用。此来源未加入每周 Cookbook 自动同步任务。
-
 ## 图片和字体
 
 网站使用 `public/figma/*.webp`、`public/hero-background.webp` 和 `public/fonts/*.woff2`。完整的原始 PNG、TTF、OTF 保存在本机 `source-assets/`，该目录不进入 Git，也不会随网站发布。请另行保管这份备份。
