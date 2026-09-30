@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { TopNav } from "@/components/layout/TopNav";
 import { HomeIntro } from "@/components/HomeIntro";
 import { PortfolioShowcase } from "@/components/sections/PortfolioShowcase";
-import { categories, coverFor, projects } from "@/lib/portfolio-data";
+import { categories, coverFor } from "@/lib/portfolio-data";
+import { getProjects } from "@/lib/project-store";
 import { siteContent } from "@/lib/site-content";
 
 export const metadata: Metadata = {
@@ -10,7 +11,10 @@ export const metadata: Metadata = {
   description: `浏览${siteContent.ownerName}的全部设计项目与作品。`,
 };
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const projects = await getProjects();
   const items = projects.map((project) => ({
     slug: project.slug,
     title: project.title,

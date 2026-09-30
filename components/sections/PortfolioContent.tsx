@@ -1,7 +1,7 @@
-import { categories, listItemFor, projects, type CategoryId } from "@/lib/portfolio-data";
+import { categories, listItemFor, type CategoryId, type PortfolioProject } from "@/lib/portfolio-data";
 import { ProjectRowList } from "@/components/sections/ProjectRowList";
 
-export function PortfolioContent({ categoryId }: { categoryId: CategoryId }) {
+export function PortfolioContent({ categoryId, projects }: { categoryId: CategoryId; projects: PortfolioProject[] }) {
   return (
     <>
       {categories.filter((category) => category.id === categoryId).map((category) => {

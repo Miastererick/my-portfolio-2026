@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "sync:cookbook": "node scripts/sync-cookbook.mjs",
+    "sync:xxd": "node scripts/sync-xxd.mjs"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",

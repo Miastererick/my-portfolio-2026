@@ -12,6 +12,7 @@ export type CategoryId = (typeof categories)[number]["id"];
 
 export type PortfolioProject = {
   slug: string;
+  cover?: string;
   category: CategoryId;
   palette: [string, string, string];
   title: string;
@@ -313,7 +314,7 @@ const uploadedCovers: Record<string, string> = {
 };
 
 export function coverFor(project: PortfolioProject) {
-  return uploadedCovers[project.slug]
+  return project.cover ?? uploadedCovers[project.slug]
     ?? figmaMedia.find((asset) => asset.node === project.coverNode && asset.name === project.coverName)?.path;
 }
 

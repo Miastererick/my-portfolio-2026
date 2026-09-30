@@ -5,8 +5,11 @@ import { PortfolioFooter } from "@/components/layout/PortfolioFooter";
 import { PortfolioContent } from "@/components/sections/PortfolioContent";
 import { categories, type CategoryId } from "@/lib/portfolio-data";
 import { siteContent } from "@/lib/site-content";
+import { getProjects } from "@/lib/project-store";
 
 type CategoryPageProps = { params: Promise<{ category: string }> };
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return categories.map((category) => ({ category: category.id }));
@@ -23,12 +26,13 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 export default async function CategoryPage({ params }: CategoryPageProps) {
   const { category } = await params;
   if (!categories.some((item) => item.id === category)) notFound();
+  const projects = await getProjects();
 
   return (
     <div className="flex h-dvh flex-col overflow-hidden bg-black">
       <TopNav />
       <main className="flex min-h-0 flex-1 flex-col overflow-hidden pt-[68px] pb-24">
-        <PortfolioContent categoryId={category as CategoryId} />
+        <PortfolioContent categoryId={category as CategoryId} projects={projects} />
       </main>
       <PortfolioFooter placement="fixed" />
     </div>

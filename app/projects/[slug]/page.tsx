@@ -4,18 +4,22 @@ import { notFound } from "next/navigation";
 import { TopNav } from "@/components/layout/TopNav";
 import { PortfolioFooter } from "@/components/layout/PortfolioFooter";
 import { ProjectImageStream } from "@/components/sections/ProjectImageStream";
-import { categories, mediaAssetsFor, projects } from "@/lib/portfolio-data";
+import { categories, mediaAssetsFor } from "@/lib/portfolio-data";
+import { getProjects } from "@/lib/project-store";
 import { siteContent } from "@/lib/site-content";
 import "./project-detail.css";
 
 type ProjectPageProps = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+export const dynamic = "force-dynamic";
+
+export async function generateStaticParams() {
+  return (await getProjects()).map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
+  const projects = await getProjects();
   const project = projects.find((item) => item.slug === slug);
   return project
     ? { title: `${project.title}｜${siteContent.ownerName}作品集`, description: project.summary }
@@ -24,6 +28,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
+  const projects = await getProjects();
   const projectIndex = projects.findIndex((item) => item.slug === slug);
   if (projectIndex < 0) notFound();
 

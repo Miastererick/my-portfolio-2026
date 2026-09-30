@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { dropdownPanelClass, dropdownItemClass, dropdownMotion } from "./dropdown-style";
 
 const PROJECT_ITEMS = [
   { label: "商业项目", href: "/business" },
@@ -13,11 +14,11 @@ const PROJECT_ITEMS = [
   { label: "其他", href: "/other" },
 ] as const;
 
-export function TopNav() {
+export function TopNav({ librarySidebar = false, alignHomeWithSidebar = false }: { librarySidebar?: boolean; alignHomeWithSidebar?: boolean }) {
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
 
   return (
-    <header className="site-header fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-3 px-3 py-2 sm:px-8 sm:py-3">
+    <header style={alignHomeWithSidebar ? { paddingInline: 22 } : undefined} className={`site-header fixed inset-x-0 top-0 z-50 flex w-full items-center justify-between gap-3 px-3 py-2 sm:px-8 sm:py-3 ${librarySidebar ? "site-header--library-sidebar" : ""}`}>
       <div className="flex min-w-0 items-center gap-7">
         <Link
           href="/"
@@ -49,13 +50,16 @@ export function TopNav() {
                 }
               }}
             >
-              <div className="flex items-center gap-1 text-xs sm:text-sm">
+              <div className="site-projects-controls flex items-center gap-1 text-xs sm:text-sm">
                 <Link
                   href="/"
                   onClick={() => setIsProjectsOpen(false)}
-                  className="text-white/70 transition-colors hover:text-white focus-visible:text-white"
+                  aria-label="作品集"
+                  title="作品集"
+                  className="site-nav-link text-white/70 transition-colors hover:text-white focus-visible:text-white"
                 >
-                  作品集
+                  <Image src="/icons/nav-portfolio.svg" alt="" width={24} height={24} className="site-nav-icon" />
+                  <span className="site-nav-label">作品集</span>
                 </Link>
                 <button
                   type="button"
@@ -63,7 +67,7 @@ export function TopNav() {
                   aria-expanded={isProjectsOpen}
                   aria-controls="project-navigation-menu"
                   onClick={() => setIsProjectsOpen((open) => !open)}
-                  className={`cursor-pointer p-1 text-[10px] text-white/45 transition-transform hover:text-white ${isProjectsOpen ? "rotate-180" : ""}`}
+                  className={`site-projects-toggle cursor-pointer p-1 text-[10px] text-white/45 transition-transform hover:text-white ${isProjectsOpen ? "rotate-180" : ""}`}
                 >
                   ▾
                 </button>
@@ -72,19 +76,16 @@ export function TopNav() {
                 {isProjectsOpen && (
                   <motion.ul
                     id="project-navigation-menu"
-                    initial={{ opacity: 0, y: -7, scale: 0.96 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -5, scale: 0.97 }}
-                    transition={{ type: "spring", stiffness: 420, damping: 25, mass: 0.7 }}
+                    {...dropdownMotion}
                     style={{ transformOrigin: "top center" }}
-                    className="absolute left-1/2 top-full z-50 min-w-36 -translate-x-1/2 rounded-lg border border-white/10 bg-[#111] p-2 shadow-xl"
+                    className={`site-projects-dropdown absolute left-1/2 top-full z-50 -translate-x-1/2 ${dropdownPanelClass}`}
                   >
                     {PROJECT_ITEMS.map(({ label, href }) => (
                       <li key={label}>
                         <Link
                           href={href}
                           onClick={() => setIsProjectsOpen(false)}
-                          className="block rounded-md px-3 py-2 text-xs text-white/70 transition-colors hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white sm:text-sm"
+                          className={dropdownItemClass}
                         >
                           {label}
                         </Link>
@@ -96,8 +97,17 @@ export function TopNav() {
             </div>
           </li>
           <li>
-            <Link href="/library" className="text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm">创作资源</Link>
+            <Link href="/library" aria-label="创作资源" title="创作资源" className="site-nav-link text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm">
+              <Image src="/icons/nav-library.svg" alt="" width={24} height={24} className="site-nav-icon" />
+              <span className="site-nav-label">创作资源</span>
+            </Link>
           </li>
+          {process.env.NODE_ENV === "development" && <li>
+            <Link href="/admin" aria-label="管理项目" title="管理项目" className="site-nav-link text-xs text-white/70 transition-colors hover:text-white focus-visible:text-white sm:text-sm">
+              <Image src="/icons/nav-admin.svg" alt="" width={24} height={24} className="site-nav-icon" />
+              <span className="site-nav-label">管理项目</span>
+            </Link>
+          </li>}
           </ul>
         </nav>
       </div>

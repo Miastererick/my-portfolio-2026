@@ -2,7 +2,7 @@
 
 以项目为核心的个人设计作品集，记录从视觉探索、商业落地到 AI 工作流与设计工程化的实践。首页直接展示作品集卡片，项目分类列表和独立详情页呈现设计思路与作品图集。原 `/portfolio` 地址会跳转到首页。
 
-网站使用 Next.js 构建，支持桌面与手机浏览、亮色与暗色主题，并将项目资料和页面展示分开维护，便于持续补充内容。
+网站使用 Next.js 构建，支持桌面与手机浏览，并将项目资料和页面展示分开维护，便于持续补充内容。
 
 ## 在本地运行
 
@@ -15,10 +15,16 @@ npm run dev
 
 浏览器打开 `http://localhost:3000`。修改代码后，开发页面会自动刷新。发布前用 `npm run build` 检查正式构建。
 
+## 本机项目管理后台
+
+运行网站后打开 `http://localhost:3000/admin`，或在顶部导航点击“管理项目”。可以新增、移除、排序项目，编辑标题、简介、职责和详情文字，并上传封面及详情图片。上传图片会自动转为 WebP；单张上限 30 MB。完成编辑后点击“保存全部更改”。
+
+保存的项目数据位于 `content/projects.json`，图片位于 `public/project-uploads/`。这两个位置都在 Git 版本管理范围内，之后同步 GitHub 时会一起上传。后台只在本机开发模式开放；已发布的网站不会提供编辑入口或写入接口。删除项目时，其已上传图片会保留，避免误删；如需清理可在确认不再引用后手动移除。
+
 ## 修改内容
 
 - 姓名、邮箱、电话、页脚文案：`lib/site-content.ts`
-- 分类名称和项目标题、摘要、详情：`lib/portfolio-data.ts`。新增项目时填写唯一 `slug`、所属 `category`、封面对应的 `coverNode` 和 `coverName`，以及内容图片的 `mediaNodes`。没有正确封面时省略封面映射，页面会显示待补占位，不会自动借用其他图片。
+- 分类名称：`lib/portfolio-data.ts`。项目标题、摘要、详情和图片优先通过本机后台管理。`lib/portfolio-data.ts` 内的原始项目数据是首次使用后台前的初始内容。
 - 顶部导航：`components/layout/TopNav.tsx`
 - 首页作品集：`app/page.tsx`、`components/sections/PortfolioShowcase.tsx`
 - 关于我与分类页：`components/sections/PortfolioContent.tsx`
@@ -29,6 +35,14 @@ npm run dev
 分类列表只接收标题、摘要和封面等展示字段；完整详情仍由项目详情页读取。图片索引保存在 `figma-media.json`。
 
 项目详情介绍也支持上传后切片展示。将切片按顺序保存到 `public/project-pages/<项目slug>/01.webp`、`02.webp` 等路径，再在项目的 `introSlices` 中登记路径、宽高和替代文本。配置了切片后，详情页用这些图片替代摘要、角色标签和故事正文；未配置时保留文字版。`reviewNotes` 仅供维护时核对推断文案，不会显示在网站上。
+
+## 小小东免费资源导入
+
+作者已授权批量复制免费素材与提示词。运行 `npm run sync:xxd` 可保存免费栏目推荐排序前 1,000 张样图及对应提示词；仅访问匿名公开接口，保留原始来源链接。导入使用固定推荐种子以避免翻页时顺序变化。
+
+索引在 `lib/xxd-resources.json`，压缩预览在 `public/library/xxd/thumbs/`，提示词正文在 `public/library/xxd/prompts/`。预览最长宽 720 px、高 960 px，WebP 格式。提示词仅在详情打开时读取，支持复制。导入按推荐顺序插入现有提示词条目后方，并沿用现有分类、收藏、搜索与排序。
+
+临时下载缓存及失败记录位于 `/tmp/portfolio-xxd-import/`，失败可重跑续传。全部成功后才替换索引，避免发布不完整列表。刷新远程快照前可清理临时缓存；已保存的本地预览会复用。此来源未加入每周 Cookbook 自动同步任务。
 
 ## 图片和字体
 

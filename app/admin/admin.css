@@ -1,0 +1,56 @@
+.project-admin{min-height:100vh;background:#ededed;color:#202020;padding:40px clamp(20px,5vw,90px) 80px;font-family:Arial,"PingFang SC",sans-serif}
+.project-admin *{box-sizing:border-box}
+.project-admin button,.project-admin input,.project-admin select,.project-admin textarea{font:inherit}
+.project-admin button{cursor:pointer}
+.project-admin button:disabled{cursor:default;opacity:.45}
+.project-admin-header{display:flex;align-items:end;justify-content:space-between;gap:24px;border-bottom:1px solid #c9c9c9;padding-bottom:30px}
+.project-admin-kicker{color:#e74e44;font-size:11px;letter-spacing:.22em;font-weight:700}
+.project-admin-header h1{font-size:clamp(30px,4vw,52px);line-height:1.1;margin:10px 0}
+.project-admin-header p:last-child{font-size:13px;color:#777}
+.project-admin-header-actions{display:flex;align-items:center;gap:20px;white-space:nowrap}
+.project-admin-header-actions a{color:#333;font-size:13px;text-decoration:underline;text-underline-offset:4px}
+.project-admin-save{border:0;background:#e74e44;color:white;border-radius:3px;padding:13px 22px;font-weight:600!important}
+.project-admin-message{background:#fff;border-left:3px solid #e74e44;padding:12px 16px;margin:20px 0 0;font-size:13px}
+.project-admin-layout{display:grid;grid-template-columns:minmax(230px,310px) minmax(0,1fr);gap:28px;max-width:1500px;margin:32px auto 0;align-items:start}
+.project-admin-list,.project-admin-editor{background:#f8f8f8;border:1px solid #dedede;border-radius:6px}
+.project-admin-list{position:sticky;top:20px;padding:18px}
+.project-admin-list-title{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:14px}
+.project-admin-list-title h2{font-size:15px;font-weight:700}
+.project-admin-list-title h2 span,.project-admin-editor h3 span{font-weight:400;color:#999}
+.project-admin-list-title button{border:0;background:none;color:#e74e44;font-size:12px;font-weight:600}
+.project-admin-list-item{display:flex;align-items:center;border-top:1px solid #e7e7e7}
+.project-admin-list-item.is-active{background:#ececec}
+.project-admin-select{border:0;background:none;display:flex;gap:12px;align-items:center;text-align:left;flex:1;min-width:0;padding:13px 6px}
+.project-admin-select small{color:#999;font-size:11px}
+.project-admin-select span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+.project-admin-reorder{display:flex;gap:2px}
+.project-admin-reorder button{background:none;border:0;color:#777;padding:6px;font-size:14px}
+.project-admin-editor{padding:clamp(20px,3vw,44px)}
+.project-admin-editor-top{display:flex;justify-content:space-between;align-items:start;gap:15px;margin-bottom:30px}
+.project-admin-editor-top h2{font-size:clamp(22px,2vw,30px);margin-top:7px}
+.project-admin-delete{color:#888;background:none;border:0;text-decoration:underline;text-underline-offset:3px;font-size:12px!important}
+.project-admin-fields{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.project-admin-fields label{display:flex;flex-direction:column;gap:8px;font-size:12px;color:#666}
+.project-admin-fields label.wide{grid-column:1/-1}
+.project-admin-fields input,.project-admin-fields select,.project-admin-fields textarea,.project-admin-section input,.project-admin-section textarea{background:#fff;border:1px solid #d6d6d6;border-radius:3px;color:#222;padding:11px 12px;outline-color:#e74e44;width:100%}
+.project-admin-fields input:disabled{background:#eee;color:#888}
+.project-admin-fields label small{font-size:11px;color:#999}
+.project-admin-editor h3{font-size:15px;font-weight:700;margin:36px 0 13px;border-top:1px solid #ddd;padding-top:28px}
+.project-admin-sections{display:grid;gap:12px}
+.project-admin-section{display:grid;grid-template-columns:1fr auto;gap:8px}
+.project-admin-section button{color:#999;border:0;background:transparent;font-size:12px}
+.project-admin-section textarea{grid-column:1/-1}
+.project-admin-secondary,.project-admin-upload{display:inline-flex;align-items:center;justify-content:center;min-height:38px;border:1px solid #c9c9c9;border-radius:3px;background:transparent;padding:8px 13px;font-size:12px!important;color:#333;cursor:pointer}
+.project-admin-upload input{display:none}
+.project-admin-colors,.project-admin-media{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.project-admin-colors label{display:flex;align-items:center;gap:8px;font-size:12px;color:#666}
+.project-admin-colors input{width:38px;height:38px;padding:0;border:0;background:none;cursor:pointer}
+.project-admin-cover{object-fit:cover;max-width:180px;height:auto;max-height:130px}
+.project-admin-hint{font-size:12px;color:#888;margin-bottom:16px}
+.project-admin-images{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+.project-admin-image{position:relative;background:white;border:1px solid #ddd;padding:6px}
+.project-admin-image img{object-fit:cover;width:100%;height:95px}
+.project-admin-image span{position:absolute;top:10px;left:10px;background:#fff;padding:3px 5px;font-size:11px}
+.project-admin-image div{display:flex;justify-content:space-around}
+.project-admin-image button{border:0;background:none;font-size:12px;color:#555;padding:6px}
+@media(max-width:750px){.project-admin-header{align-items:start;flex-direction:column}.project-admin-layout{grid-template-columns:1fr}.project-admin-list{position:static}.project-admin-fields{grid-template-columns:1fr}}

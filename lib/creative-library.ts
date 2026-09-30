@@ -1,3 +1,6 @@
+import cookbookStyles from "@/lib/cookbook-styles.json";
+import xxdResources from "@/lib/xxd-resources.json";
+
 export type CreativeLibraryItem = {
   name: string;
   styleDescription: string;
@@ -6,9 +9,21 @@ export type CreativeLibraryItem = {
   cover?: string;
   width?: number;
   height?: number;
+  promptPath?: string;
   images?: { src: string; width: number; height: number; alt: string }[];
   githubUrl: string;
 };
+
+const cookbookLibrary: CreativeLibraryItem[] = cookbookStyles.map((style) => ({
+  name: style.name,
+  styleDescription: "VigoZhao · AI 视觉风格",
+  description: style.description,
+  useCases: "海报、品牌视觉和创意探索。点击下方链接可查看原始 style.json、横版及竖版大图。",
+  cover: `/library/cookbook/thumbs/${style.slug}.webp`,
+  width: 720,
+  height: 405,
+  githubUrl: `https://github.com/VigoZhao/AI-Visual-Prompt-Cookbook/tree/main/styles/${style.slug}`,
+}));
 
 export const promptLibrary: CreativeLibraryItem[] = [
   {
@@ -47,6 +62,21 @@ export const promptLibrary: CreativeLibraryItem[] = [
     ],
     githubUrl: "https://github.com/Miastererick/ddl-panel-skills/blob/main/ddl-panel-06-prompt-recipe-label-d1-s7-f12/PROMPT.md",
   },
+  {
+    name: "ddl-panel-07-prompt",
+    styleDescription: "地域菜品系列海报",
+    description: "地域菜品海报｜深棕旧纸、产地地标与粗颗粒半调视觉",
+    useCases: "根据菜名或菜品图片，制作统一风格的 3:4 或 16:9 地域菜品系列海报。",
+    cover: "/library/posters/ddl-panel-07-prompt/01.jpg",
+    width: 1086,
+    height: 1448,
+    images: [
+      { src: "/library/posters/ddl-panel-07-prompt/01.jpg", width: 1086, height: 1448, alt: "ddl-panel-07-prompt 地域菜品海报成品图" },
+    ],
+    githubUrl: "https://github.com/Miastererick/ddl-panel-07-prompt/blob/main/SKILL.md",
+  },
+  ...xxdResources,
+  ...cookbookLibrary,
 ];
 
 export const skillLibrary: CreativeLibraryItem[] = [
