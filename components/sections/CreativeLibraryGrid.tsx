@@ -268,8 +268,8 @@ export function CreativeLibraryGrid({ items, section, onPinnedChange }: { items:
             </span>
           ) : null}
           <span className={`${item.cover ? "mt-3 px-1" : "creative-library-name-empty min-h-[76px] rounded-xl px-4 py-3"} creative-library-name block`}>
-            <span className={`block text-[13px] font-medium leading-5 transition-colors duration-200 group-hover:text-[#E74E44] sm:text-sm ${item.cover ? "" : "truncate"}`}>{item.name}</span>
-            <span className={`site-muted-text mt-1 block text-xs leading-5 sm:text-[13px] ${item.cover ? "" : "truncate"}`}>{item.styleDescription.replace(/^小小东\s*·\s*/, "")}</span>
+            <span className={`creative-library-card-title block text-[13px] font-semibold leading-5 transition-colors duration-200 group-hover:text-[#E74E44] sm:text-sm ${item.cover ? "" : "truncate"}`}>{item.name}</span>
+            <span className={`site-muted-text mt-1 block text-xs leading-5 ${item.cover ? "line-clamp-2" : "truncate"}`}>{item.styleDescription.replace(/^小小东\s*·\s*/, "")}</span>
           </span>
         </button>
         <button
@@ -293,7 +293,7 @@ export function CreativeLibraryGrid({ items, section, onPinnedChange }: { items:
     <>
       <div ref={toolbarSentinelRef} className="-mb-px h-px" aria-hidden="true" />
       <header className="mb-7 pt-4 sm:mb-8">
-        <h1 className="text-3xl font-semibold sm:text-5xl">创作资源</h1>
+        <h1 className="text-3xl font-semibold tracking-[-0.025em] sm:text-5xl">创作资源</h1>
       </header>
       <div className="creative-library-toolbar sticky top-[68px] z-40 mb-6 bg-[var(--background)] lg:top-0">
         <div className="w-full">
@@ -314,7 +314,7 @@ export function CreativeLibraryGrid({ items, section, onPinnedChange }: { items:
               triggerClassName={`flex h-full cursor-pointer items-center gap-2 border-b-2 pb-1 text-sm ${moreCategories.includes(category) ? "border-[var(--foreground)] text-[var(--foreground)]" : "site-muted-text border-transparent"}`}
             />}
           </div>
-          <div className="site-border-subtle flex flex-wrap items-center gap-3 border-b py-3">
+          <div className="creative-library-controls site-border-subtle flex flex-wrap items-center gap-3 border-b py-3">
             <nav className="site-border-subtle inline-flex rounded-xl border" style={{ borderRadius: 12 }} aria-label="创作资源类型">
               {LIBRARY_TABS.map((tab) => (
                 <Link key={tab.key} href={tab.href} onClick={() => { setFavoritesOnly(false); setVisibleCount(PAGE_SIZE); }} aria-current={!favoritesOnly && section === tab.key ? "page" : undefined} style={{ borderRadius: 12, ...(!favoritesOnly && section === tab.key ? { backgroundColor: "#121212", color: "#fff", borderColor: "#121212" } : {}) }} className={`creative-library-control site-border-subtle min-h-11 rounded-xl border-r px-4 py-3 text-center text-sm font-medium transition-colors last:border-r-0 sm:px-6 ${!favoritesOnly && section === tab.key ? "" : "site-muted-text hover:bg-black/5 hover:text-[var(--foreground)]"}`}>
@@ -322,7 +322,7 @@ export function CreativeLibraryGrid({ items, section, onPinnedChange }: { items:
                 </Link>
               ))}
             </nav>
-            <div className="min-w-[180px] flex-1">
+            <div className="creative-library-search min-w-[180px] flex-1">
               <label className="sr-only" htmlFor="creative-library-search">搜索创作资源</label>
               <input id="creative-library-search" type="search" value={query} onChange={(event) => { setQuery(event.target.value); setVisibleCount(PAGE_SIZE); }} placeholder="搜索全部创作资源" style={{ borderRadius: 12 }} className="site-border-subtle min-h-11 w-full rounded-xl border bg-transparent px-4 text-sm outline-none placeholder:text-[var(--text-muted)] focus:border-[#E74E44]" />
             </div>
@@ -399,12 +399,12 @@ export function CreativeLibraryGrid({ items, section, onPinnedChange }: { items:
                 {panelScrolled ? selected.name : "CREATIVE LIBRARY"}
               </motion.span>
             </AnimatePresence>
-            <button ref={closeButtonRef} type="button" onClick={() => setSelected(null)} className="flex size-10 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] text-xl transition-colors hover:border-[#E74E44] hover:text-[#E74E44] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E74E44]" aria-label="关闭作品详情">×</button>
+            <button ref={closeButtonRef} type="button" onClick={() => setSelected(null)} className="flex size-11 shrink-0 items-center justify-center rounded-full border border-[var(--border-subtle)] transition-colors hover:border-[#E74E44] hover:text-[#E74E44] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#E74E44]" aria-label="关闭作品详情"><svg viewBox="0 0 24 24" className="size-4" fill="none" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" /></svg></button>
           </div>
 
           <div className="px-6 pb-10 pt-8 sm:px-8 lg:px-10">
-            <h2 id="creative-library-details-title" className="text-2xl font-semibold leading-snug sm:text-3xl">{selected.name}</h2>
-            <p className="site-muted-text mt-2 text-sm">{selected.styleDescription}</p>
+            <h2 id="creative-library-details-title" className="text-2xl font-semibold leading-snug tracking-[-0.02em] sm:text-3xl">{selected.name}</h2>
+            <p className="site-muted-text mt-2 text-sm">{selected.styleDescription.replace(/^小小东\s*·\s*/, "")}</p>
 
             <section className="mt-8 border-t border-[var(--border-subtle)] pt-6">
               <h3 className="text-sm font-semibold">介绍</h3>
@@ -414,8 +414,9 @@ export function CreativeLibraryGrid({ items, section, onPinnedChange }: { items:
               <h3 className="text-sm font-semibold">适用范围</h3>
               <p className="site-muted-text mt-3 text-sm leading-7 sm:text-base">{selected.useCases}</p>
             </section>
-            <a href={selected.githubUrl} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#E74E44] px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E74E44]">{selected.githubUrl.startsWith("https://github.com/") ? "前往 GitHub" : "查看来源"} <span aria-hidden="true">↗</span></a>
-
+            {!selected.githubUrl.startsWith("https://vip.xiaoxiaodong.ai/") && (
+              <a href={selected.githubUrl} target="_blank" rel="noopener noreferrer" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#E74E44] px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-85 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#E74E44]">{selected.githubUrl.startsWith("https://github.com/") ? "前往 GitHub" : "查看来源"} <span aria-hidden="true">↗</span></a>
+            )}
             {selected.promptPath ? <LibraryPrompt key={selected.promptPath} path={selected.promptPath} /> : null}
 
             {activeImage ? (

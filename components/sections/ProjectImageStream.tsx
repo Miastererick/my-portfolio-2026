@@ -3,7 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { openProjectWithCurtain } from "@/components/PortfolioRouteCurtain";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type ProjectImage = {
   path: string;
@@ -25,6 +29,39 @@ export function ProjectImageStream({ images, title, nextProject }: ProjectImageS
   const viewportRef = useRef<HTMLButtonElement>(null);
   const nextPanelRef = useRef<HTMLAnchorElement>(null);
   const dragRef = useRef<{ x: number; y: number; scrollY: number } | null>(null);
+
+  useEffect(() => {
+    const page = nextPanelRef.current?.closest<HTMLElement>(".project-editorial");
+    if (!page) return;
+
+    const context = gsap.context(() => {
+      const media = gsap.matchMedia();
+      media.add("(prefers-reduced-motion: no-preference)", () => {
+        const intro = gsap.timeline({ defaults: { ease: "power3.out" } });
+        intro.from(page.querySelector(".project-editorial-heading"), {
+          opacity: 0.35, y: 18, duration: 0.75,
+        });
+        intro.from(page.querySelectorAll(".project-editorial-detail-row"), {
+          opacity: 0.35, y: 12, duration: 0.65, stagger: 0.08,
+        }, 0.16);
+        // Animate the stream as a whole so adjacent slices never pull apart.
+        if (imageListRef.current) {
+          gsap.from(imageListRef.current, {
+            opacity: 0.6, duration: 0.9, ease: "power3.out",
+            scrollTrigger: { trigger: imageListRef.current, start: "top 92%", once: true },
+          });
+        }
+        const next = nextPanelRef.current;
+        if (next) {
+          gsap.from(next.children, {
+            opacity: 0.3, y: 24, duration: 0.85, stagger: 0.1, ease: "power3.out",
+            scrollTrigger: { trigger: next, start: "top 65%", once: true },
+          });
+        }
+      });
+    }, page);
+    return () => context.revert();
+  }, [images, nextProject.slug]);
 
   useEffect(() => {
     const panel = nextPanelRef.current;

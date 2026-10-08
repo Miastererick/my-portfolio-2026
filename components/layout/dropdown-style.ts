@@ -1,5 +1,5 @@
-export const dropdownPanelClass = "min-w-36 rounded-lg border border-white/10 bg-[#111] p-2 shadow-xl";
-export const dropdownItemClass = "block rounded-md px-3 py-2 text-xs text-white/70 transition-colors hover:bg-white/10 hover:text-white focus-visible:bg-white/10 focus-visible:text-white sm:text-sm";
+export const dropdownPanelClass = "site-dropdown-panel min-w-36 rounded-xl bg-[var(--background)] p-1.5";
+export const dropdownItemClass = "site-dropdown-item block rounded-lg px-3 py-2.5 text-xs transition-colors sm:text-sm";
 export const dropdownMotion = {
   initial: { opacity: 0, y: -7, scale: 0.96 },
   animate: { opacity: 1, y: 0, scale: 1 },

@@ -996,5 +996,291 @@
     "coverName": "imgTest033DeMain00001",
     "excludedMediaNames": [],
     "excludedMediaAssets": []
+  },
+  {
+    "slug": "gangdong-substation",
+    "category": "business",
+    "palette": [
+      "#54FFB5",
+      "#FF9555",
+      "#E6E6E6"
+    ],
+    "title": "国家电网·港东变电站",
+    "english": "Gangdong Substation · Digital Twin Visualization",
+    "summary": "围绕港东变电站的数字孪生可视化，整合建筑与设备三维场景、运行数据界面和 UI 组件，形成统一的设计规范与展示方案。",
+    "role": "可视化设计师",
+    "facts": [
+      "数字孪生",
+      "三维场景可视化",
+      "UI 设计规范"
+    ],
+    "sections": [
+      {
+        "heading": "项目背景",
+        "body": "以港东变电站为对象，通过三维场景与数据界面呈现站区、建筑和设备信息，建立清晰、统一的数字孪生可视化表达。"
+      },
+      {
+        "heading": "我的工作内容",
+        "body": "设计资料涵盖视觉方向与情绪板、字体字号选择、颜色规范，以及建筑场景、设备场景、数据面板和 UI 组件展示。以绿色为主的科技感配色贯穿三维场景与界面。"
+      }
+    ],
+    "introSlices": [
+      {
+        "path": "/project-pages/gangdong-substation/01.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：项目封面"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/02.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：设计思路"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/03.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：情绪板与配色方向"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/04.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：字体与字号选择"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/05.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：颜色规范"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/06.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：三维场景展示"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/07.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：数字孪生界面展示"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/08.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：设备场景与数据界面"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/09.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：UI 组件展示"
+      },
+      {
+        "path": "/project-pages/gangdong-substation/10.webp",
+        "width": 2560,
+        "height": 1476,
+        "alt": "国家电网·港东变电站：结束页"
+      }
+    ],
+    "mediaNodes": [],
+    "cover": "/project-pages/gangdong-substation/cover.webp"
+  },
+  {
+    "slug": "work-summary-2021-2024",
+    "category": "other",
+    "palette": [
+      "#164DA7",
+      "#E9E9E9",
+      "#191919"
+    ],
+    "title": "2021—2024 工作总结",
+    "english": "Visualization Design · 2021–2024",
+    "summary": "整理 2021—2024 年可视化设计工作，以原始汇报图片呈现项目实践、交互逻辑优化、设计资源整合、组件库建设与复盘思考。",
+    "role": "可视化设计师",
+    "facts": [
+      "2021—2024",
+      "27 页工作汇报",
+      "项目实践 / 资产沉淀"
+    ],
+    "sections": [
+      {
+        "heading": "项目背景",
+        "body": "2021—2024 年阶段性工作总结，汇集可视化项目与设计资产建设的工作记录。保留原始汇报的页面内容、版式与顺序，作为独立的作品集档案展示。"
+      },
+      {
+        "heading": "我的工作内容",
+        "body": "内容涵盖可视化项目展示、青海电力机房交互逻辑优化、管理后台设计、资源整合、组件库建设和项目复盘；详见下方原始汇报图片。"
+      }
+    ],
+    "introSlices": [
+      {
+        "path": "/project-pages/work-summary-2021-2024/01.webp",
+        "width": 1921,
+        "height": 1080,
+        "alt": "2021—2024 工作总结，第 1 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/02.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 2 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/03.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 3 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/04.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 4 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/05.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 5 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/06.webp",
+        "width": 1921,
+        "height": 4793,
+        "alt": "2021—2024 工作总结，第 6 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/07.webp",
+        "width": 1921,
+        "height": 202,
+        "alt": "2021—2024 工作总结，第 7 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/08.webp",
+        "width": 1921,
+        "height": 760,
+        "alt": "2021—2024 工作总结，第 8 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/09.webp",
+        "width": 1921,
+        "height": 2847,
+        "alt": "2021—2024 工作总结，第 9 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/10.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 10 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/11.webp",
+        "width": 1921,
+        "height": 2023,
+        "alt": "2021—2024 工作总结，第 11 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/12.webp",
+        "width": 1921,
+        "height": 2171,
+        "alt": "2021—2024 工作总结，第 12 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/13.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 13 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/14.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 14 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/15.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 15 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/16.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 16 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/17.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 17 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/18.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 18 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/19.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 19 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/20.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 20 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/21.webp",
+        "width": 1921,
+        "height": 3435,
+        "alt": "2021—2024 工作总结，第 21 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/22.webp",
+        "width": 1921,
+        "height": 4000,
+        "alt": "2021—2024 工作总结，第 22 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/23.webp",
+        "width": 1921,
+        "height": 4484,
+        "alt": "2021—2024 工作总结，第 23 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/24.webp",
+        "width": 1921,
+        "height": 4113,
+        "alt": "2021—2024 工作总结，第 24 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/25.webp",
+        "width": 1921,
+        "height": 6855,
+        "alt": "2021—2024 工作总结，第 25 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/26.webp",
+        "width": 1921,
+        "height": 4113,
+        "alt": "2021—2024 工作总结，第 26 页，共 27 页"
+      },
+      {
+        "path": "/project-pages/work-summary-2021-2024/27.webp",
+        "width": 1921,
+        "height": 1081,
+        "alt": "2021—2024 工作总结，第 27 页，共 27 页"
+      }
+    ],
+    "mediaNodes": [],
+    "cover": "/project-pages/work-summary-2021-2024/cover.webp"
   }
 ]

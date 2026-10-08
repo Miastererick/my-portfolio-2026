@@ -47,7 +47,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
       }));
 
   return (
-    <div className="project-detail-page project-editorial min-h-dvh">
+    <div className={`project-detail-page project-editorial min-h-dvh${["work-summary-2021-2024", "gangdong-substation"].includes(project.slug) ? " project-editorial--slides" : ""}`}>
       <TopNav />
       <main className="project-editorial-layout">
         <aside className="project-editorial-sidebar" aria-label="项目资料">

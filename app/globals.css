@@ -76,6 +76,9 @@
   --content-ink: #121212;
   --border-subtle: rgb(0 0 0 / 14%);
   --header-surface: rgb(237 237 237 / 88%);
+  --control-hover: rgb(18 18 18 / 5%);
+  --focus-ring: #a7322b;
+  --menu-shadow: 0 8px 28px rgb(18 18 18 / 12%);
   --project-other-card-bg: #262626;
   /** 全局 UI（导航、页脚、首屏等）：HONOR Sans CN；五张卡片不用此变量 */
   --font-sans:
@@ -987,5 +990,160 @@ html body .portfolio-showcase main.portfolio-stage .portfolio-stage-scroll {
 @media (max-width: 650px) {
   html body .portfolio-showcase main.portfolio-stage .portfolio-stage-index-item.is-active strong {
     color: #fff !important;
+  }
+}
+
+/* Shared finishing details follow the existing light editorial palette. */
+::selection {
+  background: rgb(231 78 68 / 20%);
+  color: #121212;
+}
+
+input, textarea {
+  caret-color: var(--accent);
+}
+
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--focus-ring) !important;
+  outline-offset: 3px;
+}
+
+:where(aside, pre, [aria-label="工作经历"], #about > div) {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(18 18 18 / 24%) transparent;
+}
+
+html .site-dropdown-panel {
+  background: var(--background);
+  box-shadow: var(--menu-shadow);
+  max-height: min(70dvh, 480px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+html .site-dropdown-item {
+  color: var(--text-muted) !important;
+  min-height: 40px;
+}
+
+html .site-dropdown-item:is(:hover, :focus-visible, [aria-checked="true"]) {
+  background: var(--control-hover);
+  color: var(--foreground) !important;
+}
+
+.creative-library-toolbar {
+  padding-top: 4px;
+}
+
+.creative-library-toolbar :is(input, .creative-library-control) {
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.creative-library-toolbar input:hover {
+  border-color: rgb(18 18 18 / 30%);
+}
+
+.creative-library-toolbar input:focus-visible {
+  outline-offset: 2px;
+}
+
+.creative-library-name {
+  padding-bottom: 4px;
+}
+
+.creative-library-card-title {
+  text-wrap: pretty;
+}
+
+html .creative-library-card-image:is(:hover, :focus-within) .creative-library-cover,
+html .creative-library-card-empty:is(:hover, :focus-within) .creative-library-name-empty {
+  box-shadow: 0 10px 26px rgb(18 18 18 / 12%);
+}
+
+html #creative-library-details .site-muted-text {
+  color: var(--text-muted) !important;
+}
+
+#creative-library-details :is(h2, h3) {
+  text-wrap: balance;
+}
+
+#creative-library-details pre {
+  scrollbar-gutter: stable;
+  padding-right: 12px;
+  line-height: 1.9;
+}
+
+#about time, .portfolio-stage-counter {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 639px) {
+  .site-header > div:first-child {
+    gap: 8px;
+  }
+
+  .site-header nav > ul {
+    gap: 0;
+  }
+
+  .site-header .site-nav-link {
+    display: flex;
+    width: 40px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+
+  .site-header .site-nav-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  .site-header :is(.site-nav-label, .site-projects-toggle) {
+    display: none;
+  }
+
+  .creative-library-shell .site-header {
+    background: var(--background);
+  }
+
+  .creative-library-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .creative-library-controls > nav,
+  .creative-library-search {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .creative-library-controls > nav a {
+    flex: 1;
+  }
+
+  .creative-library-controls > :is(div, button) > button,
+  .creative-library-controls > button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .creative-library-toolbar [aria-label="资源内容分类"] {
+    gap: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .creative-library-card,
+  .creative-library-results {
+    transition: none;
+  }
+
+  .creative-library-card:is(:hover, :focus-within) {
+    transform: none;
   }
 }

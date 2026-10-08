@@ -2,12 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { categories, coverFor, type CategoryId, type PortfolioProject } from "@/lib/portfolio-data";
 
 type UploadedImage = { path: string; width: number; height: number };
 
 export function ProjectAdmin({ initialProjects }: { initialProjects: PortfolioProject[] }) {
+  const router = useRouter();
   const [projects, setProjects] = useState(initialProjects);
   const [selectedSlug, setSelectedSlug] = useState(initialProjects[0]?.slug ?? "");
   const [savedSlugs, setSavedSlugs] = useState(() => new Set(initialProjects.map((project) => project.slug)));
@@ -97,7 +99,8 @@ export function ProjectAdmin({ initialProjects }: { initialProjects: PortfolioPr
       if (!response.ok) throw new Error(result.error ?? "保存失败");
       setSavedSlugs(new Set(projects.map((project) => project.slug)));
       setDirty(false);
-      setMessage(`已保存 ${result.count} 个项目。首页和详情页刷新后生效。`);
+      router.refresh();
+      setMessage(`已保存 ${result.count} 个项目，已同步到首页、所属分类和项目详情导航。`);
     } catch (error) {
       setMessage(error instanceof Error ? error.message : "保存失败");
     } finally {
